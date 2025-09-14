@@ -2,87 +2,97 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Shubham Nakhod | Portfolio</title>
 <meta name="description" content="Shubham Nakhod — Machine Learning Engineer (Agentic AI, MLOps, Applied ML).">
 <link rel="icon" href="favicon.ico">
 <style>
   :root{
-    --bg:#0b1220; --panel:#0f172a; --card:#101a2b; --ink:#e6e9f2; --muted:#9aa4b2; --line:#1d2840;
-    --brand:#7aa2ff; --brand2:#22c9a5; --link:#aecdff;
-    --chip:#13213b; --chip-brd:#23395f; --shadow:0 10px 28px rgba(0,0,0,.28);
-    --max:1120px;
+    --bg:#0b121d; --panel:#0f172a; --card:#101a2b; --ink:#e7ebf4; --muted:#9aa4b2; --line:#1d2840;
+    --brand:#7aa2ff; --accent:#1f6feb; --brand2:#22c9a5; --max:1200px;
+    --chip:#14223a; --chip-brd:#223556; --shadow:0 12px 28px rgba(0,0,0,.28);
+    --sideW:240px;
   }
   @media (prefers-color-scheme: light){
     :root{
       --bg:#f7f8fb; --panel:#ffffff; --card:#ffffff; --ink:#0f172a; --muted:#5f6b7c; --line:#e6eaf0;
-      --brand:#1f6feb; --brand2:#16a085; --link:#1f6feb; --chip:#eef3ff; --chip-brd:#dbe7ff; --shadow:0 10px 24px rgba(0,0,0,.08);
+      --brand:#1f6feb; --accent:#1849ff; --brand2:#16a085; --chip:#eef3ff; --chip-brd:#dbe7ff; --shadow:0 10px 24px rgba(0,0,0,.08);
     }
   }
+
   *{box-sizing:border-box}
   html{scroll-behavior:smooth}
   body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.75}
 
-  /* Navbar */
-  .nav{position:sticky;top:0;z-index:50;backdrop-filter:saturate(140%) blur(8px);background:rgba(10,16,28,.7);border-bottom:1px solid var(--line)}
-  @media (prefers-color-scheme: light){.nav{background:rgba(255,255,255,.8)}}
-  .nav-inner{max-width:var(--max);margin:auto;padding:.6rem 16px;display:flex;align-items:center;justify-content:space-between}
-  .brand{font-weight:900;letter-spacing:.2px}
-  .nav a{color:inherit;text-decoration:none;font-weight:700;margin-left:1rem;padding:.35rem .6rem;border-radius:10px}
-  .nav a:hover{color:var(--link)}
-  .btn{border:1px solid var(--line);background:transparent;color:inherit;padding:.45rem .75rem;border-radius:10px;text-decoration:none;font-weight:800}
-  .btn:hover{border-color:var(--brand)}
+  /* ===== Layout ===== */
+  .wrap{display:grid;grid-template-columns:var(--sideW) 1fr;min-height:100dvh}
+  @media (max-width:900px){.wrap{grid-template-columns:1fr}}
 
-  /* Hero */
-  header{border-bottom:1px solid var(--line);background:
-    radial-gradient(800px 400px at 10% -10%, rgba(122,162,255,.18), transparent 60%),
-    radial-gradient(800px 400px at 110% 10%, rgba(34,201,165,.12), transparent 60%),
-    linear-gradient(180deg, rgba(255,255,255,.02), transparent 40%);}
-  .hero{max-width:var(--max);margin:auto;display:grid;grid-template-columns:360px 1fr;gap:28px;align-items:center;padding:32px 16px}
-  @media (max-width:980px){.hero{grid-template-columns:1fr}}
-  .idcard{background:var(--panel);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);text-align:center;padding:22px}
-  .avatar{width:200px;height:200px;border-radius:50%;padding:3px;margin:0 auto 12px;background:conic-gradient(from 90deg,var(--brand),var(--brand2),#ffd38a,var(--brand));box-shadow:0 8px 24px rgba(0,0,0,.3)}
+  /* ===== Sidebar ===== */
+  aside{
+    position:sticky; top:0; height:100dvh; padding:18px 14px;
+    background:var(--panel); border-right:1px solid var(--line);
+    display:flex; flex-direction:column; align-items:center; gap:10px;
+  }
+  @media (max-width:900px){aside{position:static;height:auto;border-right:none;border-bottom:1px solid var(--line);}}
+  .avatar{width:84px;height:84px;border-radius:50%;padding:2px;background:conic-gradient(from 90deg,var(--brand),var(--brand2),#ffd38a,var(--brand))}
   .avatar img{width:100%;height:100%;object-fit:cover;border-radius:50%;object-position:center 12%}
-  .name{margin:.4rem 0 0 0;font-size:1.6rem;font-weight:900}
-  .role{margin:.2rem 0 .8rem 0;color:var(--muted)}
-  .links{display:grid;gap:8px;justify-items:center}
-  .links a{color:inherit;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.35);font-weight:750}
-  @media (prefers-color-scheme: light){.links a{border-bottom-color:rgba(0,0,0,.35)}}
-  .links a:hover{border-bottom-color:currentColor}
+  .who{font-weight:900;text-align:center;margin:6px 0 0 0}
+  .social{display:flex;gap:8px}
+  .ico{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;border:1px solid var(--line);color:inherit;text-decoration:none}
+  .ico:hover{border-color:var(--brand)}
+  .side-nav{margin-top:10px;width:100%;display:grid;gap:4px}
+  .side-nav a{display:flex;align-items:center;gap:8px;color:inherit;text-decoration:none;padding:8px 10px;border-radius:10px;border:1px solid transparent;font-weight:700}
+  .side-nav a:hover{border-color:var(--line);background:rgba(255,255,255,.03)}
+  .side-footer{margin-top:auto;font-size:.85rem;color:var(--muted)}
 
-  .pitch{background:var(--panel);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);padding:24px}
-  .big{font-size:clamp(1.6rem,3vw,2.2rem);line-height:1.3;margin:0 0 8px 0;font-weight:900}
-  .grad{background:linear-gradient(90deg,var(--brand),var(--brand2));-webkit-background-clip:text;background-clip:text;color:transparent}
-  .type{font-weight:800}
-  .bullets{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:10px;margin:14px 0}
-  .bullet{border:1px solid var(--line);border-radius:12px;padding:12px;background:var(--card)}
+  /* ===== Main / Sections ===== */
+  main{padding:0}
+  section{max-width:var(--max);margin:0 auto;padding:26px 18px}
+  .section-card{background:var(--panel);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);padding:22px}
+  h2.section-title{margin:0 0 14px 0;color:var(--brand);letter-spacing:.2px}
+
+  /* ===== Hero ===== */
+  .hero{
+    min-height:84dvh; display:grid; align-items:center; border-bottom:1px solid var(--line);
+    background:url('hero.jpg') center/cover no-repeat fixed, linear-gradient(180deg,rgba(0,0,0,.25),rgba(0,0,0,.35));
+  }
+  .hero-inner{max-width:var(--max);margin:auto;padding:40px 18px}
+  .hero-box{max-width:740px}
+  .hero h1{font-size:clamp(1.8rem,3.6vw,3rem);margin:0 0 6px 0;font-weight:900}
+  .hero p{margin:.2rem 0 1rem 0}
   .cta{display:flex;gap:10px;flex-wrap:wrap}
+  .btn{border:1px solid var(--line);background:rgba(15,23,42,.65);color:#fff;padding:.55rem .9rem;border-radius:10px;text-decoration:none;font-weight:800}
+  .btn:hover{border-color:#9cc0ff}
+  .badge{display:inline-block;margin-left:6px;font-size:.85rem;padding:.15rem .5rem;border-radius:999px;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.35)}
 
-  /* Sections scaffold */
-  .wrap{max-width:var(--max);margin:auto;padding:0 16px}
-  section{margin:24px 0;background:var(--panel);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);padding:22px}
-  section h2{margin:0 0 10px 0;color:var(--brand);letter-spacing:.2px}
-
-  /* About + Facts */
-  .facts{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:8px}
+  /* ===== About / Facts ===== */
+  .about-grid{display:grid;grid-template-columns:260px 1fr;gap:16px}
+  @media (max-width:900px){.about-grid{grid-template-columns:1fr}}
+  .facts{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:12px}
+  @media (max-width:720px){.facts{grid-template-columns:1fr 1fr}}
   .fact{border:1px solid var(--line);border-radius:12px;text-align:center;padding:12px;background:var(--card)}
   .fact .n{font-size:1.3rem;font-weight:900}
   .muted{color:var(--muted)}
 
-  /* Skills */
-  .skill{margin:10px 0}
-  .srow{display:flex;justify-content:space-between;font-weight:700}
+  /* ===== Skills ===== */
+  .skill{margin:12px 0}
+  .srow{display:flex;justify-content:space-between;font-weight:800}
   .bar{height:10px;background:var(--card);border:1px solid var(--line);border-radius:999px;overflow:hidden}
   .fill{height:100%;background:linear-gradient(90deg,var(--brand),var(--brand2));width:0%}
 
-  /* Qualifications */
+  /* ===== Qualifications (timeline two cols) ===== */
   .cols{display:grid;grid-template-columns:1fr 1fr;gap:16px}
   @media (max-width:900px){.cols{grid-template-columns:1fr}}
   .panel{border:1px solid var(--line);border-radius:12px;padding:14px;background:var(--card)}
+  .panel h3{margin:.1rem 0 .4rem 0}
+  .timeline{border-left:2px solid var(--line);padding-left:14px}
+  .t{margin:.6rem 0}
+  .t b{display:block}
 
-  /* Projects (filterable) */
+  /* ===== Projects (filterable) ===== */
   .filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px}
-  .chip{background:var(--chip);border:1px solid var(--chip-brd);color:#c7d2fe;padding:.25rem .6rem;border-radius:999px;font-weight:750;cursor:pointer}
+  .chip{background:var(--chip);border:1px solid var(--chip-brd);color:#c7d2fe;padding:.28rem .7rem;border-radius:999px;font-weight:800;cursor:pointer}
   @media (prefers-color-scheme: light){.chip{color:#1e3a8a}}
   .chip.active{outline:2px solid var(--brand);outline-offset:2px}
   .grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
@@ -91,323 +101,321 @@
   .card-body{padding:14px;display:flex;flex-direction:column;gap:.45rem;flex:1}
   .card h3{margin:.1rem 0;font-size:1.04rem}
   .meta{font-size:.86rem;color:var(--muted)}
-  .open{margin-top:auto;color:var(--link);text-decoration:none;font-weight:800}
+  .open{margin-top:auto;color:#9cc0ff;text-decoration:none;font-weight:800}
 
-  /* Soft skills */
+  /* ===== Soft skills + Testimonials ===== */
   .soft{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}
   .pill{border:1px solid var(--line);border-radius:12px;background:var(--card);padding:14px}
-
-  /* Testimonials */
   .testi{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px}
   .quote{border:1px solid var(--line);border-radius:12px;background:var(--card);padding:14px}
-  .who{margin:.4rem 0 0 0;font-weight:800}
 
-  /* Contact */
+  /* ===== Contact ===== */
   .contact-links a{color:inherit;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.35);font-weight:800}
   @media (prefers-color-scheme: light){.contact-links a{border-bottom-color:rgba(0,0,0,.35)}}
   .contact-links a:hover{border-bottom-color:currentColor}
 
-  footer{color:var(--muted);text-align:center;padding:28px 16px}
+  footer{color:var(--muted);text-align:center;padding:20px}
   :focus-visible{outline:2px solid var(--brand);outline-offset:2px;border-radius:8px}
 </style>
 </head>
 <body>
 
-<!-- NAV -->
-<nav class="nav">
-  <div class="nav-inner">
-    <div class="brand">Shubham Nakhod</div>
-    <div>
-      <a href="#home">Home</a>
-      <a href="#about">About</a>
-      <a href="#qual">Qualifications</a>
-      <a href="#projects">Projects</a>
-      <a href="#soft">Soft Skills</a>
-      <a href="#testimonials">Testimonials</a>
-      <a href="#contact">Contact</a>
-      <a class="btn" href="resume.pdf" target="_blank" rel="noopener">Resume</a>
-    </div>
-  </div>
-</nav>
-
-<!-- HERO -->
-<header id="home">
-  <div class="hero">
-    <div class="idcard">
-      <div class="avatar"><img src="Photo.png" alt="Shubham Nakhod"></div>
-      <h1 class="name">Shubham Nakhod</h1>
-      <p class="role">Machine Learning Engineer</p>
-      <div class="links">
-        <a href="tel:+15203880345">+1-520-388-0345</a>
-        <a href="mailto:shubnakhod29@gmail.com">shubnakhod29@gmail.com</a>
-        <a href="https://github.com/ShubhamNakhod" target="_blank" rel="noopener">github.com/ShubhamNakhod</a>
-        <a href="https://www.linkedin.com/in/shubham-nakhod-926914195/" target="_blank" rel="noopener">/in/shubham-nakhod-926914195/</a>
-      </div>
-    </div>
-
-    <div class="pitch">
-      <h2 class="big">I'm <span class="type" id="type">an Applied ML Engineer</span> who ships <span class="grad">production-ready</span> AI systems.</h2>
-      <div class="bullets">
-        <div class="bullet"><b>Fraud Explainer (LLM+SHAP)</b> — FastAPI + XGBoost; <b>P95 &lt; 300ms</b>, CI/CD with Actions.</div>
-        <div class="bullet"><b>Churn MLOps</b> — MLflow tracking, drift alerts, automated retraining; <b>AUC 0.87</b>.</div>
-        <div class="bullet"><b>LOB + Market Maker</b> — Inventory skew, P&amp;L, mid-price dashboard.</div>
-        <div class="bullet"><b>Kelly Simulator</b> — Optimal sizing, drawdowns, risk of ruin.</div>
-      </div>
-      <div class="cta">
-        <a class="btn" href="#projects">See projects</a>
-        <a class="btn" href="resume.pdf" target="_blank" rel="noopener">Download résumé</a>
-      </div>
-    </div>
-  </div>
-</header>
-
 <div class="wrap">
 
-  <!-- ABOUT -->
-  <section id="about">
-    <h2>About Me</h2>
-    <p>
-      I’m a Master’s student in Information Science at the University of Arizona (ML/AI track), focused on Agentic AI, MLOps, and Applied Machine Learning.
-      Previously in risk & markets across HSBC, Goldman Sachs (via Deloitte), and Credit Suisse. I like simple, reliable systems that ship.
-    </p>
-    <div class="facts">
-      <div class="fact"><div class="n" data-count="4">0</div><div class="muted">prod-grade ML apps</div></div>
-      <div class="fact"><div class="n" data-count="120">0</div><div class="muted">DSA problems</div></div>
-      <div class="fact"><div class="n" data-count="300">0</div><div class="muted">ms P95 fraud API</div></div>
-    </div>
-  </section>
-
-  <!-- QUALIFICATIONS -->
-  <section id="qual">
-    <h2>Qualifications</h2>
-    <div class="cols">
-      <div class="panel">
-        <h3>Education</h3>
-        <ul>
-          <li><b>University of Arizona</b> — M.S. Information Science (ML/AI) · Expected Dec 2025 · GPA 3.8/4.0</li>
-          <li><b>University of Mumbai</b> — B.S. Financial Markets (2016–2019) · GPA 7.6/10</li>
-        </ul>
-      </div>
-      <div class="panel">
-        <h3>Experience</h3>
-        <ul>
-          <li><b>HSBC</b> — Traded Risk Analyst · Krakow · Apr 2023 – Aug 2023 — −90% false alerts; stress-tests.</li>
-          <li><b>Goldman Sachs (via Deloitte)</b> — Equities Support Analyst · Warsaw · 2022–2023 — +30% P&amp;L recon efficiency.</li>
-          <li><b>Credit Suisse</b> — Analyst, Data & Trade Support · Wroclaw · 2021–2022 — 98% reconciliation match.</li>
-        </ul>
-      </div>
+  <!-- ========== SIDEBAR ========== -->
+  <aside>
+    <a class="avatar" href="#home" title="Home"><img src="Photo.png" alt="Shubham Nakhod"></a>
+    <div class="who">Shubham Nakhod</div>
+    <div class="social" aria-label="Profiles">
+      <a class="ico" href="mailto:shubnakhod29@gmail.com" title="Email">@</a>
+      <a class="ico" href="https://github.com/ShubhamNakhod" target="_blank" rel="noopener" title="GitHub">GH</a>
+      <a class="ico" href="https://www.linkedin.com/in/shubham-nakhod-926914195/" target="_blank" rel="noopener" title="LinkedIn">in</a>
     </div>
 
-    <h3 style="margin-top:14px">Skills</h3>
-    <div class="panel">
-      <div class="skill">
-        <div class="srow"><span>Python / SQL</span><span>90%</span></div>
-        <div class="bar"><div class="fill" style="--pct:90%"></div></div>
-      </div>
-      <div class="skill">
-        <div class="srow"><span>PyTorch / TensorFlow</span><span>85%</span></div>
-        <div class="bar"><div class="fill" style="--pct:85%"></div></div>
-      </div>
-      <div class="skill">
-        <div class="srow"><span>LangChain / LLM Agents</span><span>85%</span></div>
-        <div class="bar"><div class="fill" style="--pct:85%"></div></div>
-      </div>
-      <div class="skill">
-        <div class="srow"><span>FastAPI / Docker / CI/CD</span><span>90%</span></div>
-        <div class="bar"><div class="fill" style="--pct:90%"></div></div>
-      </div>
-      <div class="skill">
-        <div class="srow"><span>MLflow / SageMaker / Vertex</span><span>80%</span></div>
-        <div class="bar"><div class="fill" style="--pct:80%"></div></div>
-      </div>
-    </div>
-  </section>
+    <nav class="side-nav" aria-label="Sections">
+      <a href="#home">🏠 Home</a>
+      <a href="#about">👤 About</a>
+      <a href="#qual">🎓 Qualifications</a>
+      <a href="#projects">📦 Projects</a>
+      <a href="#soft">💬 Soft Skills</a>
+      <a href="#testimonials">❝ Testimonials</a>
+      <a href="#contact">✉️ Contact</a>
+    </nav>
 
-  <!-- PROJECTS -->
-  <section id="projects">
-    <h2>Projects</h2>
-    <div class="filters">
-      <button class="chip active" data-filter="all" type="button">All</button>
-      <button class="chip" data-filter="ml" type="button">ML</button>
-      <button class="chip" data-filter="trading" type="button">Trading</button>
-      <button class="chip" data-filter="mlops" type="button">MLOps</button>
-    </div>
+    <div class="side-footer">© <span id="yr"></span></div>
+  </aside>
 
-    <div class="grid" id="grid">
-      <article class="card" data-tags="ml mlops">
-        <img class="thumb" src="fraud.png" alt="Fraud explainer" onerror="this.style.display='none'">
-        <div class="card-body">
-          <h3>Agentic Fraud Explanation Service</h3>
-          <div class="meta">FastAPI + XGBoost + LangChain + SHAP · P95 &lt; 300ms</div>
-          <p>Explains flagged transactions in plain English with SHAP drivers; CI/CD & monitoring.</p>
-          <div class="chips"><span class="chip">FastAPI</span><span class="chip">LangChain</span><span class="chip">MLflow</span></div>
-          <a class="open" href="https://github.com/ShubhamNakhod" target="_blank" rel="noopener">Repo</a>
+  <!-- ========== MAIN ========== -->
+  <main>
+
+    <!-- HERO -->
+    <section class="hero" id="home">
+      <div class="hero-inner">
+        <div class="hero-box section-card" style="background:rgba(15,23,42,.72)">
+          <h1>Shubham Nakhod</h1>
+          <p>Machine Learning Engineer — <span class="badge">Agentic AI</span> <span class="badge">MLOps</span> <span class="badge">Applied ML</span></p>
+          <div class="cta">
+            <a class="btn" href="resume.pdf" target="_blank" rel="noopener">Download Resume</a>
+            <a class="btn" href="#projects">View Projects</a>
+          </div>
         </div>
-      </article>
-
-      <article class="card" data-tags="trading ml">
-        <img class="thumb" src="lob.png" alt="LOB simulator" onerror="this.style.display='none'">
-        <div class="card-body">
-          <h3>Limit-Order-Book Simulator + MM Strategy</h3>
-          <div class="meta">LOB engine · Rule-based MM · Dashboard</div>
-          <p>Price-time priority LOB, inventory skew, P&amp;L tracking, interactive analytics.</p>
-          <div class="chips"><span class="chip">Python</span><span class="chip">Dash</span></div>
-          <a class="open" href="https://github.com/ShubhamNakhod/Limit-Order-Book-Simulator-Market-Making-Strategy" target="_blank" rel="noopener">Repo</a>
-        </div>
-      </article>
-
-      <article class="card" data-tags="trading">
-        <img class="thumb" src="kelly.png" alt="Kelly simulator" onerror="this.style.display='none'">
-        <div class="card-body">
-          <h3>Kelly-Criterion Betting Simulator</h3>
-          <div class="meta">Monte Carlo · Drawdowns · Risk of Ruin</div>
-          <p>Bankroll dynamics with optimal bet sizing and distributional outcomes.</p>
-          <div class="chips"><span class="chip">Python</span><span class="chip">Monte Carlo</span></div>
-          <a class="open" href="https://github.com/ShubhamNakhod/Kelly-Criterion-Betting-Simulator" target="_blank" rel="noopener">Repo</a>
-        </div>
-      </article>
-
-      <article class="card" data-tags="ml">
-        <img class="thumb" src="gbm.png" alt="GBM sim" onerror="this.style.display='none'">
-        <div class="card-body">
-          <h3>Monte Carlo Stock Price Simulation</h3>
-          <div class="meta">1k GBM paths · yfinance</div>
-          <p>Probabilistic outcomes for S&amp;P 500; quick scenario testing.</p>
-          <div class="chips"><span class="chip">Jupyter</span><span class="chip">NumPy</span></div>
-          <a class="open" href="https://github.com/ShubhamNakhod/Monte_Carlo_Simulation_for_Stock_Price_Prediction" target="_blank" rel="noopener">Repo</a>
-        </div>
-      </article>
-
-      <article class="card" data-tags="ml">
-        <img class="thumb" src="markov.png" alt="Markov" onerror="this.style.display='none'">
-        <div class="card-body">
-          <h3>Stock-Market via Markov Chains</h3>
-          <div class="meta">Regime dynamics · Transition matrices</div>
-          <p>Regime switching model to explore state probabilities and transitions.</p>
-          <div class="chips"><span class="chip">Python</span><span class="chip">Markov</span></div>
-          <a class="open" href="https://github.com/ShubhamNakhod/Simulating-Stock-Market-Markov-Chain" target="_blank" rel="noopener">Repo</a>
-        </div>
-      </article>
-
-      <article class="card" data-tags="ml">
-        <img class="thumb" src="frontier.png" alt="Frontier" onerror="this.style.display='none'">
-        <div class="card-body">
-          <h3>Efficient Frontier</h3>
-          <div class="meta">10k portfolios · Risk vs return</div>
-          <p>Portfolio sampler to visualize frontier and trade-offs.</p>
-          <div class="chips"><span class="chip">Pandas</span><span class="chip">NumPy</span></div>
-          <a class="open" href="https://github.com/ShubhamNakhod/Portfolio-Risk-vs.-Expected-Return" target="_blank" rel="noopener">Repo</a>
-        </div>
-      </article>
-
-      <article class="card" data-tags="ml mlops">
-        <img class="thumb" src="loan.png" alt="Loan defaults" onerror="this.style.display='none'">
-        <div class="card-body">
-          <h3>Predicting Loan Defaults</h3>
-          <div class="meta">End-to-end credit risk classification</div>
-          <p>Feature engineering, model comparison, evaluation; deployable pipeline.</p>
-          <div class="chips"><span class="chip">Scikit-learn</span><span class="chip">ML</span></div>
-          <a class="open" href="https://github.com/ShubhamNakhod/Predicting-Loan-Defaults-with-Machine-Learning-" target="_blank" rel="noopener">Repo</a>
-        </div>
-      </article>
-    </div>
-  </section>
-
-  <!-- SOFT SKILLS -->
-  <section id="soft">
-    <h2>Soft Skills</h2>
-    <div class="soft">
-      <div class="pill"><h3>Empathy</h3><p class="muted">Understand users & collaborators; build tools that actually help.</p></div>
-      <div class="pill"><h3>Communication</h3><p class="muted">Clear write-ups, diagrams, and trade-off docs.</p></div>
-      <div class="pill"><h3>Attention to Detail</h3><p class="muted">From reproducible pipelines to robust tests.</p></div>
-      <div class="pill"><h3>Problem-Solving</h3><p class="muted">Break down ambiguous ML problems into shippable parts.</p></div>
-    </div>
-  </section>
-
-  <!-- TESTIMONIALS (optional placeholders) -->
-  <section id="testimonials">
-    <h2>Testimonials</h2>
-    <div class="testi">
-      <div class="quote">
-        “Shubham quickly turns ideas into reliable services—clean APIs, clear metrics, strong results.”
-        <p class="who">— Former teammate</p>
       </div>
-      <div class="quote">
-        “Thoughtful, detail-oriented, and great at explaining ML trade-offs to non-technical partners.”
-        <p class="who">— Faculty mentor</p>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about">
+      <div class="section-card">
+        <h2 class="section-title">About Me</h2>
+        <div class="about-grid">
+          <img src="Photo.png" alt="Shubham portrait" style="width:100%;border-radius:12px;border:1px solid var(--line);object-fit:cover;object-position:center 12%">
+          <div>
+            <p>
+              I’m a Master’s student in Information Science at the University of Arizona (ML/AI track). I build production ML: FastAPI services, agentic explainers, and reliable CI/CD/monitoring.
+              Previous roles across HSBC, Goldman Sachs (via Deloitte), and Credit Suisse.
+            </p>
+            <p><b>Email:</b> <a href="mailto:shubnakhod29@gmail.com">shubnakhod29@gmail.com</a> &nbsp; | &nbsp;
+               <b>Phone:</b> <a href="tel:+15203880345">+1-520-388-0345</a></p>
+            <p><b>Location:</b> Tucson, AZ</p>
+          </div>
+        </div>
+
+        <div class="facts">
+          <div class="fact"><div class="n" data-count="4">0</div><div class="muted">prod-grade ML apps</div></div>
+          <div class="fact"><div class="n" data-count="120">0</div><div class="muted">DSA problems</div></div>
+          <div class="fact"><div class="n" data-count="300">0</div><div class="muted">ms P95 fraud API</div></div>
+        </div>
+
+        <h3 style="margin:16px 0 8px 0">Skills</h3>
+        <div class="panel">
+          <div class="skill">
+            <div class="srow"><span>Python / SQL</span><span>90%</span></div>
+            <div class="bar"><div class="fill" style="--pct:90%"></div></div>
+          </div>
+          <div class="skill">
+            <div class="srow"><span>PyTorch / TensorFlow</span><span>85%</span></div>
+            <div class="bar"><div class="fill" style="--pct:85%"></div></div>
+          </div>
+          <div class="skill">
+            <div class="srow"><span>LangChain / LLM Agents</span><span>85%</span></div>
+            <div class="bar"><div class="fill" style="--pct:85%"></div></div>
+          </div>
+          <div class="skill">
+            <div class="srow"><span>FastAPI / Docker / CI/CD</span><span>90%</span></div>
+            <div class="bar"><div class="fill" style="--pct:90%"></div></div>
+          </div>
+          <div class="skill">
+            <div class="srow"><span>MLflow / SageMaker / Vertex</span><span>80%</span></div>
+            <div class="bar"><div class="fill" style="--pct:80%"></div></div>
+          </div>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- CONTACT -->
-  <section id="contact">
-    <h2>Contact</h2>
-    <p>Open to ML Engineer, AI Engineer, Applied Scientist roles. Happy to walk through any project live.</p>
-    <p class="contact-links">
-      Phone: <a href="tel:+15203880345">+1-520-388-0345</a> ·
-      Email: <a href="mailto:shubnakhod29@gmail.com">shubnakhod29@gmail.com</a> ·
-      GitHub: <a href="https://github.com/ShubhamNakhod" target="_blank" rel="noopener">ShubhamNakhod</a> ·
-      LinkedIn: <a href="https://www.linkedin.com/in/shubham-nakhod-926914195/" target="_blank" rel="noopener">/in/shubham-nakhod-926914195/</a>
-    </p>
-  </section>
+    <!-- QUALIFICATIONS -->
+    <section id="qual">
+      <div class="section-card">
+        <h2 class="section-title">Qualifications</h2>
+        <div class="cols">
+          <div class="panel">
+            <h3>Education</h3>
+            <div class="timeline">
+              <div class="t">
+                <b>University of Arizona — M.S. Information Science (ML/AI)</b>
+                Expected Dec 2025 · GPA 3.8/4.0 · ML, DL, Data Mining, MLOps, Distributed Systems
+              </div>
+              <div class="t">
+                <b>University of Mumbai — B.S. Financial Markets</b>
+                2016–2019 · GPA 7.6/10
+              </div>
+            </div>
+          </div>
+          <div class="panel">
+            <h3>Professional Experience</h3>
+            <div class="timeline">
+              <div class="t">
+                <b>HSBC — Traded Risk Analyst</b> · Krakow · Apr 2023 – Aug 2023
+                <div class="muted">Automated monitoring with Python/SQL (−90% false alerts); stress-test pipelines.</div>
+              </div>
+              <div class="t">
+                <b>Goldman Sachs (via Deloitte) — Equities Support Analyst</b> · Warsaw · 2022–2023
+                <div class="muted">Automated P&amp;L reconciliation (~30% faster); supported pricing & risk data pipelines.</div>
+              </div>
+              <div class="t">
+                <b>Credit Suisse — Analyst, Data & Trade Support</b> · Wroclaw · 2021–2022
+                <div class="muted">Python reconciliation scripts (98% match); improved booking pipelines.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
+    <!-- PROJECTS -->
+    <section id="projects">
+      <div class="section-card">
+        <h2 class="section-title">Projects</h2>
+        <div class="filters">
+          <button class="chip active" data-filter="all" type="button">All</button>
+          <button class="chip" data-filter="ml" type="button">ML</button>
+          <button class="chip" data-filter="trading" type="button">Trading</button>
+          <button class="chip" data-filter="mlops" type="button">MLOps</button>
+        </div>
+
+        <div class="grid" id="grid">
+          <article class="card" data-tags="ml mlops">
+            <img class="thumb" src="fraud.png" alt="Fraud explainer" onerror="this.style.display='none'">
+            <div class="card-body">
+              <h3>Agentic Fraud Explanation Service</h3>
+              <div class="meta">FastAPI + XGBoost + LangChain + SHAP · P95 &lt; 300ms</div>
+              <p>Explains flagged transactions in plain English with SHAP reasons; CI/CD & monitoring.</p>
+              <a class="open" href="https://github.com/ShubhamNakhod" target="_blank" rel="noopener">Repo</a>
+            </div>
+          </article>
+
+          <article class="card" data-tags="trading ml">
+            <img class="thumb" src="lob.png" alt="LOB simulator" onerror="this.style.display='none'">
+            <div class="card-body">
+              <h3>Limit-Order-Book Simulator + MM Strategy</h3>
+              <div class="meta">LOB engine · Rule-based MM · Dashboard</div>
+              <p>Price-time priority LOB, inventory skew, P&amp;L tracking, interactive analytics.</p>
+              <a class="open" href="https://github.com/ShubhamNakhod/Limit-Order-Book-Simulator-Market-Making-Strategy" target="_blank" rel="noopener">Repo</a>
+            </div>
+          </article>
+
+          <article class="card" data-tags="trading">
+            <img class="thumb" src="kelly.png" alt="Kelly simulator" onerror="this.style.display='none'">
+            <div class="card-body">
+              <h3>Kelly-Criterion Betting Simulator</h3>
+              <div class="meta">Monte Carlo · Drawdowns · Risk of Ruin</div>
+              <p>Bankroll dynamics with optimal bet sizing and distributional outcomes.</p>
+              <a class="open" href="https://github.com/ShubhamNakhod/Kelly-Criterion-Betting-Simulator" target="_blank" rel="noopener">Repo</a>
+            </div>
+          </article>
+
+          <article class="card" data-tags="ml">
+            <img class="thumb" src="gbm.png" alt="GBM sim" onerror="this.style.display='none'">
+            <div class="card-body">
+              <h3>Monte Carlo Stock Price Simulation</h3>
+              <div class="meta">1k GBM paths · yfinance</div>
+              <p>Probabilistic outcomes for S&amp;P 500; quick scenario testing.</p>
+              <a class="open" href="https://github.com/ShubhamNakhod/Monte_Carlo_Simulation_for_Stock_Price_Prediction" target="_blank" rel="noopener">Repo</a>
+            </div>
+          </article>
+
+          <article class="card" data-tags="ml">
+            <img class="thumb" src="markov.png" alt="Markov" onerror="this.style.display='none'">
+            <div class="card-body">
+              <h3>Stock-Market via Markov Chains</h3>
+              <div class="meta">Regime dynamics · Transition matrices</div>
+              <p>Regime switching model to explore state probabilities and transitions.</p>
+              <a class="open" href="https://github.com/ShubhamNakhod/Simulating-Stock-Market-Markov-Chain" target="_blank" rel="noopener">Repo</a>
+            </div>
+          </article>
+
+          <article class="card" data-tags="ml">
+            <img class="thumb" src="frontier.png" alt="Frontier" onerror="this.style.display='none'">
+            <div class="card-body">
+              <h3>Efficient Frontier</h3>
+              <div class="meta">10k portfolios · Risk vs return</div>
+              <p>Portfolio sampler to visualize frontier and trade-offs.</p>
+              <a class="open" href="https://github.com/ShubhamNakhod/Portfolio-Risk-vs.-Expected-Return" target="_blank" rel="noopener">Repo</a>
+            </div>
+          </article>
+
+          <article class="card" data-tags="ml mlops">
+            <img class="thumb" src="loan.png" alt="Loan defaults" onerror="this.style.display='none'">
+            <div class="card-body">
+              <h3>Predicting Loan Defaults</h3>
+              <div class="meta">End-to-end credit risk classification</div>
+              <p>Feature engineering, model comparison, evaluation; deployable pipeline.</p>
+              <a class="open" href="https://github.com/ShubhamNakhod/Predicting-Loan-Defaults-with-Machine-Learning-" target="_blank" rel="noopener">Repo</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- SOFT SKILLS -->
+    <section id="soft">
+      <div class="section-card">
+        <h2 class="section-title">Soft Skills</h2>
+        <div class="soft">
+          <div class="pill"><h3>Empathy</h3><p class="muted">Understand users & collaborators; build tools that actually help.</p></div>
+          <div class="pill"><h3>Communication</h3><p class="muted">Clear write-ups, diagrams, and trade-off docs.</p></div>
+          <div class="pill"><h3>Attention to Detail</h3><p class="muted">Reproducible pipelines, robust tests, careful reviews.</p></div>
+          <div class="pill"><h3>Problem-Solving</h3><p class="muted">Break down ambiguous ML problems into shippable parts.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section id="testimonials">
+      <div class="section-card">
+        <h2 class="section-title">Testimonials</h2>
+        <div class="testi">
+          <div class="quote">“Shubham quickly turns ideas into reliable services—clean APIs, clear metrics, strong results.”<div class="muted" style="margin-top:.4rem">— Former teammate</div></div>
+          <div class="quote">“Thoughtful and detail-oriented. Great at explaining ML trade-offs to non-technical partners.”<div class="muted" style="margin-top:.4rem">— Faculty mentor</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <div class="section-card">
+        <h2 class="section-title">Contact</h2>
+        <p>Open to ML Engineer, AI Engineer, Applied Scientist roles. Happy to walk through any project live.</p>
+        <p class="contact-links">
+          Phone: <a href="tel:+15203880345">+1-520-388-0345</a> &nbsp;·&nbsp;
+          Email: <a href="mailto:shubnakhod29@gmail.com">shubnakhod29@gmail.com</a> &nbsp;·&nbsp;
+          GitHub: <a href="https://github.com/ShubhamNakhod" target="_blank" rel="noopener">ShubhamNakhod</a> &nbsp;·&nbsp;
+          LinkedIn: <a href="https://www.linkedin.com/in/shubham-nakhod-926914195/" target="_blank" rel="noopener">/in/shubham-nakhod-926914195/</a>
+        </p>
+      </div>
+    </section>
+
+    <footer>© <span id="yr2"></span> Shubham Nakhod</footer>
+  </main>
 </div>
 
-<footer>© <span id="yr"></span> Shubham Nakhod</footer>
-
 <script>
-  // Footer year
+  // years
   document.getElementById('yr').textContent = new Date().getFullYear();
+  document.getElementById('yr2').textContent = new Date().getFullYear();
 
-  // Type effect
-  (function(){
-    const el=document.getElementById('type');
-    const lines=['an Applied ML Engineer','into Agentic AI','doing MLOps that ships','building explainable ML'];
-    let i=0,pos=0,del=false;
-    function tick(){
-      const t=lines[i];
-      el.textContent = del ? t.slice(0, --pos) : t.slice(0, ++pos);
-      if(!del && pos===t.length){ del=true; setTimeout(tick, 900); return; }
-      if(del && pos===0){ del=false; i=(i+1)%lines.length; }
-      setTimeout(tick, del?35:45);
-    }
-    tick();
-  })();
-
-  // About counters
+  // counters
   const nums=[...document.querySelectorAll('.fact .n')];
   const io=new IntersectionObserver(es=>{
     es.forEach(e=>{
       if(e.isIntersecting){
-        const n=e.target.dataset.count|0;
-        let c=0; const step=Math.max(1,Math.round(n/40));
-        const id=setInterval(()=>{ c+=step; if(c>=n){c=n; clearInterval(id);} e.target.textContent=c; },25);
+        const n=+e.target.dataset.count; let c=0; const step=Math.max(1,Math.round(n/40));
+        const id=setInterval(()=>{ c+=step; if(c>=n){c=n;clearInterval(id);} e.target.textContent=c; },25);
         io.unobserve(e.target);
       }
     });
-  },{threshold:.3});
+  },{threshold:.4});
   nums.forEach(n=>io.observe(n));
 
-  // Skill bars animation
+  // skill bars
   document.querySelectorAll('.fill').forEach(f=>{
     const pct=f.style.getPropertyValue('--pct')||'0%';
-    f.animate([{width:'0%'},{width:pct}], {duration:800,fill:'forwards',easing:'ease-out'});
+    f.animate([{width:'0%'},{width:pct}],{duration:800,fill:'forwards',easing:'ease-out'});
   });
 
-  // Project filters
+  // project filters
   (function(){
     const chips=[...document.querySelectorAll('.chip[data-filter]')];
     const cards=[...document.querySelectorAll('#grid .card')];
     function apply(f){
       cards.forEach(c=>{
         const tags=(c.dataset.tags||'').split(' ');
-        c.style.display = (f==='all' || tags.includes(f)) ? '' : 'none';
+        c.style.display=(f==='all' || tags.includes(f))?'':'none';
       });
     }
     chips.forEach(ch=>ch.addEventListener('click',()=>{
       chips.forEach(x=>x.classList.remove('active'));
       ch.classList.add('active');
       apply(ch.dataset.filter);
+      location.hash='#projects';
     }));
     apply('all');
   })();
