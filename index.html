@@ -3,25 +3,50 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Shubham Nakhod | ML Engineer</title>
-  <meta name="description" content="Shubham Nakhod — Machine Learning Engineer focused on Agentic AI, MLOps, and Applied ML." />
+  <title>Shubham Nakhod | Machine Learning Engineer</title>
+  <meta name="description" content="Shubham Nakhod — ML Engineer focused on Agentic AI, MLOps, and Applied Machine Learning." />
   <link rel="canonical" href="https://shubham-nakhod.github.io/">
   <link rel="icon" href="favicon.ico">
+
+  <!-- Open Graph / Twitter -->
+  <meta property="og:title" content="Shubham Nakhod | Machine Learning Engineer">
+  <meta property="og:description" content="Agentic AI • MLOps • Applied ML">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://shubham-nakhod.github.io/">
+  <!-- If you add a social preview image, put it at /social.jpg and uncomment next line -->
+  <!-- <meta property="og:image" content="https://shubham-nakhod.github.io/social.jpg"> -->
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- Structured data -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Person",
+    "name":"Shubham Nakhod",
+    "jobTitle":"Machine Learning Engineer",
+    "email":"mailto:shubnakhod29@gmail.com",
+    "url":"https://shubham-nakhod.github.io/",
+    "sameAs":[
+      "https://github.com/ShubhamNakhod",
+      "https://www.linkedin.com/in/shubham-nakhod-926914195/"
+    ],
+    "address":{"@type":"PostalAddress","addressLocality":"Tucson","addressRegion":"AZ","addressCountry":"US"}
+  }
+  </script>
 
   <style>
     :root{
       --bg:#0b1220; --card:#0f172a; --ink:#e5e7eb; --muted:#94a3b8;
       --line:#1f2a44; --accent:#89a7ff; --link:#8ab4ff;
-      --chip:#111b33; --chip-brd:#233a6b; --shadow:0 10px 32px rgba(0,0,0,.35);
+      --chip:#111b33; --chip-brd:#233a6b; --shadow:0 6px 18px rgba(0,0,0,.28);
       --brand1:#5b8cff; --brand2:#9bffd1; --brand3:#ffd38a;
-      --contact-link:#8ab4ff; --contact-link-hover:#b6ccff;
+      --stickyTop:64px; /* for sticky filter bar */
     }
     @media (prefers-color-scheme: light){
       :root{
         --bg:#f7f8fb; --card:#ffffff; --ink:#111827; --muted:#6b7280;
         --line:#e5e7eb; --accent:#1f2f45; --link:#1f6feb;
-        --chip:#eef2ff; --chip-brd:#dbeafe; --shadow:0 10px 24px rgba(0,0,0,.08);
-        --contact-link:#1f6feb; --contact-link-hover:#3a83ff;
+        --chip:#eef2ff; --chip-brd:#dbeafe; --shadow:0 6px 14px rgba(0,0,0,.08);
       }
     }
 
@@ -42,7 +67,7 @@
     .btn{border:1px solid var(--line);background:transparent;color:var(--ink);padding:.45rem .75rem;border-radius:10px;cursor:pointer;font-weight:600;text-decoration:none}
     .btn:hover{border-color:#a7c4ff}
 
-    /* Header (animated blobs; static photo ring) */
+    /* Header (subtle blobs; static avatar) */
     header{position:relative;overflow:hidden}
     .blob{position:absolute;filter:blur(40px);opacity:.5;mix-blend-mode:screen;animation:float 20s ease-in-out infinite alternate}
     .b1{width:420px;height:420px;background:radial-gradient(circle,var(--brand1),transparent 60%);left:-80px;top:-80px}
@@ -51,8 +76,20 @@
     @keyframes float{to{transform:translateY(40px) translateX(20px)}}
 
     .hero{max-width:1120px;margin:auto;padding:62px 16px 44px;display:flex;align-items:center;gap:28px;flex-wrap:wrap;position:relative}
-    .profile{position:relative;width:168px;height:168px;border-radius:50%;padding:4px;background:conic-gradient(from 90deg,var(--brand1),var(--brand2),var(--brand3),var(--brand1))}
-    .profile img{width:100%;height:100%;object-fit:cover;border-radius:50%}
+    .profile{
+      position:relative;width:190px;height:190px;border-radius:50%;padding:3px;
+      background:conic-gradient(from 90deg,var(--brand1),var(--brand2),var(--brand3),var(--brand1));
+      box-shadow:0 6px 18px rgba(0,0,0,.25);
+    }
+    .profile::before{
+      content:"";position:absolute;inset:-10px;z-index:-1;border-radius:50%;
+      background:radial-gradient(40% 40% at 50% 30%,rgba(255,255,255,.12),transparent 60%);
+      filter:blur(8px);
+    }
+    .profile img{
+      width:100%;height:100%;object-fit:cover;border-radius:50%;
+      object-position:center 16%; /* moves frame up slightly to show more hair */
+    }
 
     .hero-text{flex:1;min-width:280px}
     .title{font-size:2.2rem;margin:0;font-weight:900}
@@ -68,36 +105,41 @@
     section.show{transform:none;opacity:1}
     section h2{margin:0 0 12px 0;font-size:1.18rem;letter-spacing:.2px;color:var(--accent);display:flex;align-items:center;justify-content:space-between;position:relative}
     section h2::after{content:"";position:absolute;left:0;right:0;bottom:-8px;height:1px;background:linear-gradient(90deg,transparent,rgba(138,180,255,.35),transparent)}
-
     .section-toggle{border:none;background:transparent;color:var(--link);font-weight:700;cursor:pointer}
 
-    /* Filters */
-    .filters{display:flex;flex-wrap:wrap;gap:.5rem;margin:8px 0 12px}
+    /* Filters (sticky) */
+    .filters{position:sticky;top:var(--stickyTop);z-index:5;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:8px;display:flex;flex-wrap:wrap;gap:.5rem;margin:8px 0 12px}
     .filter-btn{border:1px solid var(--line);background:transparent;color:var(--ink);padding:.25rem .6rem;border-radius:999px;cursor:pointer;font-weight:600}
     .filter-btn.active{outline:2px solid #a7c4ff;outline-offset:2px}
     #q{margin-left:auto;min-width:220px;padding:.35rem .6rem;border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:8px}
 
-    /* Grid with equal-height cards */
+    /* Grid with equal-height cards — minimal hover */
     .grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));align-items:stretch}
     .card{
       border:1px solid var(--line);background:var(--card);border-radius:14px;
       padding:16px;display:flex;flex-direction:column;gap:.55rem;
-      transition:transform .12s ease, box-shadow .12s ease, border-color .12s ease;
+      transition:border-color .12s ease, background-color .12s ease;
     }
-    .card:hover{transform:translateY(-2px);box-shadow:0 14px 34px rgba(0,0,0,.18);border-color:#a7c4ff}
+    .card:hover{border-color:#a7c4ff;background-color:transparent}
     .card h3{margin:.1rem 0;font-size:1.06rem}
+    .meta{font-size:.85rem;color:var(--muted)}
     .card p{margin:.1rem 0;color:var(--muted);font-size:.95rem;flex:1}
     .chips{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.2rem}
     .chip{background:var(--chip);border:1px solid var(--chip-brd);color:#c7d2fe;padding:.18rem .55rem;border-radius:999px;font-size:.8rem}
     @media (prefers-color-scheme: light){.chip{color:#1e3a8a}}
     .card .open-link{margin-top:auto;text-decoration:none;color:var(--link);font-weight:700}
 
-    /* Contact card */
+    /* Contact (high-contrast links) */
     .contact-card{display:grid;grid-template-columns:140px 1fr;gap:6px 14px;align-items:center;font-size:.98rem}
     .label{color:var(--muted);font-weight:600}
-    #contact a{color:var(--contact-link);text-decoration:none;border-bottom:1px solid transparent;transition:color .15s,border-color .15s}
-    #contact a:hover,#contact a:focus{color:var(--contact-link-hover);border-bottom-color:var(--contact-link-hover)}
-    #contact a:visited{color:var(--contact-link)}
+    #contact a{
+      color:inherit; text-decoration:none;
+      border-bottom:1px solid rgba(255,255,255,.35);
+      transition:border-color .15s ease, color .15s ease; font-weight:600;
+    }
+    @media (prefers-color-scheme: light){ #contact a{ border-bottom-color: rgba(0,0,0,.35);} }
+    #contact a:hover,#contact a:focus{ border-bottom-color: currentColor }
+    #contact a:visited{ color: inherit }
     .copy-btn{margin-left:10px;border:1px solid var(--line);background:transparent;color:var(--ink);padding:.15rem .45rem;border-radius:8px;font-size:.82rem;cursor:pointer}
     .copy-btn:hover{border-color:#a7c4ff}
 
@@ -122,7 +164,6 @@
         <a href="#education">Education</a>
         <a href="#contact">Contact</a>
         <a class="btn" href="resume.pdf" target="_blank" rel="noopener">Resume</a>
-        <button id="themeToggle" class="btn" type="button">Theme</button>
       </div>
     </div>
   </nav>
@@ -142,6 +183,7 @@
           <a href="https://github.com/ShubhamNakhod" target="_blank" rel="noopener">GitHub</a> ·
           <a href="https://www.linkedin.com/in/shubham-nakhod-926914195/" target="_blank" rel="noopener">LinkedIn</a>
         </p>
+        <p><a class="btn" href="resume.pdf" target="_blank" rel="noopener">Download Résumé</a></p>
       </div>
     </div>
   </header>
@@ -163,43 +205,49 @@
       </div>
 
       <div class="grid" id="grid">
-        <article class="card" data-tags="mlops ml" data-title="Predicting Loan Defaults">
+        <article class="card" data-tags="mlops ml" data-title="Predicting Loan Defaults" data-repo="ShubhamNakhod/Predicting-Loan-Defaults-with-Machine-Learning-">
           <h3>Predicting Loan Defaults</h3>
+          <div class="meta"><span class="stars">★</span> <span class="updated"></span></div>
           <p>Credit risk classification; features, model comparison, evaluation.</p>
           <div class="chips"><span class="chip">Scikit-learn</span><span class="chip">ML</span></div>
           <a class="open-link" href="https://github.com/ShubhamNakhod/Predicting-Loan-Defaults-with-Machine-Learning-" target="_blank" rel="noopener">Open repo</a>
         </article>
 
-        <article class="card" data-tags="trading ml" data-title="Limit-Order-Book Simulator + MM Strategy">
+        <article class="card" data-tags="trading ml" data-title="Limit-Order-Book Simulator + MM Strategy" data-repo="ShubhamNakhod/Limit-Order-Book-Simulator-Market-Making-Strategy">
           <h3>Limit-Order-Book Simulator + MM Strategy</h3>
+          <div class="meta"><span class="stars">★</span> <span class="updated"></span></div>
           <p>LOB engine, rule-based market maker; inventory & PnL tracking; dashboard.</p>
           <div class="chips"><span class="chip">Python</span><span class="chip">Dash</span></div>
           <a class="open-link" href="https://github.com/ShubhamNakhod/Limit-Order-Book-Simulator-Market-Making-Strategy" target="_blank" rel="noopener">Open repo</a>
         </article>
 
-        <article class="card" data-tags="trading" data-title="Kelly-Criterion Betting Simulator">
+        <article class="card" data-tags="trading" data-title="Kelly-Criterion Betting Simulator" data-repo="ShubhamNakhod/Kelly-Criterion-Betting-Simulator">
           <h3>Kelly-Criterion Betting Simulator</h3>
+          <div class="meta"><span class="stars">★</span> <span class="updated"></span></div>
           <p>Monte Carlo bankroll dynamics, optimal bet sizing, risk of ruin.</p>
           <div class="chips"><span class="chip">Python</span><span class="chip">Monte Carlo</span></div>
           <a class="open-link" href="https://github.com/ShubhamNakhod/Kelly-Criterion-Betting-Simulator" target="_blank" rel="noopener">Open repo</a>
         </article>
 
-        <article class="card" data-tags="ml" data-title="Monte Carlo Stock Price Simulation">
+        <article class="card" data-tags="ml" data-title="Monte Carlo Stock Price Simulation" data-repo="ShubhamNakhod/Monte_Carlo_Simulation_for_Stock_Price_Prediction">
           <h3>Monte Carlo Stock Price Simulation</h3>
+          <div class="meta"><span class="stars">★</span> <span class="updated"></span></div>
           <p>1,000 GBM paths on S&amp;P 500 with yfinance; outcome distributions.</p>
           <div class="chips"><span class="chip">Jupyter</span><span class="chip">NumPy</span></div>
           <a class="open-link" href="https://github.com/ShubhamNakhod/Monte_Carlo_Simulation_for_Stock_Price_Prediction" target="_blank" rel="noopener">Open repo</a>
         </article>
 
-        <article class="card" data-tags="ml" data-title="Stock-Market via Markov Chains">
+        <article class="card" data-tags="ml" data-title="Stock-Market via Markov Chains" data-repo="ShubhamNakhod/Simulating-Stock-Market-Markov-Chain">
           <h3>Stock-Market via Markov Chains</h3>
+          <div class="meta"><span class="stars">★</span> <span class="updated"></span></div>
           <p>State-based simulations; transition matrices; regime dynamics.</p>
           <div class="chips"><span class="chip">Python</span><span class="chip">Markov</span></div>
           <a class="open-link" href="https://github.com/ShubhamNakhod/Simulating-Stock-Market-Markov-Chain" target="_blank" rel="noopener">Open repo</a>
         </article>
 
-        <article class="card" data-tags="ml trading" data-title="Efficient Frontier">
+        <article class="card" data-tags="ml trading" data-title="Efficient Frontier" data-repo="ShubhamNakhod/Portfolio-Risk-vs.-Expected-Return">
           <h3>Efficient Frontier</h3>
+          <div class="meta"><span class="stars">★</span> <span class="updated"></span></div>
           <p>10k random portfolios; risk vs return; frontier visualization.</p>
           <div class="chips"><span class="chip">Pandas</span><span class="chip">NumPy</span></div>
           <a class="open-link" href="https://github.com/ShubhamNakhod/Portfolio-Risk-vs.-Expected-Return" target="_blank" rel="noopener">Open repo</a>
@@ -219,7 +267,7 @@
       <p><b>Core CS:</b> Data Structures & Algorithms (120+ LeetCode), System Design basics</p>
     </section>
 
-    <!-- EXPERIENCE (BNP removed) -->
+    <!-- EXPERIENCE (polished; BNP removed) -->
     <section id="experience">
       <h2>
         Professional Experience
@@ -283,21 +331,10 @@
     const prog = document.getElementById('progress');
     window.addEventListener('scroll', () => {
       const h=document.documentElement, sc=h.scrollTop, max=h.scrollHeight-h.clientHeight;
-      prog.style.transform=`scaleX(${sc/max})`;
+      prog.style.transform=`scaleX(${(max?sc/max:0)})`;
     });
 
-    // Theme toggle (persist)
-    (function theme(){
-      const btn=document.getElementById('themeToggle'), key='themePref';
-      const apply = m => document.body.dataset.theme = m || '';
-      apply(localStorage.getItem(key));
-      btn.addEventListener('click', () => {
-        const cur=localStorage.getItem(key), next = cur==='light' ? 'dark' : 'light';
-        localStorage.setItem(key,next); apply(next);
-      });
-    })();
-
-    // Typewriter
+    // Typewriter (subtle, professional)
     (function typer(){
       const el=document.getElementById('tw');
       const lines=['Machine Learning Engineer','Agentic AI & LLM Tooling','MLOps · FastAPI · Docker','Applied ML · PyTorch · TensorFlow'];
@@ -344,6 +381,25 @@
         if (navigator.clipboard) navigator.clipboard.writeText(text);
       });
     });
+
+    // GitHub API enrichment (stars + last pushed)
+    (async function githubMeta(){
+      const cards = document.querySelectorAll('[data-repo]');
+      if(!cards.length) return;
+      for (const card of cards){
+        const repo = card.dataset.repo;
+        try{
+          const r = await fetch(`https://api.github.com/repos/${repo}`);
+          if(!r.ok) continue;
+          const data = await r.json();
+          const stars = data.stargazers_count ?? 0;
+          const pushed = data.pushed_at ? new Date(data.pushed_at) : null;
+          const days = pushed ? Math.max(0, Math.round((Date.now()-pushed.getTime())/86400000)) : null;
+          card.querySelector('.stars').textContent = `★ ${stars}`;
+          card.querySelector('.updated').textContent = days!==null ? `· updated ${days}d ago` : '';
+        }catch(e){ /* silent fail */ }
+      }
+    })();
   </script>
 </body>
 </html>
