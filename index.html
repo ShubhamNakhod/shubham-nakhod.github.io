@@ -1,87 +1,218 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Shubham | Portfolio</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Shubham Nakhod | ML Engineer</title>
+  <meta name="description" content="Portfolio and résumé of Shubham Nakhod — Machine Learning Engineer (Agentic AI, MLOps, Applied ML).">
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0; padding: 0;
-      background: #f4f4f9; color: #333;
-      text-align: center;
+    :root{
+      --bg:#f7f8fb;
+      --card:#ffffff;
+      --ink:#1f2937;
+      --muted:#6b7280;
+      --accent:#2c3e50;
+      --line:#e5e7eb;
+      --link:#1f6feb;
+      --chip:#eef2ff;
     }
-    header {
-      background: #2c3e50; color: white;
-      padding: 60px 20px;
+    *{box-sizing:border-box}
+    body{
+      margin:0; font-family:system-ui,-apple-system,Segoe UI,Inter,Roboto,Helvetica,Arial,sans-serif;
+      background:var(--bg); color:var(--ink); line-height:1.6;
     }
-    header h1 { margin: 0; font-size: 2.5em; }
-    header p { font-size: 1.2em; margin-top: 10px; }
-    nav {
-      background: #34495e;
-      padding: 10px;
+
+    /* Nav */
+    .nav{
+      position:sticky; top:0; z-index:10;
+      backdrop-filter:saturate(140%) blur(6px);
+      background:rgba(255,255,255,.85); border-bottom:1px solid var(--line);
     }
-    nav a {
-      color: white; text-decoration: none;
-      margin: 0 15px; font-weight: bold;
+    .nav-inner{
+      max-width:1000px; margin:auto; padding:.6rem 1rem; display:flex; align-items:center; gap:1rem;
+      justify-content:space-between;
     }
-    section {
-      max-width: 900px;
-      margin: 50px auto;
-      padding: 20px;
-      background: white;
-      border-radius: 10px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    .nav a{ color:var(--ink); text-decoration:none; font-weight:600; margin-left:1rem }
+    .nav a:hover{ color:var(--link) }
+
+    /* Header */
+    header{
+      background: linear-gradient(135deg, #2c3e50, #4b6584);
+      color:#fff; padding:50px 16px;
     }
-    section h2 {
-      color: #2c3e50;
+    .hero{
+      max-width:1000px; margin:auto; display:flex; align-items:center; gap:24px; flex-wrap:wrap;
     }
-    footer {
-      background: #2c3e50; color: white;
-      padding: 20px; margin-top: 50px;
+    .profile-pic{
+      width:150px; height:150px; border-radius:50%; object-fit:cover;
+      border:4px solid #fff; box-shadow:0 4px 14px rgba(0,0,0,.2);
     }
+    .hero-text{ flex:1 }
+    .title{ font-size:2rem; margin:0 0 6px 0; font-weight:800 }
+    .subtitle{ margin:0 0 10px 0; font-weight:500; opacity:.95 }
+    .contact{ font-size:.95rem; opacity:.95 }
+    .contact a{ color:#fff; text-underline-offset:2px }
+    .contact a:hover{ text-decoration:underline }
+
+    /* Main + sections */
+    main{ max-width:1000px; margin:32px auto; padding:0 16px }
+    section{ background:var(--card); border:1px solid var(--line); border-radius:14px; padding:22px; margin-bottom:20px }
+    section h2{ margin:0 0 12px 0; font-size:1.2rem; letter-spacing:.2px; color:var(--accent) }
+
+    .list{ padding-left:1rem; margin:0 }
+    .list li{ margin:.3rem 0 }
+    .meta{ color:var(--muted) }
+    .chips{ display:flex; flex-wrap:wrap; gap:.4rem; margin-top:.4rem }
+    .chip{ background:var(--chip); border:1px solid #dbeafe; color:#1e3a8a; padding:.15rem .5rem; border-radius:999px; font-size:.85rem }
+
+    /* Projects grid */
+    .grid{
+      display:grid; gap:14px;
+      grid-template-columns:repeat( auto-fit, minmax(260px,1fr) );
+    }
+    .card{
+      border:1px solid var(--line); background:var(--card); border-radius:12px; padding:16px;
+      display:grid; gap:.35rem
+    }
+    .card h3{ margin:.1rem 0; font-size:1.02rem }
+    .card p{ margin:.1rem 0; color:var(--muted); font-size:.95rem }
+    .card a{ color:var(--link); text-decoration:none; font-weight:600 }
+    .card a:hover{ text-decoration:underline }
+
+    footer{ text-align:center; color:var(--muted); padding:28px 16px }
   </style>
 </head>
 <body>
 
-  <header>
-    <h1>Shubham Nakhod</h1>
-    <p>Graduate Student | ML, AI & Data Science Enthusiast</p>
-  </header>
-
-  <nav>
-    <a href="#about">About</a>
-    <a href="#projects">Projects</a>
-    <a href="#contact">Contact</a>
+  <!-- Top nav -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <div style="font-weight:800">Shubham Nakhod</div>
+      <div>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#experience">Experience</a>
+        <a href="#education">Education</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
   </nav>
 
-  <section id="about">
-    <h2>About Me</h2>
-    <p>
-      I’m a Master’s student in Information Science at the University of Arizona,
-      passionate about Machine Learning, Artificial Intelligence, and Data Science.
-      My background includes financial markets and risk analysis, now pivoting into AI/ML research and engineering.
-    </p>
-  </section>
+  <!-- Hero -->
+  <header>
+    <div class="hero">
+      <img src="profile.jpg" alt="Shubham Nakhod" class="profile-pic">
+      <div class="hero-text">
+        <h1 class="title">Shubham Nakhod</h1>
+        <p class="subtitle">Machine Learning Engineer — Agentic AI · MLOps · Applied Machine Learning</p>
+        <p class="contact">
+          📍 Tucson, AZ | 📧 <a href="mailto:shubnakhod29@gmail.com">shubnakhod29@gmail.com</a><br>
+          🔗 <a href="https://github.com/ShubhamNakhod">GitHub</a> | 
+          🔗 <a href="https://linkedin.com/in/shubham-nakhod">LinkedIn</a>
+        </p>
+      </div>
+    </div>
+  </header>
 
-  <section id="projects">
-    <h2>Projects</h2>
-    <ul>
-      <li><b>Limit Order Book Simulator</b> – Built a heap-based matching engine and market-making strategy with RL/ML agents.</li>
-      <li><b>Kelly Criterion Betting Simulator</b> – CLI-based bankroll growth and risk-of-ruin analysis.</li>
-      <li><b>Smart Portfolio Allocator</b> – RL-driven portfolio allocation with LLM explanation layer.</li>
-    </ul>
-  </section>
+  <main>
 
-  <section id="contact">
-    <h2>Contact</h2>
-    <p>Email: <a href="mailto:shubham@example.com">shubham@example.com</a></p>
-    <p>GitHub: <a href="https://github.com/shubham-nakhod">github.com/shubham-nakhod</a></p>
-    <p>LinkedIn: <a href="https://linkedin.com/in/shubham-nakhod">linkedin.com/in/shubham-nakhod</a></p>
-  </section>
+    <!-- Projects -->
+    <section id="projects">
+      <h2>Selected Projects</h2>
+      <div class="grid">
+
+        <article class="card">
+          <h3><a href="https://github.com/ShubhamNakhod/Kelly-Criterion-Betting-Simulator" target="_blank">Kelly-Criterion-Betting-Simulator</a></h3>
+          <p>Monte Carlo simulator for optimal bet sizing (Kelly), bankroll dynamics, drawdowns, and risk of ruin.</p>
+          <div class="chips"><span class="chip">Python</span><span class="chip">Monte Carlo</span></div>
+        </article>
+
+        <article class="card">
+          <h3><a href="https://github.com/ShubhamNakhod/Limit-Order-Book-Simulator-Market-Making-Strategy" target="_blank">Limit-Order-Book Simulator + MM Strategy</a></h3>
+          <p>LOB engine, rule-based market maker with inventory skew and PnL; interactive dashboard.</p>
+          <div class="chips"><span class="chip">Python</span><span class="chip">Dash</span></div>
+        </article>
+
+        <article class="card">
+          <h3><a href="https://github.com/ShubhamNakhod/Monte_Carlo_Simulation_for_Stock_Price_Prediction" target="_blank">Monte Carlo Stock Price Simulation</a></h3>
+          <p>Simulates 1,000 GBM paths for S&amp;P 500 with yfinance; visualizes probabilistic outcomes.</p>
+          <div class="chips"><span class="chip">Jupyter</span><span class="chip">NumPy</span></div>
+        </article>
+
+        <article class="card">
+          <h3><a href="https://github.com/ShubhamNakhod/Simulating-Stock-Market-Markov-Chain" target="_blank">Stock-Market via Markov Chains</a></h3>
+          <p>State-based simulations with transition matrices; explores regimes and dynamics.</p>
+          <div class="chips"><span class="chip">Python</span><span class="chip">Markov</span></div>
+        </article>
+
+        <article class="card">
+          <h3><a href="https://github.com/ShubhamNakhod/Portfolio-Risk-vs.-Expected-Return" target="_blank">Efficient Frontier</a></h3>
+          <p>Generates 10k random portfolios to plot risk vs return and identify efficient frontier points.</p>
+          <div class="chips"><span class="chip">Python</span><span class="chip">Finance</span></div>
+        </article>
+
+        <article class="card">
+          <h3><a href="https://github.com/ShubhamNakhod/Predicting-Loan-Defaults-with-Machine-Learning-" target="_blank">Predicting Loan Defaults</a></h3>
+          <p>End-to-end ML for credit risk classification; model comparison and evaluation.</p>
+          <div class="chips"><span class="chip">Scikit-learn</span><span class="chip">ML</span></div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills">
+      <h2>Technical Skills</h2>
+      <p><b>Languages & Tools:</b> Python, SQL, FastAPI, Docker, GitHub Actions, Streamlit</p>
+      <p><b>ML/AI:</b> Scikit-learn, PyTorch, TensorFlow, Hugging Face, LangChain, CrewAI</p>
+      <p><b>MLOps & Cloud:</b> MLflow, AWS SageMaker, GCP Vertex AI, CI/CD, Monitoring</p>
+      <p><b>Core CS:</b> Data Structures & Algorithms (120+ LeetCode), System Design basics</p>
+    </section>
+
+    <!-- Experience -->
+    <section id="experience">
+      <h2>Professional Experience</h2>
+      <p><b>HSBC — Traded Risk Analyst</b> | Krakow, Poland | Apr 2023 – Aug 2023<br>
+         Automated monitoring workflows with Python + SQL (−90% false alerts). Built stress-test pipelines.</p>
+      <p><b>Goldman Sachs (via Deloitte) — Equities Support Analyst</b> | Warsaw, Poland | Apr 2022 – Mar 2023<br>
+         Automated P&amp;L reconciliation (~30% efficiency gain). Supported pricing & risk data pipelines.</p>
+      <p><b>Credit Suisse — Analyst, Data & Trade Support</b> | Wroclaw, Poland | Sep 2021 – Mar 2022<br>
+         Python reconciliation scripts (98% match rates). Improved booking data pipelines.</p>
+      <p><b>BNP Paribas — Fund Accounting Intern</b> | Warsaw, Poland | Jun 2021 – Sep 2021<br>
+         Automated NAV workflows with VBA + Python (−20% reporting time). Produced NAVs for >$2B AUM.</p>
+    </section>
+
+    <!-- Education -->
+    <section id="education">
+      <h2>Education</h2>
+      <p><b>University of Arizona</b> — M.S. Information Science (ML/AI Track) | Expected Dec 2025 | GPA 3.8/4.0<br>
+      Coursework: Machine Learning, Deep Learning, Data Mining, MLOps, Distributed Systems</p>
+      <p><b>University of Mumbai</b> — B.S. Financial Markets (2016–2019) | GPA 7.6/10</p>
+    </section>
+
+    <!-- Achievements -->
+    <section id="achievements">
+      <h2>Achievements & Role Fit</h2>
+      <ul class="list">
+        <li>120+ coding problems (LeetCode, HackerRank)</li>
+        <li>4 production-grade ML/AI projects with deployment & monitoring</li>
+        <li>Presented Agentic AI & MLOps work at University of Arizona ML Showcase 2025</li>
+      </ul>
+      <p><b>Target Roles:</b> ML Engineer, AI Engineer, Applied Scientist, Data Scientist (ML-focused)</p>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+      <h2>Contact</h2>
+      <p>Email: <a href="mailto:shubnakhod29@gmail.com">shubnakhod29@gmail.com</a><br>
+         GitHub: <a href="https://github.com/ShubhamNakhod">ShubhamNakhod</a><br>
+         LinkedIn: <a href="https://linkedin.com/in/shubham-nakhod">/in/shubham-nakhod</a></p>
+    </section>
+
+  </main>
 
   <footer>
-    <p>© 2025 Shubham Nakhod | Built with GitHub Pages</p>
+    © 2025 Shubham Nakhod
   </footer>
 
 </body>
