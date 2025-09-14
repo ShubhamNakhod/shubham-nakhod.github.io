@@ -3,309 +3,230 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Shubham Nakhod | Machine Learning Engineer</title>
-  <meta name="description" content="Shubham Nakhod — ML Engineer focused on Agentic AI, MLOps, and Applied Machine Learning." />
+  <title>Shubham Nakhod — Machine Learning Engineer</title>
+  <meta name="description" content="Portfolio of Shubham Nakhod — Machine Learning Engineer (Agentic AI, MLOps, Applied ML).">
   <link rel="icon" href="favicon.ico">
   <style>
     :root{
-      --bg:#0b1220; --card:#0f172a; --ink:#e5e7eb; --muted:#94a3b8;
-      --line:#1f2a44; --accent:#89a7ff; --link:#8ab4ff;
-      --chip:#111b33; --chip-brd:#233a6b; --shadow:0 8px 24px rgba(0,0,0,.28);
-      --navH:58px;
+      --bg:#0c0f14; --ink:#e7e9ee; --muted:#99a3b2; --line:#1e2631;
+      --panel:#0f141c; --card:#111824; --accent:#8ab4ff; --link:#9cc0ff;
+      --chip:#152235; --chip-brd:#25354d;
+      --shadow:0 12px 30px rgba(0,0,0,.35);
+      --wSidebar:320px;
     }
     @media (prefers-color-scheme: light){
-      :root{ --bg:#f7f8fb; --card:#ffffff; --ink:#111827; --muted:#6b7280; --line:#e5e7eb; --accent:#1f2f45; --link:#1f6feb; --chip:#eef2ff; --chip-brd:#dbeafe; --shadow:0 8px 20px rgba(0,0,0,.08); }
+      :root{
+        --bg:#f7f8fb; --ink:#111827; --muted:#6b7280; --line:#e5e7eb;
+        --panel:#ffffff; --card:#ffffff; --accent:#1f2f45; --link:#1f6feb;
+        --chip:#eef2ff; --chip-brd:#dbeafe; --shadow:0 10px 24px rgba(0,0,0,.08);
+      }
     }
+
     *{box-sizing:border-box}
     html{scroll-behavior:smooth}
-    body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.7}
+    body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.75}
 
-    /* Nav */
-    .nav{position:sticky;top:0;z-index:100;background:rgba(10,16,28,.82);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
-    @media (prefers-color-scheme: light){.nav{background:rgba(255,255,255,.85)}}
-    .nav-inner{max-width:1120px;margin:auto;padding:.6rem 16px;display:flex;align-items:center;justify-content:space-between}
-    .nav a{color:var(--ink);text-decoration:none;font-weight:600;margin-left:1rem}
-    .nav a:hover{color:var(--link)}
-    .btn{border:1px solid var(--line);background:transparent;color:var(--ink);padding:.45rem .75rem;border-radius:10px;text-decoration:none;font-weight:600}
-    .btn:hover{border-color:#a7c4ff}
+    /* Layout */
+    .wrap{display:grid;grid-template-columns:var(--wSidebar) 1fr;min-height:100dvh}
+    @media (max-width:900px){ .wrap{grid-template-columns:1fr} }
 
-    /* Hero (compact + sticky) */
-    header{position:sticky;top:var(--navH);z-index:90;background:var(--bg);border-bottom:1px solid var(--line)}
-    .hero{max-width:1120px;margin:auto;padding:20px 16px;display:flex;align-items:center;gap:24px;flex-wrap:wrap}
-    .profile{width:180px;height:180px;border-radius:50%;padding:3px;background:conic-gradient(from 90deg,#5b8cff,#9bffd1,#ffd38a,#5b8cff);box-shadow:0 6px 18px rgba(0,0,0,.25)}
-    .profile img{width:100%;height:100%;object-fit:cover;border-radius:50%;object-position:center 12%}
-    .hero-text{flex:1;min-width:280px}
-    .title{margin:0;font-size:2rem;font-weight:900}
-    .subtitle{margin:.35rem 0 .8rem 0;font-weight:700}
-    .contact a{color:inherit;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.35);font-weight:600}
-    @media (prefers-color-scheme: light){ .contact a{border-bottom-color:rgba(0,0,0,.35)} }
+    /* Sidebar */
+    .side{
+      position:sticky; top:0; align-self:start;
+      height:100dvh; display:flex; flex-direction:column; gap:16px;
+      padding:28px 22px; border-right:1px solid var(--line); background:var(--panel);
+    }
+    @media (max-width:900px){
+      .side{ position:static; height:auto; border-right:none; border-bottom:1px solid var(--line) }
+    }
+    .brand{display:flex; flex-direction:column; align-items:center; gap:14px}
+    .avatar{width:160px; height:160px; border-radius:50%; padding:3px; background:conic-gradient(from 90deg,#5b8cff,#9bffd1,#ffd38a,#5b8cff); box-shadow:0 6px 20px rgba(0,0,0,.25)}
+    .avatar img{width:100%;height:100%;object-fit:cover;border-radius:50%;object-position:center 12%}
+    .name{margin:0; font-size:1.6rem; font-weight:900; letter-spacing:.2px; text-align:center}
+    .role{margin:0; color:var(--muted); text-align:center}
+
+    .contact{margin-top:10px; display:grid; gap:8px}
+    .contact a{color:inherit; text-decoration:none; border-bottom:1px solid rgba(255,255,255,.35); font-weight:650}
+    @media (prefers-color-scheme: light){ .contact a{ border-bottom-color:rgba(0,0,0,.35)} }
     .contact a:hover{border-bottom-color:currentColor}
 
-    /* Impact band */
-    .impact{max-width:1120px;margin:12px auto 0;display:grid;grid-template-columns:repeat(4,1fr);gap:12px;padding:0 16px}
-    .metric{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px;text-align:center;box-shadow:var(--shadow)}
-    .metric .num{font-size:1.4rem;font-weight:900}
-    .metric .lbl{color:var(--muted);font-size:.9rem}
+    .nav{margin-top:18px; display:grid; gap:6px}
+    .nav a{padding:8px 10px; border-radius:10px; text-decoration:none; color:inherit; border:1px solid transparent; font-weight:600}
+    .nav a:hover{border-color:var(--line); background:rgba(255,255,255,.03)}
+    .buttons{margin-top:auto; display:flex; gap:10px; flex-wrap:wrap; justify-content:center}
+    .btn{border:1px solid var(--line); background:transparent; color:inherit; padding:.5rem .75rem; border-radius:10px; text-decoration:none; font-weight:700}
+    .btn:hover{border-color:#9cc0ff}
 
-    /* Sections */
-    main{max-width:1120px;margin:22px auto;padding:0 16px}
-    section{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px;margin-bottom:20px;box-shadow:var(--shadow)}
-    section h2{margin:0 0 12px 0;color:var(--accent)}
-    .chips{display:flex;gap:.4rem;flex-wrap:wrap}
-    .chip{background:var(--chip);border:1px solid var(--chip-brd);color:#c7d2fe;padding:.18rem .55rem;border-radius:999px;font-size:.8rem}
-    @media (prefers-color-scheme: light){.chip{color:#1e3a8a}}
+    /* Main */
+    main{padding:36px 28px; display:grid; gap:18px}
+    @media (max-width:900px){ main{padding:22px 16px} }
+    section{background:var(--card); border:1px solid var(--line); border-radius:16px; padding:22px; box-shadow:var(--shadow)}
+    section h2{margin:0 0 12px 0; font-size:1.1rem; letter-spacing:.2px; color:var(--accent); position:relative}
+    section h2::after{content:""; position:absolute; left:0; right:0; bottom:-8px; height:1px; background:linear-gradient(90deg,transparent,rgba(138,180,255,.35),transparent)}
 
-    /* Featured case study */
-    .case{display:grid;grid-template-columns:1.2fr .8fr;gap:16px}
-    @media (max-width:900px){.case{grid-template-columns:1fr}}
-    .panel{border:1px solid var(--line);border-radius:12px;padding:16px}
-    .panel h3{margin:.2rem 0}
-    .kpis{display:flex;gap:8px;flex-wrap:wrap}
-    .kpi{background:#122036;border:1px solid #203a62;padding:.3rem .6rem;border-radius:8px;font-size:.9rem}
-    .arch{display:block;width:100%;height:auto;border:1px dashed var(--line);border-radius:10px;padding:10px;color:var(--muted);text-align:center}
+    /* Projects */
+    .grid{display:grid; gap:14px; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr))}
+    .card{border:1px solid var(--line); border-radius:12px; padding:14px; display:flex; flex-direction:column; gap:.45rem; background:var(--panel)}
+    .card h3{margin:.1rem 0; font-size:1.02rem}
+    .card p{margin:.1rem 0; color:var(--muted)}
+    .chips{display:flex; flex-wrap:wrap; gap:.4rem}
+    .chip{background:var(--chip); border:1px solid var(--chip-brd); color:#c7d2fe; padding:.18rem .55rem; border-radius:999px; font-size:.8rem}
+    @media (prefers-color-scheme: light){ .chip{ color:#1e3a8a } }
+    .open{margin-top:auto; text-decoration:none; color:var(--link); font-weight:700}
 
-    /* Projects grid with thumbnails */
-    .grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
-    .card{border:1px solid var(--line);background:var(--card);border-radius:14px;overflow:hidden;display:flex;flex-direction:column}
-    .thumb{aspect-ratio:16/9;background:#101826;display:block;width:100%;object-fit:cover}
-    .card-body{padding:14px;display:flex;flex-direction:column;gap:.45rem;flex:1}
-    .card h3{margin:.1rem 0;font-size:1.02rem}
-    .meta{font-size:.85rem;color:var(--muted)}
-    .open{margin-top:auto;color:var(--link);font-weight:700;text-decoration:none}
+    /* Lists */
+    .list{padding-left:1rem; margin:0}
+    .list li{margin:.35rem 0}
 
-    /* Writing list */
-    .posts li{margin:.35rem 0}
-    .posts a{color:var(--link);text-decoration:none;font-weight:600}
-
-    /* CTA bar */
-    .cta{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
-    .cta p{margin:0;color:var(--muted)}
-    .cta .btn{background:transparent}
-
-    footer{text-align:center;color:var(--muted);padding:30px 16px}
-    :focus-visible{outline:2px solid #a7c4ff;outline-offset:2px;border-radius:6px}
+    /* Footer */
+    footer{color:var(--muted); text-align:center; padding:24px}
+    :focus-visible{outline:2px solid #9cc0ff; outline-offset:2px; border-radius:6px}
   </style>
 </head>
 <body>
 
-  <!-- NAV -->
-  <nav class="nav">
-    <div class="nav-inner">
-      <div><b>Shubham Nakhod</b></div>
-      <div>
-        <a href="#case">Case Study</a>
+  <div class="wrap">
+    <!-- Sidebar (pinned) -->
+    <aside class="side">
+      <div class="brand">
+        <div class="avatar"><img src="Photo.png" alt="Shubham Nakhod"></div>
+        <h1 class="name">Shubham Nakhod</h1>
+        <p class="role">Machine Learning Engineer<br>Agentic AI · MLOps · Applied ML</p>
+      </div>
+
+      <div class="contact" aria-label="Contact">
+        <a href="tel:+15203880345">+1-520-388-0345</a>
+        <a href="mailto:shubnakhod29@gmail.com">shubnakhod29@gmail.com</a>
+        <a href="https://github.com/ShubhamNakhod" target="_blank" rel="noopener">github.com/ShubhamNakhod</a>
+        <a href="https://www.linkedin.com/in/shubham-nakhod-926914195/" target="_blank" rel="noopener">/in/shubham-nakhod-926914195/</a>
+      </div>
+
+      <nav class="nav" aria-label="Sections">
         <a href="#projects">Projects</a>
-        <a href="#writing">Writing</a>
+        <a href="#skills">Skills</a>
         <a href="#experience">Experience</a>
-        <a href="#contact">Contact</a>
+        <a href="#education">Education</a>
+      </nav>
+
+      <div class="buttons">
         <a class="btn" href="resume.pdf" target="_blank" rel="noopener">Resume</a>
+        <a class="btn" href="#contact">Hire Me</a>
       </div>
-    </div>
-  </nav>
+    </aside>
 
-  <!-- HERO -->
-  <header>
-    <div class="hero">
-      <div class="profile"><img src="Photo.png" alt="Shubham Nakhod"></div>
-      <div class="hero-text">
-        <h1 class="title">Shubham Nakhod</h1>
-        <p class="subtitle">Machine Learning Engineer — Agentic AI · MLOps · Applied ML</p>
-        <p class="contact">
-          Tucson, AZ · <a href="tel:+15203880345">+1-520-388-0345</a> ·
-          <a href="mailto:shubnakhod29@gmail.com">shubnakhod29@gmail.com</a> ·
-          <a href="https://github.com/ShubhamNakhod" target="_blank" rel="noopener">GitHub</a> ·
-          <a href="https://www.linkedin.com/in/shubham-nakhod-926914195/" target="_blank" rel="noopener">LinkedIn</a>
-        </p>
-      </div>
-    </div>
-  </header>
+    <!-- Main content -->
+    <main>
+      <!-- Projects -->
+      <section id="projects">
+        <h2>Selected Projects</h2>
+        <div class="grid">
+          <article class="card">
+            <h3>Limit-Order-Book Simulator + MM Strategy</h3>
+            <p>Price–time priority LOB; rule-based market maker (inventory skew, PnL); interactive dashboard.</p>
+            <div class="chips"><span class="chip">Python</span><span class="chip">Dash</span></div>
+            <a class="open" href="https://github.com/ShubhamNakhod/Limit-Order-Book-Simulator-Market-Making-Strategy" target="_blank" rel="noopener">Open repo</a>
+          </article>
 
-  <!-- IMPACT HIGHLIGHTS -->
-  <div class="impact" aria-label="Impact highlights">
-    <div class="metric"><div class="num">4</div><div class="lbl">Prod-grade ML apps</div></div>
-    <div class="metric"><div class="num">0.87 AUC</div><div class="lbl">Churn model</div></div>
-    <div class="metric"><div class="num">300ms P95</div><div class="lbl">Fraud API latency</div></div>
-    <div class="metric"><div class="num">120+</div><div class="lbl">DSA problems</div></div>
-  </div>
-
-  <main>
-    <!-- FEATURED CASE STUDY -->
-    <section id="case">
-      <h2>Featured Case Study — Agentic Fraud Explanation Service</h2>
-      <div class="case">
-        <div class="panel">
-          <h3>Problem</h3>
-          <p>Analysts needed **fast, explainable** flags for anomalous card transactions. Prior process took minutes and lacked rationale.</p>
-
-          <h3>Approach</h3>
-          <ul>
-            <li>XGBoost baseline wrapped in FastAPI (Dockerized).</li>
-            <li>LLM explainer agent (LangChain + SHAP) to describe drivers in plain English.</li>
-            <li>GitHub Actions for CI/CD; Prometheus counters; drift alerts via MLflow.</li>
-          </ul>
-
-          <h3>Results</h3>
-          <div class="kpis">
-            <span class="kpi">P95 latency &lt; 300ms</span>
-            <span class="kpi">Top-3 SHAP reasons per alert</span>
-            <span class="kpi">Zero-downtime rollout</span>
-          </div>
-
-          <p style="margin-top:.6rem">
-            <a class="btn" href="https://github.com/ShubhamNakhod" target="_blank" rel="noopener">Repo</a>
-            <a class="btn" href="https://huggingface.co/spaces" target="_blank" rel="noopener">Live demo (placeholder)</a>
-          </p>
-        </div>
-
-        <div class="panel">
-          <h3>Architecture (simplified)</h3>
-          <div class="arch">[ Model (XGBoost) ] → [ FastAPI ] → [ Agent (LangChain) ] → [ SHAP ] → [ JSON + Explanation ]</div>
-          <p class="muted" style="color:var(--muted);margin-top:.6rem">Swap this box with a PNG diagram if you have one (e.g., <code>fraud-arch.png</code>).</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- PROJECTS -->
-    <section id="projects">
-      <h2>Selected Projects</h2>
-      <div class="grid">
-        <article class="card">
-          <img class="thumb" src="kelly.png" alt="Kelly simulator thumbnail" onerror="this.style.display='none'">
-          <div class="card-body">
+          <article class="card">
             <h3>Kelly-Criterion Betting Simulator</h3>
-            <div class="meta">★ — · updated —</div>
             <p>Monte Carlo bankroll dynamics, optimal bet sizing, drawdowns, risk of ruin.</p>
             <div class="chips"><span class="chip">Python</span><span class="chip">Monte Carlo</span></div>
             <a class="open" href="https://github.com/ShubhamNakhod/Kelly-Criterion-Betting-Simulator" target="_blank" rel="noopener">Open repo</a>
-          </div>
-        </article>
+          </article>
 
-        <article class="card">
-          <img class="thumb" src="lob.png" alt="LOB MM thumbnail" onerror="this.style.display='none'">
-          <div class="card-body">
-            <h3>Limit-Order-Book Simulator + MM Strategy</h3>
-            <div class="meta">★ — · updated —</div>
-            <p>Price-time priority LOB, rule-based market maker, and PnL dashboard.</p>
-            <div class="chips"><span class="chip">Python</span><span class="chip">Dash</span></div>
-            <a class="open" href="https://github.com/ShubhamNakhod/Limit-Order-Book-Simulator-Market-Making-Strategy" target="_blank" rel="noopener">Open repo</a>
-          </div>
-        </article>
-
-        <article class="card">
-          <img class="thumb" src="gbm.png" alt="GBM simulator thumbnail" onerror="this.style.display='none'">
-          <div class="card-body">
+          <article class="card">
             <h3>Monte Carlo Stock Price Simulation</h3>
-            <div class="meta">★ — · updated —</div>
-            <p>1k GBM paths on S&amp;P 500 with yfinance; outcome distributions.</p>
+            <p>1,000 GBM paths on S&amp;P 500 using yfinance; probabilistic outcomes.</p>
             <div class="chips"><span class="chip">Jupyter</span><span class="chip">NumPy</span></div>
             <a class="open" href="https://github.com/ShubhamNakhod/Monte_Carlo_Simulation_for_Stock_Price_Prediction" target="_blank" rel="noopener">Open repo</a>
-          </div>
-        </article>
+          </article>
 
-        <article class="card">
-          <img class="thumb" src="markov.png" alt="Markov chains thumbnail" onerror="this.style.display='none'">
-          <div class="card-body">
+          <article class="card">
             <h3>Stock-Market via Markov Chains</h3>
-            <div class="meta">★ — · updated —</div>
-            <p>State-based simulations; transition matrices; regime dynamics.</p>
+            <p>State-based simulations with transition matrices to explore regime dynamics.</p>
             <div class="chips"><span class="chip">Python</span><span class="chip">Markov</span></div>
             <a class="open" href="https://github.com/ShubhamNakhod/Simulating-Stock-Market-Markov-Chain" target="_blank" rel="noopener">Open repo</a>
-          </div>
-        </article>
+          </article>
 
-        <article class="card">
-          <img class="thumb" src="frontier.png" alt="Efficient frontier thumbnail" onerror="this.style.display='none'">
-          <div class="card-body">
+          <article class="card">
             <h3>Efficient Frontier</h3>
-            <div class="meta">★ — · updated —</div>
             <p>10k random portfolios; risk vs return; frontier visualization.</p>
             <div class="chips"><span class="chip">Pandas</span><span class="chip">NumPy</span></div>
             <a class="open" href="https://github.com/ShubhamNakhod/Portfolio-Risk-vs.-Expected-Return" target="_blank" rel="noopener">Open repo</a>
-          </div>
-        </article>
+          </article>
 
-        <article class="card">
-          <img class="thumb" src="loan.png" alt="Loan defaults thumbnail" onerror="this.style.display='none'">
-          <div class="card-body">
+          <article class="card">
             <h3>Predicting Loan Defaults</h3>
-            <div class="meta">★ — · updated —</div>
-            <p>End-to-end credit risk classification; feature engineering + eval.</p>
+            <p>End-to-end credit risk classification; model comparison and evaluation.</p>
             <div class="chips"><span class="chip">Scikit-learn</span><span class="chip">ML</span></div>
             <a class="open" href="https://github.com/ShubhamNakhod/Predicting-Loan-Defaults-with-Machine-Learning-" target="_blank" rel="noopener">Open repo</a>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <!-- WRITING -->
-    <section id="writing">
-      <h2>Writing & Notes</h2>
-      <ul class="posts">
-        <li><a href="#" onclick="alert('Add a /posts folder with Markdown and link here.');return false;">Designing an Agentic Explainer for Fraud Flags</a> — SHAP + LLM prompts that don’t hallucinate</li>
-        <li><a href="#" onclick="alert('Replace with your blog or Medium link.');return false;">MLOps on GitHub Actions: cheap, reliable, boring</a></li>
-      </ul>
-    </section>
-
-    <!-- EXPERIENCE (concise) -->
-    <section id="experience">
-      <h2>Experience</h2>
-      <p><b>HSBC — Traded Risk Analyst</b> (Krakow) · 2023 — Automated monitoring with Python/SQL (−90% false alerts). Built stress-test pipelines.</p>
-      <p><b>Goldman Sachs (via Deloitte) — Equities Support Analyst</b> (Warsaw) · 2022–2023 — Automated P&amp;L reconciliation (~30% faster). Supported pricing & risk data pipelines.</p>
-      <p><b>Credit Suisse — Analyst, Data & Trade Support</b> (Wroclaw) · 2021–2022 — Python reconciliation scripts (98% match). Improved booking data pipelines.</p>
-    </section>
-
-    <!-- CONTACT -->
-    <section id="contact">
-      <h2>Contact</h2>
-      <div class="cta panel" style="border:1px solid var(--line);border-radius:12px;padding:16px;background:var(--card)">
-        <p>Open to ML Engineer / AI Engineer / Applied Scientist roles. Happy to walk through the fraud case study live.</p>
-        <div>
-          <a class="btn" href="mailto:shubnakhod29@gmail.com">Email me</a>
-          <a class="btn" href="https://calendly.com/your-link/intro" target="_blank" rel="noopener">Book 15-min intro</a>
+          </article>
         </div>
-      </div>
-      <p style="margin-top:10px">
-        Phone: <a href="tel:+15203880345">+1-520-388-0345</a> ·
-        GitHub: <a href="https://github.com/ShubhamNakhod" target="_blank" rel="noopener">ShubhamNakhod</a> ·
-        LinkedIn: <a href="https://www.linkedin.com/in/shubham-nakhod-926914195/" target="_blank" rel="noopener">/in/shubham-nakhod-926914195/</a>
-      </p>
-    </section>
-  </main>
+      </section>
 
-  <footer>© <span id="yr"></span> Shubham Nakhod</footer>
+      <!-- Skills -->
+      <section id="skills">
+        <h2>Technical Skills</h2>
+        <ul class="list">
+          <li><b>Languages & Tools:</b> Python, SQL, FastAPI, Docker, GitHub Actions, Streamlit</li>
+          <li><b>ML/AI:</b> Scikit-learn, PyTorch, TensorFlow, Hugging Face, LangChain, CrewAI</li>
+          <li><b>MLOps & Cloud:</b> MLflow, AWS SageMaker, GCP Vertex AI, CI/CD, Monitoring</li>
+          <li><b>Core CS:</b> Data Structures & Algorithms (120+ LeetCode), System Design basics</li>
+        </ul>
+      </section>
+
+      <!-- Experience -->
+      <section id="experience">
+        <h2>Experience</h2>
+        <ul class="list">
+          <li><b>HSBC — Traded Risk Analyst</b> | Krakow | Apr 2023 – Aug 2023 — Automated monitoring (Python+SQL) cutting false alerts by 90%; stress-test pipelines.</li>
+          <li><b>Goldman Sachs (via Deloitte) — Equities Support Analyst</b> | Warsaw | Apr 2022 – Mar 2023 — Automated P&amp;L reconciliation (~30% efficiency); supported pricing & risk data pipelines.</li>
+          <li><b>Credit Suisse — Analyst, Data & Trade Support</b> | Wroclaw | Sep 2021 – Mar 2022 — Python reconciliation scripts (98% match); improved booking data pipelines.</li>
+        </ul>
+      </section>
+
+      <!-- Education -->
+      <section id="education">
+        <h2>Education</h2>
+        <ul class="list">
+          <li><b>University of Arizona</b> — M.S. Information Science (ML/AI Track) | Expected Dec 2025 | GPA 3.8/4.0 — ML, DL, Data Mining, MLOps, Distributed Systems</li>
+          <li><b>University of Mumbai</b> — B.S. Financial Markets (2016–2019) | GPA 7.6/10</li>
+        </ul>
+      </section>
+
+      <!-- Contact / CTA -->
+      <section id="contact">
+        <h2>Contact</h2>
+        <p>Open to ML Engineer, AI Engineer, Applied Scientist roles. I’m happy to walk through projects live.</p>
+        <p>
+          Phone: <a href="tel:+15203880345">+1-520-388-0345</a> ·
+          Email: <a href="mailto:shubnakhod29@gmail.com">shubnakhod29@gmail.com</a> ·
+          GitHub: <a href="https://github.com/ShubhamNakhod" target="_blank" rel="noopener">ShubhamNakhod</a> ·
+          LinkedIn: <a href="https://www.linkedin.com/in/shubham-nakhod-926914195/" target="_blank" rel="noopener">/in/shubham-nakhod-926914195/</a>
+        </p>
+      </section>
+
+      <footer>© <span id="yr"></span> Shubham Nakhod</footer>
+    </main>
+  </div>
 
   <script>
     // Year
     document.getElementById('yr').textContent = new Date().getFullYear();
 
-    // Optional: fetch stars/updated for project cards (graceful if rate-limited)
-    (async function(){
-      const map = new Map([
-        ['Kelly-Criterion Betting Simulator','ShubhamNakhod/Kelly-Criterion-Betting-Simulator'],
-        ['Limit-Order-Book Simulator + MM Strategy','ShubhamNakhod/Limit-Order-Book-Simulator-Market-Making-Strategy'],
-        ['Monte Carlo Stock Price Simulation','ShubhamNakhod/Monte_Carlo_Simulation_for_Stock_Price_Prediction'],
-        ['Stock-Market via Markov Chains','ShubhamNakhod/Simulating-Stock-Market-Markov-Chain'],
-        ['Efficient Frontier','ShubhamNakhod/Portfolio-Risk-vs.-Expected-Return'],
-        ['Predicting Loan Defaults','ShubhamNakhod/Predicting-Loan-Defaults-with-Machine-Learning-']
-      ]);
-      document.querySelectorAll('.card').forEach(async card=>{
-        const name = card.querySelector('h3')?.textContent?.trim();
-        const repo = map.get(name);
-        if(!repo) return;
-        try{
-          const r = await fetch(`https://api.github.com/repos/${repo}`);
-          if(!r.ok) return;
-          const d = await r.json();
-          const stars = d.stargazers_count ?? 0;
-          const pushed = d.pushed_at ? new Date(d.pushed_at) : null;
-          const days = pushed ? Math.max(0, Math.round((Date.now()-pushed)/86400000)) : null;
-          const meta = card.querySelector('.meta');
-          if(meta){
-            meta.textContent = `★ ${stars} · updated ${days ?? '—'}d ago`;
-          }
-        }catch(_){}
+    // Highlight current section in sidebar as you scroll
+    const links=[...document.querySelectorAll('.nav a')];
+    const secs=[...document.querySelectorAll('main section')];
+    const spy=new IntersectionObserver((es)=>{
+      es.forEach(e=>{
+        if(e.isIntersecting){
+          links.forEach(a=>a.style.background='transparent');
+          const id=e.target.id; const active=links.find(a=>a.getAttribute('href')===`#${id}`);
+          if(active){ active.style.background='rgba(156,192,255,.08)'; active.style.borderColor='var(--line)'; }
+        }
       });
-    })();
+    },{rootMargin:'-40% 0px -50% 0px',threshold:0});
+    secs.forEach(s=>spy.observe(s));
   </script>
 </body>
 </html>
