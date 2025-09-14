@@ -2,21 +2,22 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Shubham Nakhod | Portfolio</title>
 <meta name="description" content="Shubham Nakhod — Machine Learning Engineer (Agentic AI, MLOps, Applied ML).">
 <link rel="icon" href="favicon.ico">
 <style>
   :root{
     --bg:#0b121d; --panel:#0f172a; --card:#101a2b; --ink:#e7ebf4; --muted:#9aa4b2; --line:#1d2840;
-    --brand:#7aa2ff; --accent:#1f6feb; --brand2:#22c9a5; --max:1200px;
+    --brand:#7aa2ff; --brand2:#22c9a5; --link:#aecdff; --max:1200px;
     --chip:#14223a; --chip-brd:#223556; --shadow:0 12px 28px rgba(0,0,0,.28);
     --sideW:240px;
   }
   @media (prefers-color-scheme: light){
     :root{
       --bg:#f7f8fb; --panel:#ffffff; --card:#ffffff; --ink:#0f172a; --muted:#5f6b7c; --line:#e6eaf0;
-      --brand:#1f6feb; --accent:#1849ff; --brand2:#16a085; --chip:#eef3ff; --chip-brd:#dbe7ff; --shadow:0 10px 24px rgba(0,0,0,.08);
+      --brand:#1f6feb; --brand2:#16a085; --link:#1f6feb; --chip:#eef3ff; --chip-brd:#dbe7ff;
+      --shadow:0 10px 24px rgba(0,0,0,.08);
     }
   }
 
@@ -39,32 +40,40 @@
   .avatar img{width:100%;height:100%;object-fit:cover;border-radius:50%;object-position:center 12%}
   .who{font-weight:900;text-align:center;margin:6px 0 0 0}
   .social{display:flex;gap:8px}
-  .ico{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;border:1px solid var(--line);color:inherit;text-decoration:none}
+  .ico{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;border:1px solid var(--line);color:inherit;text-decoration:none;font-weight:800}
   .ico:hover{border-color:var(--brand)}
   .side-nav{margin-top:10px;width:100%;display:grid;gap:4px}
   .side-nav a{display:flex;align-items:center;gap:8px;color:inherit;text-decoration:none;padding:8px 10px;border-radius:10px;border:1px solid transparent;font-weight:700}
   .side-nav a:hover{border-color:var(--line);background:rgba(255,255,255,.03)}
   .side-footer{margin-top:auto;font-size:.85rem;color:var(--muted)}
 
-  /* ===== Main / Sections ===== */
+  /* ===== Sections ===== */
   main{padding:0}
   section{max-width:var(--max);margin:0 auto;padding:26px 18px}
   .section-card{background:var(--panel);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);padding:22px}
   h2.section-title{margin:0 0 14px 0;color:var(--brand);letter-spacing:.2px}
 
-  /* ===== Hero ===== */
+  /* ===== Hero (with BG + typing tagline) ===== */
   .hero{
     min-height:84dvh; display:grid; align-items:center; border-bottom:1px solid var(--line);
-    background:url('hero.jpg') center/cover no-repeat fixed, linear-gradient(180deg,rgba(0,0,0,.25),rgba(0,0,0,.35));
+    background:
+      linear-gradient(180deg,rgba(0,0,0,.45),rgba(0,0,0,.55)),
+      url('hero.jpg') center/cover no-repeat fixed;
   }
   .hero-inner{max-width:var(--max);margin:auto;padding:40px 18px}
-  .hero-box{max-width:740px}
+  .hero-box{max-width:740px;background:rgba(15,23,42,.72);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);padding:22px}
   .hero h1{font-size:clamp(1.8rem,3.6vw,3rem);margin:0 0 6px 0;font-weight:900}
-  .hero p{margin:.2rem 0 1rem 0}
+  .badges{display:flex;gap:6px;flex-wrap:wrap;margin:10px 0 16px 0}
+  .badge{display:inline-block;font-size:.85rem;padding:.15rem .55rem;border-radius:999px;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.35)}
   .cta{display:flex;gap:10px;flex-wrap:wrap}
   .btn{border:1px solid var(--line);background:rgba(15,23,42,.65);color:#fff;padding:.55rem .9rem;border-radius:10px;text-decoration:none;font-weight:800}
   .btn:hover{border-color:#9cc0ff}
-  .badge{display:inline-block;margin-left:6px;font-size:.85rem;padding:.15rem .5rem;border-radius:999px;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.35)}
+  .tagline{
+    font-size:1.08rem;color:var(--link);white-space:nowrap;overflow:hidden;border-right:2px solid var(--link);
+    width:30ch;animation:typing 4s steps(30), blink .7s step-end infinite alternate;
+  }
+  @keyframes typing{from{width:0}}
+  @keyframes blink{50%{border-color:transparent}}
 
   /* ===== About / Facts ===== */
   .about-grid{display:grid;grid-template-columns:260px 1fr;gap:16px}
@@ -75,13 +84,24 @@
   .fact .n{font-size:1.3rem;font-weight:900}
   .muted{color:var(--muted)}
 
+  /* brighter, high-contrast links in About */
+  .about-contact a{
+    color:var(--link); text-decoration:none; font-weight:800;
+    border-bottom:1px solid rgba(174,205,255,.35); text-underline-offset:2px;
+  }
+  .about-contact a:hover{color:#ffffff; border-bottom-color:var(--link)}
+  @media (prefers-color-scheme: light){
+    .about-contact a{ color:#1f6feb; border-bottom-color:rgba(31,111,235,.35) }
+    .about-contact a:hover{ color:#0b5bd3; border-bottom-color:#0b5bd3 }
+  }
+
   /* ===== Skills ===== */
   .skill{margin:12px 0}
   .srow{display:flex;justify-content:space-between;font-weight:800}
   .bar{height:10px;background:var(--card);border:1px solid var(--line);border-radius:999px;overflow:hidden}
   .fill{height:100%;background:linear-gradient(90deg,var(--brand),var(--brand2));width:0%}
 
-  /* ===== Qualifications (timeline two cols) ===== */
+  /* ===== Qualifications ===== */
   .cols{display:grid;grid-template-columns:1fr 1fr;gap:16px}
   @media (max-width:900px){.cols{grid-template-columns:1fr}}
   .panel{border:1px solid var(--line);border-radius:12px;padding:14px;background:var(--card)}
@@ -90,7 +110,7 @@
   .t{margin:.6rem 0}
   .t b{display:block}
 
-  /* ===== Projects (filterable) ===== */
+  /* ===== Projects ===== */
   .filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px}
   .chip{background:var(--chip);border:1px solid var(--chip-brd);color:#c7d2fe;padding:.28rem .7rem;border-radius:999px;font-weight:800;cursor:pointer}
   @media (prefers-color-scheme: light){.chip{color:#1e3a8a}}
@@ -103,11 +123,9 @@
   .meta{font-size:.86rem;color:var(--muted)}
   .open{margin-top:auto;color:#9cc0ff;text-decoration:none;font-weight:800}
 
-  /* ===== Soft skills + Testimonials ===== */
+  /* ===== Soft skills ===== */
   .soft{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}
   .pill{border:1px solid var(--line);border-radius:12px;background:var(--card);padding:14px}
-  .testi{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px}
-  .quote{border:1px solid var(--line);border-radius:12px;background:var(--card);padding:14px}
 
   /* ===== Contact ===== */
   .contact-links a{color:inherit;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.35);font-weight:800}
@@ -133,13 +151,12 @@
     </div>
 
     <nav class="side-nav" aria-label="Sections">
-      <a href="#home">🏠 Home</a>
-      <a href="#about">👤 About</a>
-      <a href="#qual">🎓 Qualifications</a>
-      <a href="#projects">📦 Projects</a>
-      <a href="#soft">💬 Soft Skills</a>
-      <a href="#testimonials">❝ Testimonials</a>
-      <a href="#contact">✉️ Contact</a>
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#qual">Qualifications</a>
+      <a href="#projects">Projects</a>
+      <a href="#soft">Soft Skills</a>
+      <a href="#contact">Contact</a>
     </nav>
 
     <div class="side-footer">© <span id="yr"></span></div>
@@ -151,11 +168,16 @@
     <!-- HERO -->
     <section class="hero" id="home">
       <div class="hero-inner">
-        <div class="hero-box section-card" style="background:rgba(15,23,42,.72)">
+        <div class="hero-box">
           <h1>Shubham Nakhod</h1>
-          <p>Machine Learning Engineer — <span class="badge">Agentic AI</span> <span class="badge">MLOps</span> <span class="badge">Applied ML</span></p>
+          <div class="tagline" id="type">Building production-ready ML systems…</div>
+          <div class="badges">
+            <span class="badge">Agentic AI</span><span class="badge">MLOps</span><span class="badge">Applied ML</span>
+          </div>
           <div class="cta">
             <a class="btn" href="resume.pdf" target="_blank" rel="noopener">Download Resume</a>
+            <a class="btn" href="https://github.com/ShubhamNakhod" target="_blank" rel="noopener">GitHub</a>
+            <a class="btn" href="https://www.linkedin.com/in/shubham-nakhod-926914195/" target="_blank" rel="noopener">LinkedIn</a>
             <a class="btn" href="#projects">View Projects</a>
           </div>
         </div>
@@ -173,8 +195,11 @@
               I’m a Master’s student in Information Science at the University of Arizona (ML/AI track). I build production ML: FastAPI services, agentic explainers, and reliable CI/CD/monitoring.
               Previous roles across HSBC, Goldman Sachs (via Deloitte), and Credit Suisse.
             </p>
-            <p><b>Email:</b> <a href="mailto:shubnakhod29@gmail.com">shubnakhod29@gmail.com</a> &nbsp; | &nbsp;
-               <b>Phone:</b> <a href="tel:+15203880345">+1-520-388-0345</a></p>
+            <p class="about-contact">
+              <b>Email:</b> <a href="mailto:shubnakhod29@gmail.com">shubnakhod29@gmail.com</a>
+              &nbsp;&nbsp;|&nbsp;&nbsp;
+              <b>Phone:</b> <a href="tel:+15203880345">+1-520-388-0345</a>
+            </p>
             <p><b>Location:</b> Tucson, AZ</p>
           </div>
         </div>
@@ -348,17 +373,6 @@
       </div>
     </section>
 
-    <!-- TESTIMONIALS -->
-    <section id="testimonials">
-      <div class="section-card">
-        <h2 class="section-title">Testimonials</h2>
-        <div class="testi">
-          <div class="quote">“Shubham quickly turns ideas into reliable services—clean APIs, clear metrics, strong results.”<div class="muted" style="margin-top:.4rem">— Former teammate</div></div>
-          <div class="quote">“Thoughtful and detail-oriented. Great at explaining ML trade-offs to non-technical partners.”<div class="muted" style="margin-top:.4rem">— Faculty mentor</div></div>
-        </div>
-      </div>
-    </section>
-
     <!-- CONTACT -->
     <section id="contact">
       <div class="section-card">
@@ -381,6 +395,25 @@
   // years
   document.getElementById('yr').textContent = new Date().getFullYear();
   document.getElementById('yr2').textContent = new Date().getFullYear();
+
+  // typing tagline (cycle phrases)
+  (function(){
+    const el=document.getElementById('type');
+    const lines=[
+      'Building production-ready ML systems…',
+      'Fast APIs • Explainable agents • Reliable pipelines',
+      'Agentic AI • MLOps • Applied ML'
+    ];
+    let i=0,pos=0,del=false;
+    function tick(){
+      const t=lines[i];
+      el.textContent = del ? t.slice(0,--pos) : t.slice(0,++pos);
+      if(!del && pos===t.length){del=true;setTimeout(tick,1000);return;}
+      if(del && pos===0){del=false;i=(i+1)%lines.length;}
+      setTimeout(tick, del?28:38);
+    }
+    tick();
+  })();
 
   // counters
   const nums=[...document.querySelectorAll('.fact .n')];
