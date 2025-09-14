@@ -14,21 +14,20 @@
       --line:#1f2a44; --accent:#89a7ff; --link:#8ab4ff;
       --chip:#111b33; --chip-brd:#233a6b; --shadow:0 10px 32px rgba(0,0,0,.35);
       --brand1:#5b8cff; --brand2:#9bffd1; --brand3:#ffd38a;
+      --contact-link:#8ab4ff; --contact-link-hover:#b6ccff;
     }
     @media (prefers-color-scheme: light){
       :root{
         --bg:#f7f8fb; --card:#ffffff; --ink:#111827; --muted:#6b7280;
         --line:#e5e7eb; --accent:#1f2f45; --link:#1f6feb;
         --chip:#eef2ff; --chip-brd:#dbeafe; --shadow:0 10px 24px rgba(0,0,0,.08);
+        --contact-link:#1f6feb; --contact-link-hover:#3a83ff;
       }
     }
 
     *{box-sizing:border-box}
     html{scroll-behavior:smooth}
-    body{
-      margin:0; font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
-      background:var(--bg); color:var(--ink); line-height:1.7;
-    }
+    body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.7}
 
     /* Progress bar */
     .progress{position:fixed;inset:0 0 auto 0;height:3px;background:linear-gradient(90deg,var(--brand1),var(--brand2),var(--brand3));transform-origin:left;transform:scaleX(0);z-index:100}
@@ -36,31 +35,24 @@
     /* Nav */
     .nav{position:sticky;top:0;z-index:50;backdrop-filter:saturate(140%) blur(8px);background:rgba(10,16,28,.55);border-bottom:1px solid var(--line)}
     @media (prefers-color-scheme: light){.nav{background:rgba(255,255,255,.75)}}
-    .nav-inner{max-width:1120px;margin:auto;padding:.6rem 1rem;display:flex;align-items:center;justify-content:space-between}
+    .nav-inner{max-width:1120px;margin:auto;padding:.6rem 1rem;display:flex;align-items:center;gap:10px;justify-content:space-between}
     .brand{font-weight:800;letter-spacing:.2px}
     .nav a{color:var(--ink);text-decoration:none;font-weight:600;margin-left:1rem;padding:.35rem .5rem;border-radius:8px}
     .nav a:hover{color:var(--link)}
-    .toggle{border:1px solid var(--line);background:transparent;color:var(--ink);padding:.35rem .6rem;border-radius:10px;cursor:pointer;font-weight:600}
+    .btn{border:1px solid var(--line);background:transparent;color:var(--ink);padding:.45rem .75rem;border-radius:10px;cursor:pointer;font-weight:600;text-decoration:none}
+    .btn:hover{border-color:#a7c4ff}
 
-    /* Header with animated blobs */
+    /* Header (animated blobs; static photo ring) */
     header{position:relative;overflow:hidden}
-    .blob{
-      position:absolute; filter:blur(40px); opacity:.5; mix-blend-mode:screen;
-      animation:float 20s ease-in-out infinite alternate;
-    }
+    .blob{position:absolute;filter:blur(40px);opacity:.5;mix-blend-mode:screen;animation:float 20s ease-in-out infinite alternate}
     .b1{width:420px;height:420px;background:radial-gradient(circle,var(--brand1),transparent 60%);left:-80px;top:-80px}
     .b2{width:380px;height:380px;background:radial-gradient(circle,var(--brand2),transparent 60%);right:-80px;top:-60px;animation-duration:24s}
     .b3{width:360px;height:360px;background:radial-gradient(circle,var(--brand3),transparent 60%);left:20%;bottom:-160px;animation-duration:28s}
     @keyframes float{to{transform:translateY(40px) translateX(20px)}}
 
     .hero{max-width:1120px;margin:auto;padding:62px 16px 44px;display:flex;align-items:center;gap:28px;flex-wrap:wrap;position:relative}
-    .profile{
-      position:relative;width:168px;height:168px;border-radius:50%;
-      padding:4px;background:conic-gradient(from 90deg,var(--brand1),var(--brand2),var(--brand3),var(--brand1));
-      animation:spin 8s linear infinite;
-    }
+    .profile{position:relative;width:168px;height:168px;border-radius:50%;padding:4px;background:conic-gradient(from 90deg,var(--brand1),var(--brand2),var(--brand3),var(--brand1))}
     .profile img{width:100%;height:100%;object-fit:cover;border-radius:50%}
-    @keyframes spin{to{transform:rotate(360deg)}}
 
     .hero-text{flex:1;min-width:280px}
     .title{font-size:2.2rem;margin:0;font-weight:900}
@@ -74,43 +66,40 @@
     main{max-width:1120px;margin:30px auto;padding:0 16px}
     section{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px;margin-bottom:18px;box-shadow:var(--shadow);transform:translateY(10px);opacity:0;transition:.5s ease}
     section.show{transform:none;opacity:1}
-    section h2{margin:0 0 12px 0;font-size:1.18rem;letter-spacing:.2px;color:var(--accent);display:flex;align-items:center;justify-content:space-between}
+    section h2{margin:0 0 12px 0;font-size:1.18rem;letter-spacing:.2px;color:var(--accent);display:flex;align-items:center;justify-content:space-between;position:relative}
+    section h2::after{content:"";position:absolute;left:0;right:0;bottom:-8px;height:1px;background:linear-gradient(90deg,transparent,rgba(138,180,255,.35),transparent)}
+
     .section-toggle{border:none;background:transparent;color:var(--link);font-weight:700;cursor:pointer}
 
-    /* Project filters */
-    .filters{display:flex;flex-wrap:wrap;gap:.5rem;margin:0 0 12px}
+    /* Filters */
+    .filters{display:flex;flex-wrap:wrap;gap:.5rem;margin:8px 0 12px}
     .filter-btn{border:1px solid var(--line);background:transparent;color:var(--ink);padding:.25rem .6rem;border-radius:999px;cursor:pointer;font-weight:600}
     .filter-btn.active{outline:2px solid #a7c4ff;outline-offset:2px}
     #q{margin-left:auto;min-width:220px;padding:.35rem .6rem;border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:8px}
 
-    /* Project grid + magnetic cards */
-    .grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+    /* Grid with equal-height cards */
+    .grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));align-items:stretch}
     .card{
-      border:1px solid var(--line);background:var(--card);border-radius:14px;padding:16px;display:grid;gap:.45rem;cursor:pointer;
-      position:relative;transition:transform .15s ease, box-shadow .15s ease, border-color .15s ease;
-      transform-style:preserve-3d;
+      border:1px solid var(--line);background:var(--card);border-radius:14px;
+      padding:16px;display:flex;flex-direction:column;gap:.55rem;
+      transition:transform .12s ease, box-shadow .12s ease, border-color .12s ease;
     }
-    .card::after{
-      content:"";position:absolute;inset:0;border-radius:inherit;
-      background:linear-gradient(120deg,transparent,rgba(255,255,255,.14),transparent);
-      transform:translateX(-120%);transition:.35s ease;pointer-events:none;
-    }
-    .card:hover{transform:translateY(-3px) rotateX(1deg) rotateY(1deg);box-shadow:0 14px 34px rgba(0,0,0,.18);border-color:#a7c4ff}
-    .card:hover::after{transform:translateX(120%)}
+    .card:hover{transform:translateY(-2px);box-shadow:0 14px 34px rgba(0,0,0,.18);border-color:#a7c4ff}
     .card h3{margin:.1rem 0;font-size:1.06rem}
-    .card p{margin:.1rem 0;color:var(--muted);font-size:.95rem}
-    .chips{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.35rem}
+    .card p{margin:.1rem 0;color:var(--muted);font-size:.95rem;flex:1}
+    .chips{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.2rem}
     .chip{background:var(--chip);border:1px solid var(--chip-brd);color:#c7d2fe;padding:.18rem .55rem;border-radius:999px;font-size:.8rem}
     @media (prefers-color-scheme: light){.chip{color:#1e3a8a}}
+    .card .open-link{margin-top:auto;text-decoration:none;color:var(--link);font-weight:700}
 
     /* Contact card */
     .contact-card{display:grid;grid-template-columns:140px 1fr;gap:6px 14px;align-items:center;font-size:.98rem}
     .label{color:var(--muted);font-weight:600}
-    .stealth-link{color:inherit;text-decoration:none;border-bottom:1px dotted transparent;transition:border-color .15s}
-    .stealth-link:hover{border-bottom-color:currentColor}
+    #contact a{color:var(--contact-link);text-decoration:none;border-bottom:1px solid transparent;transition:color .15s,border-color .15s}
+    #contact a:hover,#contact a:focus{color:var(--contact-link-hover);border-bottom-color:var(--contact-link-hover)}
+    #contact a:visited{color:var(--contact-link)}
     .copy-btn{margin-left:10px;border:1px solid var(--line);background:transparent;color:var(--ink);padding:.15rem .45rem;border-radius:8px;font-size:.82rem;cursor:pointer}
     .copy-btn:hover{border-color:#a7c4ff}
-    #contact a:visited{color:inherit}
 
     /* Footer + back to top */
     footer{text-align:center;color:var(--muted);padding:30px 16px}
@@ -123,22 +112,23 @@
   <div class="progress" id="progress"></div>
 
   <!-- NAV -->
-  <nav class="nav" aria-label="Primary">
+  <nav class="nav">
     <div class="nav-inner">
       <div class="brand">Shubham Nakhod</div>
-      <div>
+      <div style="display:flex;gap:10px;align-items:center">
         <a href="#projects">Projects</a>
         <a href="#skills">Skills</a>
         <a href="#experience">Experience</a>
         <a href="#education">Education</a>
         <a href="#contact">Contact</a>
-        <button id="themeToggle" class="toggle" type="button">Theme</button>
+        <a class="btn" href="resume.pdf" target="_blank" rel="noopener">Resume</a>
+        <button id="themeToggle" class="btn" type="button">Theme</button>
       </div>
     </div>
   </nav>
 
   <!-- HEADER -->
-  <header role="banner">
+  <header>
     <div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>
     <div class="hero">
       <div class="profile"><img src="Photo.png" alt="Portrait of Shubham Nakhod"></div>
@@ -147,19 +137,19 @@
         <p class="subtitle"><span id="tw"></span><span class="caret">&nbsp;</span></p>
         <p class="contact">
           <span class="badge">Tucson, AZ</span>
-          <a class="stealth-link copy" id="copyPhoneH" data-copy="+1-520-388-0345" href="tel:+15203880345">+1-520-388-0345</a> ·
-          <a class="stealth-link copy" id="copyEmailH" data-copy="shubnakhod29@gmail.com" href="mailto:shubnakhod29@gmail.com">shubnakhod29@gmail.com</a> ·
-          <a class="stealth-link" href="https://github.com/ShubhamNakhod" target="_blank" rel="noopener">GitHub</a> ·
-          <a class="stealth-link" href="https://www.linkedin.com/in/shubham-nakhod-926914195/" target="_blank" rel="noopener">LinkedIn</a>
+          <a class="copy" data-copy="+1-520-388-0345" href="tel:+15203880345">+1-520-388-0345</a> ·
+          <a class="copy" data-copy="shubnakhod29@gmail.com" href="mailto:shubnakhod29@gmail.com">shubnakhod29@gmail.com</a> ·
+          <a href="https://github.com/ShubhamNakhod" target="_blank" rel="noopener">GitHub</a> ·
+          <a href="https://www.linkedin.com/in/shubham-nakhod-926914195/" target="_blank" rel="noopener">LinkedIn</a>
         </p>
       </div>
     </div>
   </header>
 
-  <main id="main">
+  <main>
     <!-- PROJECTS -->
-    <section id="projects" aria-labelledby="projects-h">
-      <h2 id="projects-h">
+    <section id="projects">
+      <h2>
         Selected Projects
         <button class="section-toggle" type="button" data-target="#projects">Collapse</button>
       </h2>
@@ -177,49 +167,49 @@
           <h3>Predicting Loan Defaults</h3>
           <p>Credit risk classification; features, model comparison, evaluation.</p>
           <div class="chips"><span class="chip">Scikit-learn</span><span class="chip">ML</span></div>
-          <a class="stealth-link" href="https://github.com/ShubhamNakhod/Predicting-Loan-Defaults-with-Machine-Learning-" target="_blank" rel="noopener">Open repo</a>
+          <a class="open-link" href="https://github.com/ShubhamNakhod/Predicting-Loan-Defaults-with-Machine-Learning-" target="_blank" rel="noopener">Open repo</a>
         </article>
 
         <article class="card" data-tags="trading ml" data-title="Limit-Order-Book Simulator + MM Strategy">
           <h3>Limit-Order-Book Simulator + MM Strategy</h3>
           <p>LOB engine, rule-based market maker; inventory & PnL tracking; dashboard.</p>
           <div class="chips"><span class="chip">Python</span><span class="chip">Dash</span></div>
-          <a class="stealth-link" href="https://github.com/ShubhamNakhod/Limit-Order-Book-Simulator-Market-Making-Strategy" target="_blank" rel="noopener">Open repo</a>
+          <a class="open-link" href="https://github.com/ShubhamNakhod/Limit-Order-Book-Simulator-Market-Making-Strategy" target="_blank" rel="noopener">Open repo</a>
         </article>
 
         <article class="card" data-tags="trading" data-title="Kelly-Criterion Betting Simulator">
           <h3>Kelly-Criterion Betting Simulator</h3>
           <p>Monte Carlo bankroll dynamics, optimal bet sizing, risk of ruin.</p>
           <div class="chips"><span class="chip">Python</span><span class="chip">Monte Carlo</span></div>
-          <a class="stealth-link" href="https://github.com/ShubhamNakhod/Kelly-Criterion-Betting-Simulator" target="_blank" rel="noopener">Open repo</a>
+          <a class="open-link" href="https://github.com/ShubhamNakhod/Kelly-Criterion-Betting-Simulator" target="_blank" rel="noopener">Open repo</a>
         </article>
 
         <article class="card" data-tags="ml" data-title="Monte Carlo Stock Price Simulation">
           <h3>Monte Carlo Stock Price Simulation</h3>
           <p>1,000 GBM paths on S&amp;P 500 with yfinance; outcome distributions.</p>
           <div class="chips"><span class="chip">Jupyter</span><span class="chip">NumPy</span></div>
-          <a class="stealth-link" href="https://github.com/ShubhamNakhod/Monte_Carlo_Simulation_for_Stock_Price_Prediction" target="_blank" rel="noopener">Open repo</a>
+          <a class="open-link" href="https://github.com/ShubhamNakhod/Monte_Carlo_Simulation_for_Stock_Price_Prediction" target="_blank" rel="noopener">Open repo</a>
         </article>
 
         <article class="card" data-tags="ml" data-title="Stock-Market via Markov Chains">
           <h3>Stock-Market via Markov Chains</h3>
           <p>State-based simulations; transition matrices; regime dynamics.</p>
           <div class="chips"><span class="chip">Python</span><span class="chip">Markov</span></div>
-          <a class="stealth-link" href="https://github.com/ShubhamNakhod/Simulating-Stock-Market-Markov-Chain" target="_blank" rel="noopener">Open repo</a>
+          <a class="open-link" href="https://github.com/ShubhamNakhod/Simulating-Stock-Market-Markov-Chain" target="_blank" rel="noopener">Open repo</a>
         </article>
 
         <article class="card" data-tags="ml trading" data-title="Efficient Frontier">
           <h3>Efficient Frontier</h3>
           <p>10k random portfolios; risk vs return; frontier visualization.</p>
           <div class="chips"><span class="chip">Pandas</span><span class="chip">NumPy</span></div>
-          <a class="stealth-link" href="https://github.com/ShubhamNakhod/Portfolio-Risk-vs.-Expected-Return" target="_blank" rel="noopener">Open repo</a>
+          <a class="open-link" href="https://github.com/ShubhamNakhod/Portfolio-Risk-vs.-Expected-Return" target="_blank" rel="noopener">Open repo</a>
         </article>
       </div>
     </section>
 
     <!-- SKILLS -->
-    <section id="skills" aria-labelledby="skills-h">
-      <h2 id="skills-h">
+    <section id="skills">
+      <h2>
         Technical Skills
         <button class="section-toggle" type="button" data-target="#skills">Collapse</button>
       </h2>
@@ -229,9 +219,9 @@
       <p><b>Core CS:</b> Data Structures & Algorithms (120+ LeetCode), System Design basics</p>
     </section>
 
-    <!-- EXPERIENCE -->
-    <section id="experience" aria-labelledby="exp-h">
-      <h2 id="exp-h">
+    <!-- EXPERIENCE (BNP removed) -->
+    <section id="experience">
+      <h2>
         Professional Experience
         <button class="section-toggle" type="button" data-target="#experience">Collapse</button>
       </h2>
@@ -241,13 +231,11 @@
         Automated P&amp;L reconciliation (~30% efficiency gain). Supported pricing & risk data pipelines.</p>
       <p><b>Credit Suisse — Analyst, Data & Trade Support</b> | Wroclaw, Poland | Sep 2021 – Mar 2022<br>
         Python reconciliation scripts (98% match rates). Improved booking data pipelines.</p>
-      <p><b>BNP Paribas — Fund Accounting Intern</b> | Warsaw, Poland | Jun 2021 – Sep 2021<br>
-        Automated NAV workflows with VBA + Python (−20% reporting time). Produced NAVs for &gt;$2B AUM.</p>
     </section>
 
     <!-- EDUCATION -->
-    <section id="education" aria-labelledby="edu-h">
-      <h2 id="edu-h">
+    <section id="education">
+      <h2>
         Education
         <button class="section-toggle" type="button" data-target="#education">Collapse</button>
       </h2>
@@ -257,99 +245,68 @@
     </section>
 
     <!-- CONTACT -->
-    <section id="contact" aria-labelledby="contact-h">
-      <h2 id="contact-h">
-        Contact
-        <button class="section-toggle" type="button" data-target="#contact">Collapse</button>
-      </h2>
+    <section id="contact">
+      <h2>Contact</h2>
       <div class="contact-card">
-        <div class="label">
-          <!-- phone icon -->
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" style="vertical-align:-3px"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.08 4.18 2 2 0 0 1 4.06 2h3a2 2 0 0 1 2 1.72c.13.97.36 1.91.68 2.8a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.28-1.28a2 2 0 0 1 2.11-.45c.89.32 1.83.55 2.8.68A2 2 0 0 1 22 16.92z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          &nbsp;Phone
-        </div>
+        <div class="label">Phone</div>
         <div>
-          <a class="stealth-link copy" data-copy="+1-520-388-0345" href="tel:+15203880345">+1-520-388-0345</a>
-          <button class="copy-btn" data-copy="+1-520-388-0345" aria-label="Copy phone">Copy</button>
+          <a class="copy" data-copy="+1-520-388-0345" href="tel:+15203880345">+1-520-388-0345</a>
+          <button class="copy-btn" data-copy="+1-520-388-0345">Copy</button>
         </div>
 
-        <div class="label">
-          <!-- mail icon -->
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" style="vertical-align:-3px"><path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z" stroke="currentColor" stroke-width="2"/><path d="m22 6-10 7L2 6" stroke="currentColor" stroke-width="2"/></svg>
-          &nbsp;Email
-        </div>
+        <div class="label">Email</div>
         <div>
-          <a class="stealth-link copy" data-copy="shubnakhod29@gmail.com" href="mailto:shubnakhod29@gmail.com">shubnakhod29@gmail.com</a>
-          <button class="copy-btn" data-copy="shubnakhod29@gmail.com" aria-label="Copy email">Copy</button>
+          <a class="copy" data-copy="shubnakhod29@gmail.com" href="mailto:shubnakhod29@gmail.com">shubnakhod29@gmail.com</a>
+          <button class="copy-btn" data-copy="shubnakhod29@gmail.com">Copy</button>
         </div>
 
-        <div class="label">
-          <!-- github icon -->
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style="vertical-align:-3px"><path d="M12 .5A11.5 11.5 0 0 0 .5 12.4c0 5.27 3.42 9.73 8.17 11.3.6.1.82-.27.82-.6v-2.2c-3.32.73-4.03-1.44-4.03-1.44-.55-1.4-1.34-1.77-1.34-1.77-1.1-.76.09-.74.09-.74 1.22.09 1.87 1.26 1.87 1.26 1.08 1.87 2.83 1.33 3.52 1.02.11-.8.42-1.33.76-1.64-2.65-.31-5.44-1.36-5.44-6.05 0-1.34.47-2.45 1.24-3.32-.12-.3-.54-1.56.12-3.25 0 0 1-.33 3.3 1.26a11.3 11.3 0 0 1 6 0c2.3-1.59 3.29-1.26 3.29-1.26.66 1.69.24 2.95.12 3.25.77.87 1.24 1.98 1.24 3.32 0 4.7-2.79 5.73-5.45 6.04.44.38.82 1.12.82 2.26v3.35c0 .33.22.71.83.6A11.5 11.5 0 0 0 23.5 12.4 11.5 11.5 0 0 0 12 .5z"/></svg>
-          &nbsp;GitHub
-        </div>
-        <div><a class="stealth-link" href="https://github.com/ShubhamNakhod" target="_blank" rel="noopener">ShubhamNakhod</a></div>
+        <div class="label">GitHub</div>
+        <div><a href="https://github.com/ShubhamNakhod" target="_blank" rel="noopener">ShubhamNakhod</a></div>
 
-        <div class="label">
-          <!-- linkedin icon -->
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style="vertical-align:-3px"><path d="M4.98 3.5C4.98 4.88 3.88 6 2.5 6A2.5 2.5 0 1 1 4.98 3.5zM3 8h3v13H3zM9 8h2.9v1.7h.04c.4-.76 1.4-1.56 2.88-1.56 3.08 0 3.64 2.03 3.64 4.66V21H15v-6.2c0-1.48-.03-3.38-2.06-3.38-2.06 0-2.38 1.61-2.38 3.27V21H9z"/></svg>
-          &nbsp;LinkedIn
-        </div>
-        <div><a class="stealth-link" href="https://www.linkedin.com/in/shubham-nakhod-926914195/" target="_blank" rel="noopener">/in/shubham-nakhod-926914195/</a></div>
+        <div class="label">LinkedIn</div>
+        <div><a href="https://www.linkedin.com/in/shubham-nakhod-926914195/" target="_blank" rel="noopener">/in/shubham-nakhod-926914195/</a></div>
       </div>
     </section>
   </main>
 
   <footer>© <span id="yr"></span> Shubham Nakhod</footer>
-  <button class="totop" id="totop" type="button" aria-label="Back to top">Top</button>
+  <button class="totop" id="totop" type="button">Top</button>
 
   <script>
-    // Year + back-to-top visibility
+    // Year + back-to-top
     document.getElementById('yr').textContent = new Date().getFullYear();
     const totop = document.getElementById('totop');
-    window.addEventListener('scroll', () => {
-      totop.classList.toggle('show', window.scrollY > 600);
-    });
-    totop.addEventListener('click', () => window.scrollTo({top:0, behavior:'smooth'}));
+    window.addEventListener('scroll', () => totop.classList.toggle('show', window.scrollY > 600));
+    totop.addEventListener('click', () => window.scrollTo({top:0,behavior:'smooth'}));
 
     // Progress bar
     const prog = document.getElementById('progress');
-    const upd = () => {
-      const h = document.documentElement;
-      const sc = h.scrollTop || document.body.scrollTop;
-      const max = (h.scrollHeight - h.clientHeight) || 1;
-      prog.style.transform = `scaleX(${sc / max})`;
-    };
-    window.addEventListener('scroll', upd); upd();
+    window.addEventListener('scroll', () => {
+      const h=document.documentElement, sc=h.scrollTop, max=h.scrollHeight-h.clientHeight;
+      prog.style.transform=`scaleX(${sc/max})`;
+    });
 
     // Theme toggle (persist)
     (function theme(){
-      const btn = document.getElementById('themeToggle');
-      const key='themePref';
+      const btn=document.getElementById('themeToggle'), key='themePref';
       const apply = m => document.body.dataset.theme = m || '';
       apply(localStorage.getItem(key));
       btn.addEventListener('click', () => {
-        const cur = localStorage.getItem(key);
-        const next = cur === 'light' ? 'dark' : 'light';
-        localStorage.setItem(key, next); apply(next);
+        const cur=localStorage.getItem(key), next = cur==='light' ? 'dark' : 'light';
+        localStorage.setItem(key,next); apply(next);
       });
     })();
 
     // Typewriter
     (function typer(){
-      const el = document.getElementById('tw');
-      const lines = [
-        'Machine Learning Engineer',
-        'Agentic AI & LLM Tooling',
-        'MLOps · FastAPI · Docker',
-        'Applied ML · PyTorch · TensorFlow'
-      ];
+      const el=document.getElementById('tw');
+      const lines=['Machine Learning Engineer','Agentic AI & LLM Tooling','MLOps · FastAPI · Docker','Applied ML · PyTorch · TensorFlow'];
       let i=0,pos=0,dir=1,hold=0;
       function tick(){
-        const t = lines[i];
-        if(dir===1){ pos++; if(pos===t.length){ dir=-1; hold=12; } }
-        else { if(hold>0) hold--; else { pos--; if(pos===0){ dir=1; i=(i+1)%lines.length; } } }
-        el.textContent = t.slice(0,pos);
+        const t=lines[i];
+        if(dir===1){pos++;if(pos===t.length){dir=-1;hold=12;}}
+        else{if(hold>0)hold--;else{pos--;if(pos===0){dir=1;i=(i+1)%lines.length;}}}
+        el.textContent=t.slice(0,pos);
         setTimeout(tick,45);
       }
       tick();
@@ -363,12 +320,12 @@
 
     // Filters + search
     (function filters(){
-      const btns = document.querySelectorAll('.filter-btn');
-      const cards = document.querySelectorAll('#grid .card');
-      const q = document.getElementById('q');
+      const btns=document.querySelectorAll('.filter-btn');
+      const cards=[...document.querySelectorAll('#grid .card')];
+      const q=document.getElementById('q');
       const apply=()=>{
-        const f = document.querySelector('.filter-btn.active')?.dataset.filter || 'all';
-        const term = (q.value||'').toLowerCase();
+        const f=document.querySelector('.filter-btn.active')?.dataset.filter || 'all';
+        const term=(q.value||'').toLowerCase();
         cards.forEach(c=>{
           const matchF = f==='all' || (c.dataset.tags||'').split(' ').includes(f);
           const txt = (c.dataset.title+' '+c.textContent).toLowerCase();
@@ -380,45 +337,11 @@
       window.addEventListener('keydown',e=>{ if(e.key==='/'){ e.preventDefault(); q.focus(); q.select(); }});
     })();
 
-    // Copy buttons + tiny confetti
-    function confetti(x,y){
-      const n=16; const frag=document.createDocumentFragment();
-      for(let i=0;i<n;i++){
-        const s=document.createElement('span');
-        s.style.cssText=`position:fixed;left:${x}px;top:${y}px;width:6px;height:6px;transform:translate(-50%,-50%);background:hsl(${Math.random()*360},90%,60%);border-radius:2px;pointer-events:none;z-index:200;`;
-        const dx=(Math.random()-0.5)*160, dy=(Math.random()-0.8)*220, rot=Math.random()*720;
-        s.animate([{transform:`translate(0,0) rotate(0deg)`},{transform:`translate(${dx}px,${dy}px) rotate(${rot}deg)`,opacity:0}],{duration:800+Math.random()*400,easing:'cubic-bezier(.2,.8,.2,1)',fill:'forwards'});
-        frag.appendChild(s); setTimeout(()=>s.remove(),1200);
-      }
-      document.body.appendChild(frag);
-    }
+    // Copy buttons
     document.querySelectorAll('.copy, .copy-btn').forEach(el=>{
-      el.addEventListener('click',e=>{
-        const text = el.dataset.copy || el.textContent.trim();
-        if(navigator.clipboard) navigator.clipboard.writeText(text);
-        const r = el.getBoundingClientRect(); confetti(r.left+r.width/2, r.top);
-      });
-    });
-
-    // Magnetic tilt follow
-    document.querySelectorAll('.card').forEach(card=>{
-      card.addEventListener('mousemove',e=>{
-        const r=card.getBoundingClientRect();
-        const x=(e.clientX - r.left - r.width/2)/r.width;
-        const y=(e.clientY - r.top - r.height/2)/r.height;
-        card.style.transform=`perspective(600px) rotateY(${x*6}deg) rotateX(${y*-6}deg) translateY(-2px)`;
-      });
-      card.addEventListener('mouseleave',()=>card.style.transform='');
-    });
-
-    // Collapse toggles
-    document.querySelectorAll('.section-toggle').forEach(btn=>{
-      btn.addEventListener('click',()=>{
-        const sec = btn.closest('section');
-        const collapsed = sec.dataset.collapsed==='1';
-        [...sec.children].forEach((n,i)=>{ if(i>0) n.style.display = collapsed ? '' : 'none'; });
-        sec.dataset.collapsed = collapsed ? '0':'1';
-        btn.textContent = collapsed ? 'Collapse':'Expand';
+      el.addEventListener('click',()=>{
+        const text=el.dataset.copy;
+        if (navigator.clipboard) navigator.clipboard.writeText(text);
       });
     });
   </script>
