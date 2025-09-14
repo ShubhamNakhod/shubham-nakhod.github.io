@@ -6,107 +6,116 @@
   <title>Shubham Nakhod | ML Engineer</title>
 
   <!-- SEO -->
-  <meta name="description" content="Portfolio and résumé of Shubham Nakhod — Machine Learning Engineer (Agentic AI, MLOps, Applied ML).">
+  <meta name="description" content="Portfolio of Shubham Nakhod — Machine Learning Engineer (Agentic AI, MLOps, Applied ML).">
   <link rel="canonical" href="https://shubham-nakhod.github.io/">
 
-  <!-- Open Graph -->
+  <!-- Social -->
   <meta property="og:title" content="Shubham Nakhod | ML Engineer">
-  <meta property="og:description" content="Agentic AI • MLOps • Applied Machine Learning">
-  <meta property="og:type" content="website">
+  <meta property="og:description" content="Agentic AI • MLOps • Applied ML">
   <meta property="og:url" content="https://shubham-nakhod.github.io/">
+  <meta property="og:type" content="website">
   <meta property="og:image" content="Photo.png">
-
-  <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Shubham Nakhod | ML Engineer">
-  <meta name="twitter:description" content="Agentic AI • MLOps • Applied Machine Learning">
-  <meta name="twitter:image" content="Photo.png">
 
-  <!-- Favicon -->
   <link rel="icon" href="favicon.ico">
 
   <style>
     :root{
-      --bg:#f7f8fb; --card:#ffffff; --ink:#111827; --muted:#6b7280;
-      --accent:#22364a; --line:#e5e7eb; --link:#1f6feb; --chip:#eef2ff;
+      --bg:#f7f8fb; --card:#ffffff; --ink:#101827; --muted:#6b7280;
+      --accent:#1f2f45; --line:#e5e7eb; --link:#1f6feb; --chip:#eef2ff;
       --shadow:0 6px 20px rgba(0,0,0,.08);
+      --accent-grad: linear-gradient(135deg,#2c3e50,#4b6584);
     }
     @media (prefers-color-scheme: dark){
       :root{
         --bg:#0b1220; --card:#0f172a; --ink:#e5e7eb; --muted:#94a3b8;
-        --accent:#7aa2ff; --line:#1f2a44; --link:#8ab4ff; --chip:#111b33;
+        --accent:#89a7ff; --line:#1e293b; --link:#8ab4ff; --chip:#111b33;
         --shadow:0 6px 24px rgba(0,0,0,.35);
+        --accent-grad: linear-gradient(135deg,#0a1220,#1f2f45);
       }
     }
-
     *{box-sizing:border-box}
     html{scroll-behavior:smooth}
-    body{
-      margin:0; font-family:system-ui,-apple-system,Segoe UI,Inter,Roboto,Helvetica,Arial,sans-serif;
-      background:var(--bg); color:var(--ink); line-height:1.65;
-    }
-
-    .skip{position:absolute; left:-9999px; top:auto; width:1px; height:1px; overflow:hidden}
-    .skip:focus{left:16px; top:12px; width:auto; height:auto; background:#fff; color:#000; padding:8px 12px; border-radius:8px}
+    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Inter,Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.65}
 
     /* Nav */
-    .nav{ position:sticky; top:0; z-index:20; backdrop-filter:saturate(140%) blur(6px);
-          background:rgba(255,255,255,.75); border-bottom:1px solid var(--line); }
-    @media (prefers-color-scheme: dark){ .nav{ background:rgba(8,13,25,.65) } }
-    .nav-inner{ max-width:1100px; margin:auto; padding:.6rem 1rem;
-                display:flex; align-items:center; justify-content:space-between; }
-    .brand{font-weight:800}
-    .nav a{ color:var(--ink); text-decoration:none; font-weight:600; margin-left:1rem;
-            padding:.35rem .5rem; border-radius:8px }
-    .nav a.active{ outline:2px solid var(--link); outline-offset:2px }
-    .nav a:hover{ color:var(--link) }
+    .nav{position:sticky;top:0;z-index:30;backdrop-filter:saturate(140%) blur(6px);background:rgba(255,255,255,.75);border-bottom:1px solid var(--line)}
+    @media (prefers-color-scheme: dark){.nav{background:rgba(8,13,25,.6)}}
+    .nav-inner{max-width:1120px;margin:auto;padding:.6rem 1rem;display:flex;align-items:center;justify-content:space-between;gap:1rem}
+    .brand{font-weight:800;letter-spacing:.2px}
+    .nav a{color:var(--ink);text-decoration:none;font-weight:600;margin-left:1rem;padding:.35rem .5rem;border-radius:8px}
+    .nav a:hover{color:var(--link)}
+    .toggle{border:1px solid var(--line);background:transparent;color:var(--ink);padding:.35rem .6rem;border-radius:10px;cursor:pointer;font-weight:600}
 
-    /* Toggle */
-    .toggle{ border:1px solid var(--line); background:transparent; color:var(--ink);
-             padding:.35rem .6rem; border-radius:10px; cursor:pointer; font-weight:600 }
-
-    /* Header */
-    header{ background:linear-gradient(135deg,#2c3e50,#4b6584); color:#fff; padding:46px 16px 38px }
-    .hero{ max-width:1100px; margin:auto; display:flex; align-items:center; gap:24px; flex-wrap:wrap }
-    .profile-pic{ width:156px; height:156px; border-radius:50%; object-fit:cover;
-                  border:4px solid #fff; box-shadow:0 4px 14px rgba(0,0,0,.25); }
-    .hero-text{ flex:1; min-width:260px }
-    .title{ font-size:2.05rem; margin:0 0 6px 0; font-weight:800 }
-    .subtitle{ margin:0 0 10px 0; font-weight:500 }
-    .contact{ font-size:.95rem }
-    .contact a{ color:#fff; text-underline-offset:3px }
-    .contact a:hover{ text-decoration:underline }
+    /* Header (parallax-ish background) */
+    header{position:relative;color:#fff;padding:56px 16px 44px;overflow:hidden}
+    header::before{
+      content:"";position:absolute;inset:-10% -10% 0 -10%;background:var(--accent-grad);
+      transform:translateY(calc(var(--scrollY,0) * -0.2px)); /* parallax */
+      z-index:-1;
+    }
+    .hero{max-width:1120px;margin:auto;display:flex;align-items:center;gap:24px;flex-wrap:wrap}
+    .profile-pic{width:160px;height:160px;border-radius:50%;object-fit:cover;border:4px solid #fff;box-shadow:0 6px 18px rgba(0,0,0,.28)}
+    .hero-text{flex:1;min-width:280px}
+    .title{font-size:2.15rem;margin:0 0 6px 0;font-weight:900;letter-spacing:.2px}
+    .subtitle{margin:0 0 10px 0;font-weight:600;min-height:1.6em}
+    .subtitle .caret{display:inline-block;width:8px;background:#fff;margin-left:2px;animation:blink 1s steps(1) infinite}
+    @keyframes blink{50%{opacity:0}}
+    .contact{font-size:.97rem}
+    .contact a{color:#fff;text-underline-offset:3px}
+    .contact a:hover{text-decoration:underline}
+    .badge{display:inline-block;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);padding:.22rem .55rem;border-radius:999px;margin-right:.35rem}
 
     /* Main + sections */
-    main{ max-width:1100px; margin:30px auto; padding:0 16px }
-    section{ background:var(--card); border:1px solid var(--line);
-             border-radius:14px; padding:22px; margin-bottom:18px; box-shadow:var(--shadow) }
-    section h2{ margin:0 0 12px 0; font-size:1.18rem; color:var(--accent) }
+    main{max-width:1120px;margin:30px auto;padding:0 16px}
+    section{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px;margin-bottom:18px;box-shadow:var(--shadow);transform:translateY(10px);opacity:0;transition:.5s ease}
+    section.show{transform:none;opacity:1}
+    section h2{margin:0 0 12px 0;font-size:1.18rem;color:var(--accent);display:flex;align-items:center;justify-content:space-between}
+    .section-toggle{border:none;background:transparent;color:var(--link);font-weight:700;cursor:pointer}
 
-    .list{ padding-left:1.1rem } .list li{ margin:.35rem 0 }
-    .chips{ display:flex; flex-wrap:wrap; gap:.4rem; margin-top:.45rem }
-    .chip{ background:var(--chip); border:1px solid #dbeafe; color:#1e3a8a;
-           padding:.18rem .55rem; border-radius:999px; font-size:.82rem }
-    @media (prefers-color-scheme: dark){ .chip{ border-color:#233a6b; color:#c7d2fe } }
+    .list{padding-left:1.1rem} .list li{margin:.35rem 0}
+    .chips{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.45rem}
+    .chip{background:var(--chip);border:1px solid #dbeafe;color:#1e3a8a;padding:.18rem .55rem;border-radius:999px;font-size:.82rem}
+    @media (prefers-color-scheme: dark){.chip{border-color:#233a6b;color:#c7d2fe}}
 
-    /* Projects */
-    .grid{ display:grid; gap:14px; grid-template-columns:repeat(auto-fit,minmax(270px,1fr)) }
-    .card{ border:1px solid var(--line); background:var(--card); border-radius:12px;
-           padding:16px; display:grid; gap:.4rem; transition:.2s }
-    .card:hover{ transform:translateY(-3px); box-shadow:0 10px 28px rgba(0,0,0,.12); border-color:#c7d2fe }
-    .card h3{ margin:.1rem 0; font-size:1.03rem }
-    .card p{ margin:.1rem 0; color:var(--muted); font-size:.95rem }
-    .card a{ color:var(--link); text-decoration:none; font-weight:700 }
-    .card a:hover{ text-decoration:underline }
+    /* Project filters */
+    .filters{display:flex;flex-wrap:wrap;gap:.5rem;margin:0 0 10px}
+    .filter-btn{border:1px solid var(--line);background:#fff;color:#111;padding:.25rem .6rem;border-radius:999px;cursor:pointer;font-weight:600}
+    @media (prefers-color-scheme: dark){.filter-btn{background:#0f172a;color:#e5e7eb}}
+    .filter-btn.active{outline:2px solid #a7c4ff;outline-offset:2px}
 
-    footer{ text-align:center; color:var(--muted); padding:28px 16px }
+    /* Projects grid & cards */
+    .grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(270px,1fr))}
+    .card{border:1px solid var(--line);background:var(--card);border-radius:12px;padding:16px;display:grid;gap:.4rem;transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease;cursor:pointer}
+    .card:hover{transform:translateY(-3px);box-shadow:0 10px 28px rgba(0,0,0,.12);border-color:#c7d2fe}
+    .card h3{margin:.1rem 0;font-size:1.03rem}
+    .card p{margin:.1rem 0;color:var(--muted);font-size:.95rem}
+    .card a{color:var(--link);text-decoration:none;font-weight:700}
+
+    /* Modal */
+    .modal{position:fixed;inset:0;background:rgba(0,0,0,.55);display:none;align-items:center;justify-content:center;padding:20px}
+    .modal.open{display:flex}
+    .modal-card{max-width:720px;width:100%;background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);padding:18px}
+    .modal-head{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:8px}
+    .close{border:1px solid var(--line);background:transparent;padding:.25rem .5rem;border-radius:8px;cursor:pointer}
+
+    footer{text-align:center;color:var(--muted);padding:28px 16px}
+    .hint{font-size:.9rem;color:var(--muted)}
+    .tool{border:1px dashed var(--line);border-radius:8px;padding:.2rem .45rem}
+
+    /* Tooltip copy */
+    .copy{position:relative}
+    .copy::after{
+      content:attr(data-tip);position:absolute;top:-30px;left:50%;transform:translateX(-50%);
+      background:#111;color:#fff;padding:.25rem .45rem;border-radius:6px;font-size:.8rem;opacity:0;pointer-events:none;transition:.2s
+    }
+    .copy.showtip::after{opacity:1}
   </style>
 </head>
 <body>
-  <a class="skip" href="#main">Skip to content</a>
 
-  <!-- Top nav -->
-  <nav class="nav">
+  <!-- NAV -->
+  <nav class="nav" aria-label="Primary">
     <div class="nav-inner">
       <div class="brand">Shubham Nakhod</div>
       <div>
@@ -115,136 +124,308 @@
         <a href="#experience">Experience</a>
         <a href="#education">Education</a>
         <a href="#contact">Contact</a>
-        <button id="themeToggle" class="toggle">Theme</button>
+        <button id="themeToggle" class="toggle" type="button" aria-label="Toggle theme">Theme</button>
       </div>
     </div>
   </nav>
 
-  <!-- Hero -->
-  <header>
+  <!-- HEADER -->
+  <header role="banner" id="top">
     <div class="hero">
-      <img src="Photo.png" alt="Portrait of Shubham Nakhod" class="profile-pic">
+      <img src="Photo.png" alt="Portrait of Shubham Nakhod" class="profile-pic" loading="lazy" decoding="async">
       <div class="hero-text">
         <h1 class="title">Shubham Nakhod</h1>
-        <p class="subtitle">Machine Learning Engineer — Agentic AI · MLOps · Applied Machine Learning</p>
-        <p class="contact">
-          Tucson, AZ |
-          <a href="tel:+15205550123">+1-520-555-0123</a> |
-          <a href="mailto:shubnakhod29@gmail.com">shubnakhod29@gmail.com</a> |
-          <a href="https://github.com/ShubhamNakhod">GitHub</a> |
-          <a href="https://www.linkedin.com/in/shubham-nakhod-926914195/">LinkedIn</a>
+        <p class="subtitle">
+          <span id="typewrite"></span><span class="caret">&nbsp;</span>
         </p>
+        <p class="contact">
+          <span class="badge">Tucson, AZ</span>
+          <a class="copy" id="copyPhone" data-tip="Copied!" href="tel:+15203880345">+1-520-388-0345</a> |
+          <a class="copy" id="copyEmail" data-tip="Copied!" href="mailto:shubnakhod29@gmail.com">shubnakhod29@gmail.com</a> |
+          <a href="https://github.com/ShubhamNakhod" target="_blank" rel="noopener">GitHub</a> |
+          <a href="https://www.linkedin.com/in/shubham-nakhod-926914195/" target="_blank" rel="noopener">LinkedIn</a>
+        </p>
+        <p class="hint">Tip: press <span class="tool">/</span> to focus search and filter projects.</p>
       </div>
     </div>
   </header>
 
-  <main id="main">
-    <!-- Projects -->
-    <section id="projects">
-      <h2>Selected Projects</h2>
-      <div class="grid">
-        <article class="card">
-          <h3><a href="https://github.com/ShubhamNakhod/Kelly-Criterion-Betting-Simulator">Kelly-Criterion-Betting-Simulator</a></h3>
-          <p>Monte Carlo simulator for optimal bet sizing (Kelly), bankroll dynamics, drawdowns, and risk of ruin.</p>
-          <div class="chips"><span class="chip">Python</span><span class="chip">Monte Carlo</span></div>
-        </article>
-        <article class="card">
-          <h3><a href="https://github.com/ShubhamNakhod/Limit-Order-Book-Simulator-Market-Making-Strategy">Limit-Order-Book Simulator + MM Strategy</a></h3>
-          <p>LOB engine, rule-based market maker with inventory skew and PnL; interactive dashboard.</p>
-          <div class="chips"><span class="chip">Python</span><span class="chip">Dash</span></div>
-        </article>
-        <article class="card">
-          <h3><a href="https://github.com/ShubhamNakhod/Monte_Carlo_Simulation_for_Stock_Price_Prediction">Monte Carlo Stock Price Simulation</a></h3>
-          <p>Simulates 1,000 GBM paths for S&amp;P 500 with yfinance; visualizes probabilistic outcomes.</p>
-          <div class="chips"><span class="chip">Jupyter</span><span class="chip">NumPy</span></div>
-        </article>
-        <article class="card">
-          <h3><a href="https://github.com/ShubhamNakhod/Simulating-Stock-Market-Markov-Chain">Stock-Market via Markov Chains</a></h3>
-          <p>State-based simulations with transition matrices; explores regimes and dynamics.</p>
-          <div class="chips"><span class="chip">Python</span><span class="chip">Markov</span></div>
-        </article>
-        <article class="card">
-          <h3><a href="https://github.com/ShubhamNakhod/Portfolio-Risk-vs.-Expected-Return">Efficient Frontier</a></h3>
-          <p>Generates 10k random portfolios to plot risk vs return and identify efficient frontier points.</p>
-          <div class="chips"><span class="chip">Python</span><span class="chip">Finance</span></div>
-        </article>
-        <article class="card">
-          <h3><a href="https://github.com/ShubhamNakhod/Predicting-Loan-Defaults-with-Machine-Learning-">Predicting Loan Defaults</a></h3>
-          <p>End-to-end ML for credit risk classification; model comparison and evaluation.</p>
+  <main id="main" tabindex="-1">
+
+    <!-- PROJECTS -->
+    <section id="projects" aria-labelledby="projects-h">
+      <h2 id="projects-h">
+        Selected Projects
+        <button class="section-toggle" type="button" data-target="#projects">Collapse</button>
+      </h2>
+
+      <div class="filters">
+        <button class="filter-btn active" data-filter="all" type="button">All</button>
+        <button class="filter-btn" data-filter="ml" type="button">ML</button>
+        <button class="filter-btn" data-filter="trading" type="button">Trading</button>
+        <button class="filter-btn" data-filter="mlops" type="button">MLOps</button>
+        <input id="search" type="search" placeholder="Search projects..." style="margin-left:auto;min-width:200px;padding:.35rem .55rem;border:1px solid var(--line);border-radius:8px;background:var(--card);color:var(--ink)">
+      </div>
+
+      <div class="grid" id="projectGrid">
+        <article class="card" data-tags="mlops ml" data-title="Predicting Loan Defaults">
+          <h3>Predicting Loan Defaults</h3>
+          <p>Credit risk classification; features, model comparison, evaluation.</p>
           <div class="chips"><span class="chip">Scikit-learn</span><span class="chip">ML</span></div>
+          <a href="https://github.com/ShubhamNakhod/Predicting-Loan-Defaults-with-Machine-Learning-" target="_blank" rel="noopener">Open repo</a>
+        </article>
+
+        <article class="card" data-tags="trading ml" data-title="Limit-Order-Book Simulator + MM Strategy">
+          <h3>Limit-Order-Book Simulator + MM Strategy</h3>
+          <p>LOB engine, rule-based market maker; inventory & PnL tracking; dashboard.</p>
+          <div class="chips"><span class="chip">Python</span><span class="chip">Dash</span></div>
+          <a href="https://github.com/ShubhamNakhod/Limit-Order-Book-Simulator-Market-Making-Strategy" target="_blank" rel="noopener">Open repo</a>
+        </article>
+
+        <article class="card" data-tags="trading" data-title="Kelly-Criterion Betting Simulator">
+          <h3>Kelly-Criterion Betting Simulator</h3>
+          <p>Monte Carlo bankroll dynamics, optimal bet sizing, risk of ruin.</p>
+          <div class="chips"><span class="chip">Python</span><span class="chip">Monte Carlo</span></div>
+          <a href="https://github.com/ShubhamNakhod/Kelly-Criterion-Betting-Simulator" target="_blank" rel="noopener">Open repo</a>
+        </article>
+
+        <article class="card" data-tags="ml" data-title="Monte Carlo Stock Price Simulation">
+          <h3>Monte Carlo Stock Price Simulation</h3>
+          <p>1,000 GBM paths on S&amp;P 500 with yfinance; outcome distributions.</p>
+          <div class="chips"><span class="chip">Jupyter</span><span class="chip">NumPy</span></div>
+          <a href="https://github.com/ShubhamNakhod/Monte_Carlo_Simulation_for_Stock_Price_Prediction" target="_blank" rel="noopener">Open repo</a>
+        </article>
+
+        <article class="card" data-tags="ml" data-title="Stock-Market via Markov Chains">
+          <h3>Stock-Market via Markov Chains</h3>
+          <p>State-based simulations; transition matrices; regime dynamics.</p>
+          <div class="chips"><span class="chip">Python</span><span class="chip">Markov</span></div>
+          <a href="https://github.com/ShubhamNakhod/Simulating-Stock-Market-Markov-Chain" target="_blank" rel="noopener">Open repo</a>
+        </article>
+
+        <article class="card" data-tags="ml trading" data-title="Efficient Frontier">
+          <h3>Efficient Frontier</h3>
+          <p>10k random portfolios; risk vs return; frontier visualization.</p>
+          <div class="chips"><span class="chip">Pandas</span><span class="chip">NumPy</span></div>
+          <a href="https://github.com/ShubhamNakhod/Portfolio-Risk-vs.-Expected-Return" target="_blank" rel="noopener">Open repo</a>
         </article>
       </div>
     </section>
 
-    <!-- Skills -->
-    <section id="skills">
-      <h2>Technical Skills</h2>
+    <!-- SKILLS -->
+    <section id="skills" aria-labelledby="skills-h">
+      <h2 id="skills-h">
+        Technical Skills
+        <button class="section-toggle" type="button" data-target="#skills">Collapse</button>
+      </h2>
       <p><b>Languages & Tools:</b> Python, SQL, FastAPI, Docker, GitHub Actions, Streamlit</p>
       <p><b>ML/AI:</b> Scikit-learn, PyTorch, TensorFlow, Hugging Face, LangChain, CrewAI</p>
       <p><b>MLOps & Cloud:</b> MLflow, AWS SageMaker, GCP Vertex AI, CI/CD, Monitoring</p>
       <p><b>Core CS:</b> Data Structures & Algorithms (120+ LeetCode), System Design basics</p>
     </section>
 
-    <!-- Experience -->
-    <section id="experience">
-      <h2>Professional Experience</h2>
+    <!-- EXPERIENCE -->
+    <section id="experience" aria-labelledby="exp-h">
+      <h2 id="exp-h">
+        Professional Experience
+        <button class="section-toggle" type="button" data-target="#experience">Collapse</button>
+      </h2>
       <p><b>HSBC — Traded Risk Analyst</b> | Krakow, Poland | Apr 2023 – Aug 2023<br>
-         Automated monitoring workflows with Python + SQL (−90% false alerts). Built stress-test pipelines.</p>
+        Automated monitoring workflows with Python + SQL (−90% false alerts). Built stress-test pipelines.</p>
       <p><b>Goldman Sachs (via Deloitte) — Equities Support Analyst</b> | Warsaw, Poland | Apr 2022 – Mar 2023<br>
-         Automated P&amp;L reconciliation (~30% efficiency gain). Supported pricing & risk data pipelines.</p>
+        Automated P&amp;L reconciliation (~30% efficiency gain). Supported pricing & risk data pipelines.</p>
       <p><b>Credit Suisse — Analyst, Data & Trade Support</b> | Wroclaw, Poland | Sep 2021 – Mar 2022<br>
-         Python reconciliation scripts (98% match rates). Improved booking data pipelines.</p>
+        Python reconciliation scripts (98% match rates). Improved booking data pipelines.</p>
       <p><b>BNP Paribas — Fund Accounting Intern</b> | Warsaw, Poland | Jun 2021 – Sep 2021<br>
-         Automated NAV workflows with VBA + Python (−20% reporting time). Produced NAVs for &gt;$2B AUM.</p>
+        Automated NAV workflows with VBA + Python (−20% reporting time). Produced NAVs for &gt;$2B AUM.</p>
     </section>
 
-    <!-- Education -->
-    <section id="education">
-      <h2>Education</h2>
+    <!-- EDUCATION -->
+    <section id="education" aria-labelledby="edu-h">
+      <h2 id="edu-h">
+        Education
+        <button class="section-toggle" type="button" data-target="#education">Collapse</button>
+      </h2>
       <p><b>University of Arizona</b> — M.S. Information Science (ML/AI Track) | Expected Dec 2025 | GPA 3.8/4.0<br>
-      Coursework: Machine Learning, Deep Learning, Data Mining, MLOps, Distributed Systems</p>
+        Coursework: Machine Learning, Deep Learning, Data Mining, MLOps, Distributed Systems</p>
       <p><b>University of Mumbai</b> — B.S. Financial Markets (2016–2019) | GPA 7.6/10</p>
     </section>
 
-    <!-- Achievements -->
-    <section id="achievements">
-      <h2>Achievements & Role Fit</h2>
-      <ul class="list">
-        <li>120+ coding problems (LeetCode, HackerRank)</li>
-        <li>4 production-grade ML/AI projects with deployment & monitoring</li>
-        <li>Presented Agentic AI & MLOps work at University of Arizona ML Showcase 2025</li>
-      </ul>
-      <p><b>Target Roles:</b> ML Engineer, AI Engineer, Applied Scientist, Data Scientist (ML-focused)</p>
-    </section>
-
-    <!-- Contact -->
-    <section id="contact">
-      <h2>Contact</h2>
-      <p>Phone: <a href="tel:+15205550123">+1-520-555-0123</a><br>
-         Email: <a href="mailto:shubnakhod29@gmail.com">shubnakhod29@gmail.com</a><br>
-         GitHub: <a href="https://github.com/ShubhamNakhod">ShubhamNakhod</a><br>
-         LinkedIn: <a href="https://www.linkedin.com/in/shubham-nakhod-926914195/">/in/shubham-nakhod-926914195/</a></p>
+    <!-- CONTACT -->
+    <section id="contact" aria-labelledby="contact-h">
+      <h2 id="contact-h">
+        Contact
+        <button class="section-toggle" type="button" data-target="#contact">Collapse</button>
+      </h2>
+      <p>Phone: <a class="copy" id="copyPhone2" data-tip="Copied!" href="tel:+15203880345">+1-520-388-0345</a><br>
+         Email: <a class="copy" id="copyEmail2" data-tip="Copied!" href="mailto:shubnakhod29@gmail.com">shubnakhod29@gmail.com</a><br>
+         GitHub: <a href="https://github.com/ShubhamNakhod" target="_blank" rel="noopener">ShubhamNakhod</a><br>
+         LinkedIn: <a href="https://www.linkedin.com/in/shubham-nakhod-926914195/" target="_blank" rel="noopener">/in/shubham-nakhod-926914195/</a></p>
     </section>
   </main>
 
   <footer>
-    © 2025 Shubham Nakhod
+    © <span id="yr"></span> Shubham Nakhod
   </footer>
 
+  <!-- Modal -->
+  <div class="modal" id="modal" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="modal-card">
+      <div class="modal-head">
+        <h3 id="modalTitle" style="margin:0"></h3>
+        <button class="close" id="closeModal" type="button" aria-label="Close">Close</button>
+      </div>
+      <div id="modalBody" style="color:var(--muted)"></div>
+    </div>
+  </div>
+
   <script>
-    // Theme toggle persistence
-    const btn = document.getElementById('themeToggle');
-    const key = 'themePref';
-    const apply = (mode) => {
-      document.body.dataset.theme = mode || '';
-    };
-    apply(localStorage.getItem(key));
-    btn.addEventListener('click', () => {
-      const cur = localStorage.getItem(key);
-      const next = cur === 'dark' ? 'light' : 'dark';
-      localStorage.setItem(key, next);
-      apply(next);
+    // Dynamic year
+    document.getElementById('yr').textContent = new Date().getFullYear();
+
+    // Parallax header background (lightweight)
+    window.addEventListener('scroll', () => {
+      document.documentElement.style.setProperty('--scrollY', String(window.scrollY));
     });
+
+    // Theme toggle (persist)
+    (function theme(){
+      const btn = document.getElementById('themeToggle');
+      const key='themePref';
+      const apply = (mode) => document.body.dataset.theme = mode || '';
+      apply(localStorage.getItem(key));
+      btn.addEventListener('click', () => {
+        const cur = localStorage.getItem(key);
+        const next = cur === 'dark' ? 'light' : 'dark';
+        localStorage.setItem(key, next); apply(next);
+      });
+    })();
+
+    // Typewriter rotating roles
+    (function typer(){
+      const el = document.getElementById('typewrite');
+      const lines = [
+        'Machine Learning Engineer',
+        'Agentic AI & LLMs',
+        'MLOps • FastAPI • Docker',
+        'Applied ML • PyTorch • TensorFlow'
+      ];
+      let i=0, pos=0, dir=1, hold=0;
+      function tick(){
+        const txt = lines[i];
+        if(dir===1){ // typing
+          pos++;
+          if(pos===txt.length){ dir=-1; hold=12; }
+        } else { // deleting
+          if(hold>0){ hold--; }
+          else { pos--; if(pos===0){ dir=1; i=(i+1)%lines.length; } }
+        }
+        el.textContent = txt.slice(0,pos);
+        requestAnimationFrame(()=>setTimeout(tick, 45));
+      }
+      tick();
+    })();
+
+    // Reveal sections on scroll
+    (function reveal(){
+      const obs = new IntersectionObserver((entries)=>{
+        entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('show'); obs.unobserve(e.target);} });
+      }, {threshold: .12});
+      document.querySelectorAll('section').forEach(s => obs.observe(s));
+    })();
+
+    // Section collapse/expand
+    document.querySelectorAll('.section-toggle').forEach(btn=>{
+      btn.addEventListener('click', ()=>{
+        const sec = btn.closest('section');
+        if(!sec) return;
+        const bodyNodes = Array.from(sec.children).filter(n=>n.tagName!=='H2');
+        const collapsed = sec.dataset.collapsed === '1';
+        if(collapsed){
+          bodyNodes.forEach(n=>n.style.display='');
+          btn.textContent='Collapse';
+          sec.dataset.collapsed = '0';
+        } else {
+          bodyNodes.forEach(n=>n.style.display='none');
+          btn.textContent='Expand';
+          sec.dataset.collapsed = '1';
+        }
+      });
+    });
+
+    // Copy-to-clipboard with tooltip
+    function makeCopyTip(id){
+      const el = document.getElementById(id);
+      if(!el) return;
+      el.addEventListener('click', (e)=>{
+        // If it's a link, still allow calling; only copy when modifier pressed or long tap?
+        e.preventDefault();
+        const text = el.textContent.trim();
+        navigator.clipboard.writeText(text).then(()=>{
+          el.classList.add('showtip');
+          setTimeout(()=>el.classList.remove('showtip'), 900);
+          // Also navigate (so mobile users can still dial/email)
+          if(el.href && el.href.startsWith('tel:')) window.location.href = el.href;
+          if(el.href && el.href.startsWith('mailto:')) window.location.href = el.href;
+        });
+      });
+    }
+    ['copyPhone','copyEmail','copyPhone2','copyEmail2'].forEach(makeCopyTip);
+
+    // Project filters + search
+    (function filters(){
+      const btns = document.querySelectorAll('.filter-btn');
+      const cards = document.querySelectorAll('#projectGrid .card');
+      const q = document.getElementById('search');
+      function apply(){
+        const active = document.querySelector('.filter-btn.active')?.dataset.filter || 'all';
+        const term = (q.value||'').toLowerCase().trim();
+        cards.forEach(c=>{
+          const tags = c.dataset.tags || '';
+          const title = (c.dataset.title||'').toLowerCase();
+          const text = c.textContent.toLowerCase();
+          const matchFilter = active==='all' || tags.split(' ').includes(active);
+          const matchSearch = !term || title.includes(term) || text.includes(term);
+          c.style.display = (matchFilter && matchSearch) ? '' : 'none';
+        });
+      }
+      btns.forEach(b=>b.addEventListener('click', ()=>{
+        btns.forEach(x=>x.classList.remove('active')); b.classList.add('active'); apply();
+      }));
+      q.addEventListener('input', apply);
+      // Quick focus with "/"
+      window.addEventListener('keydown', (e)=>{ if(e.key==='/'){ e.preventDefault(); q.focus(); q.select(); } });
+      apply();
+    })();
+
+    // Project modal (open on card click, copy content)
+    (function modal(){
+      const modal = document.getElementById('modal');
+      const titleEl = document.getElementById('modalTitle');
+      const bodyEl = document.getElementById('modalBody');
+      const close = document.getElementById('closeModal');
+      function open(card){
+        titleEl.textContent = card.querySelector('h3')?.textContent || 'Project';
+        const desc = card.querySelector('p')?.textContent || '';
+        const link = card.querySelector('a')?.href || '#';
+        bodyEl.innerHTML = `<p>${desc}</p><p><a href="${link}" target="_blank" rel="noopener">Open GitHub Repo</a></p>`;
+        modal.classList.add('open');
+        modal.setAttribute('aria-hidden','false');
+      }
+      function closeM(){
+        modal.classList.remove('open');
+        modal.setAttribute('aria-hidden','true');
+      }
+      document.querySelectorAll('#projectGrid .card').forEach(c=>{
+        c.addEventListener('click', (e)=>{
+          if(e.target.tagName === 'A') return; // let link clicks pass through
+          open(c);
+        });
+      });
+      close.addEventListener('click', closeM);
+      modal.addEventListener('click', (e)=>{ if(e.target===modal) closeM(); });
+      window.addEventListener('keydown', (e)=>{ if(e.key==='Escape') closeM(); });
+    })();
   </script>
 </body>
 </html>
