@@ -1,288 +1,514 @@
-<!DOCTYPE html>
-<html lang="en" data-theme="light">
+<!doctype html>
+<html lang="en" data-theme="dark">
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Shubham Nakhod — ML Engineer</title>
+<title>Shubham Ravindra Nakhod — ML Engineer</title>
 <meta name="description" content="Shubham Nakhod — Machine Learning Engineer (Agentic AI, MLOps, Applied ML)." />
 <style>
   /* ---------- Theme tokens ---------- */
   :root{
-    --bg:#f6f8fc; --pane:#ffffff; --ink:#0f172a; --muted:#5b6577; --line:#e6eaf0;
-    --brand:#1f6feb; --brand2:#0ea5e9; --chip:#eef4ff; --chip-brd:#dbe7ff; --chip-ink:#1e3a8a;
-    --max:1180px; --shadow:0 10px 28px rgba(16,24,40,.06);
+    --bg:#0b1220; --pane:#0f172a; --ink:#e7ebf4; --muted:#9aa6bb; --line:#182033;
+    --brand:#86b0ff; --brand2:#22c9a5; --accent:#2dd4bf;
+    --card-radius:14px; --shadow:0 14px 28px rgba(0,0,0,.45);
+    --max:1180px;
   }
-  html[data-theme="dark"]{
-    --bg:#0b1220; --pane:#0f172a; --ink:#e7ebf4; --muted:#99a4b3; --line:#1a2742;
-    --brand:#86b0ff; --brand2:#22c9a5; --chip:#132341; --chip-brd:#243a60; --chip-ink:#c7d2fe;
-    --shadow:0 14px 28px rgba(0,0,0,.30);
+  html[data-theme="light"]{
+    --bg:#f6f8fc; --pane:#ffffff; --ink:#0f172a; --muted:#5b6577; --line:#e6eaf0;
+    --brand:#1f6feb; --brand2:#0ea5e9; --accent:#059669;
+    --card-radius:12px; --shadow:0 10px 22px rgba(16,24,40,.06);
   }
 
   *{box-sizing:border-box}
   html{scroll-behavior:smooth}
-  body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6}
+  body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--ink);-webkit-font-smoothing:antialiased}
   a{color:var(--brand);text-decoration:none}
   a:hover{text-decoration:underline}
-  .wrap{max-width:var(--max);margin:0 auto;padding:20px}
-  .nav{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:8px 0}
-  .brand{font-weight:800}
-  .nav-links{display:flex;gap:12px}
-  .btn{border:1px solid var(--line);background:var(--pane);padding:.45rem .7rem;border-radius:10px;font-weight:800}
-  .btn.primary{background:var(--brand);border-color:var(--brand);color:#fff}
-  section{margin:20px 0}
-  .card{background:var(--pane);border:1px solid var(--line);border-radius:12px;padding:18px;box-shadow:var(--shadow)}
+  .container{max-width:var(--max);margin:0 auto;padding:20px}
+  header.top{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 0}
+  .brand{font-weight:900}
+  .nav{display:flex;gap:12px;align-items:center}
+  .nav a{font-weight:700;padding:8px 10px;border-radius:8px}
+  .btn{display:inline-block;padding:.45rem .8rem;border-radius:10px;border:1px solid var(--line);background:transparent;color:var(--ink);font-weight:800}
+  .btn.primary{background:linear-gradient(90deg,var(--brand),var(--brand2));color:#fff;border:none}
+  .card{background:var(--pane);border-radius:var(--card-radius);box-shadow:var(--shadow);border:1px solid rgba(255,255,255,.02);padding:18px}
+  section{margin:22px 0}
 
-  /* hero split */
-  .hero{display:grid;grid-template-columns:1fr 360px;gap:18px;align-items:center}
-  @media (max-width:900px){.hero{grid-template-columns:1fr}}
-  .hero-left h1{font-size:2.1rem;margin:0 0 6px 0}
-  .tagline{color:var(--muted);margin-bottom:10px;line-height:1.5;min-height:2.2em}
-  .badges{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px}
-  .badge{background:var(--chip);border:1px solid var(--chip-brd);color:var(--chip-ink);padding:.2rem .6rem;border-radius:999px;font-weight:800}
+  /* HERO: split layout */
+  .hero{display:grid;grid-template-columns:1fr 340px;gap:18px;align-items:center}
+  @media (max-width:980px){.hero{grid-template-columns:1fr}}
+  .hero-left h1{font-size:2rem;margin:0 0 6px 0}
+  .tagline{color:var(--muted);line-height:1.45;margin-bottom:10px;min-height:3em}
+  .badges{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+  .badge{padding:.2rem .6rem;border-radius:999px;background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.03);font-weight:800;color:var(--brand2);font-size:.86rem}
 
-  .hero-right .photo{width:100%;border-radius:10px;overflow:hidden;border:1px solid var(--line)}
-  .hero-right .photo img{width:100%;height:100%;object-fit:cover;object-position:center 12%}
+  .hero-right .portrait{width:100%;height:100%;display:flex;align-items:center;justify-content:center}
+  .portrait .photo{width:220px;height:220px;border-radius:50%;overflow:hidden;border:6px solid rgba(255,255,255,.06);box-shadow:0 8px 26px rgba(0,0,0,.45);background:linear-gradient(180deg, rgba(255,255,255,.02), rgba(0,0,0,.15))}
+  .photo img{width:100%;height:100%;object-fit:cover;object-position:center 12%}
 
-  /* highlights */
-  .highlights{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:12px}
+  /* small info row */
+  .info-row{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-top:10px}
+  .pill{background:rgba(255,255,255,.02);padding:.25rem .6rem;border-radius:999px;border:1px solid rgba(255,255,255,.03);font-weight:800;color:var(--muted)}
+
+  /* Highlights */
+  .highlights{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:14px}
   @media (max-width:900px){.highlights{grid-template-columns:repeat(2,1fr)}}
-  .hl{background:var(--pane);border:1px solid var(--line);border-radius:10px;padding:12px;text-align:center}
+  .hl{padding:12px;border-radius:12px;background:linear-gradient(180deg,rgba(255,255,255,.01),transparent);border:1px solid rgba(255,255,255,.02)}
   .hl .n{font-weight:900;font-size:1.2rem}
 
   /* aligned resume grid */
   .resume-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
   @media (max-width:900px){.resume-grid{grid-template-columns:1fr}}
-  .entry{position:relative;border:1px solid var(--line);border-radius:10px;padding:12px;background:var(--pane)}
-  .entry .title{font-weight:800}
-  .entry .meta{color:var(--muted);font-size:.95rem;margin-bottom:6px}
+  .entry{background:linear-gradient(180deg,rgba(255,255,255,.01),transparent);border-radius:10px;padding:12px;border:1px solid rgba(255,255,255,.02)}
+  .entry .title{font-weight:900}
+  .entry .meta{color:var(--muted);font-size:.95rem;margin:8px 0}
 
-  /* skills bars */
+  /* skills */
   .skills-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-  @media (max-width:980px){.skills-grid{grid-template-columns:repeat(2,1fr)}}
+  @media (max-width:1000px){.skills-grid{grid-template-columns:repeat(2,1fr)}}
   @media (max-width:640px){.skills-grid{grid-template-columns:1fr}}
   .skill{margin:10px 0}
   .label{display:flex;justify-content:space-between;font-weight:800}
-  .bar{height:12px;border-radius:999px;background:#eef3fb;border:1px solid var(--line);overflow:hidden}
-  .fill{height:100%;width:0%;background:linear-gradient(90deg,var(--brand),var(--brand2))}
+  .bar{height:12px;border-radius:999px;background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.03);overflow:hidden}
+  .fill{height:100%;width:0%;background:linear-gradient(90deg,var(--brand),var(--brand2));transition:width 900ms cubic-bezier(.2,.9,.3,1)}
 
   /* projects */
-  .filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
-  .pill{background:var(--chip);border:1px solid var(--chip-brd);padding:.32rem .7rem;border-radius:999px;font-weight:800;cursor:pointer}
-  .pill.active{outline:2px solid var(--brand);outline-offset:2px}
-  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-  @media (max-width:1100px){.grid{grid-template-columns:repeat(2,1fr)}}
-  @media (max-width:740px){.grid{grid-template-columns:1fr}}
-  .proj{border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--pane);display:flex;flex-direction:column}
-  .thumb{aspect-ratio:16/9;background:#f2f6fb;width:100%}
+  .filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px}
+  .pill-btn{padding:.28rem .6rem;border-radius:999px;border:1px solid rgba(255,255,255,.03);background:transparent;font-weight:800;cursor:pointer;color:var(--muted)}
+  .pill-btn.active{outline:2px solid rgba(134,176,255,.18);background:rgba(134,176,255,.03);color:var(--brand)}
+  .proj-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+  @media (max-width:1100px){.proj-grid{grid-template-columns:repeat(2,1fr)}}
+  @media (max-width:720px){.proj-grid{grid-template-columns:1fr}}
+  .proj{border-radius:10px;overflow:hidden;border:1px solid rgba(255,255,255,.02);background:linear-gradient(180deg,rgba(255,255,255,.01),transparent);display:flex;flex-direction:column}
+  .thumb{aspect-ratio:16/9;background-size:cover;background-position:center}
   .pbody{padding:12px;display:flex;flex-direction:column;gap:8px;flex:1}
+  .meta{color:var(--muted);font-size:.92rem}
   .open{margin-top:auto}
 
   /* contact */
   .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
   @media (max-width:820px){.contact-grid{grid-template-columns:1fr}}
-  footer{text-align:center;color:var(--muted);margin-top:18px;padding:18px 0}
+  .contact-card{padding:12px;border-radius:10px;background:linear-gradient(180deg,rgba(255,255,255,.01),transparent);border:1px solid rgba(255,255,255,.02)}
+  footer{padding:18px;text-align:center;color:var(--muted);margin-top:10px}
+
+  /* small responsive tweaks */
+  @media (max-width:520px){
+    .hero-right .portrait .photo{width:160px;height:160px}
+    .hero{grid-template-columns:1fr}
+    .highlights{grid-template-columns:1fr 1fr}
+  }
+
+  /* focus */
+  :focus-visible{outline:2px solid var(--brand);outline-offset:3px;border-radius:6px}
 </style>
 </head>
 <body>
-  <div class="wrap">
-    <header class="nav" role="banner">
-      <div class="brand">Shubham Nakhod</div>
-      <nav class="nav-links" role="navigation" aria-label="Main">
-        <a href="#about">About</a>
-        <a href="#resume">Resume</a>
-        <a href="#skills">Skills</a>
-        <a href="#projects">Projects</a>
-        <a href="#contact">Contact</a>
-      </nav>
+
+<div class="container">
+
+  <!-- top nav -->
+  <header class="top" role="banner">
+    <div class="brand">Shubham Ravindra Nakhod</div>
+    <nav class="nav" aria-label="Main menu">
+      <a href="#about">About</a>
+      <a href="#resume">Resume</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div style="display:flex;gap:10px;align-items:center">
+      <button id="themeBtn" class="btn" aria-pressed="true">Toggle theme</button>
+      <a class="btn primary" href="resume.pdf" target="_blank" rel="noopener">Download Resume</a>
+    </div>
+  </header>
+
+  <!-- hero -->
+  <section id="about" class="hero">
+    <div class="hero-left card">
       <div>
-        <a class="btn" href="https://github.com/ShubhamNakhod" target="_blank" rel="noopener">GitHub</a>
-        <a class="btn primary" href="resume.pdf" target="_blank" rel="noopener">Resume</a>
-      </div>
-    </header>
-
-    <!-- HERO -->
-    <section id="about" class="hero">
-      <div class="hero-left card">
-        <div class="hero-left-inner">
-          <h1>Shubham Ravindra Nakhod</h1>
-          <div class="tagline">Building production ML systems — FastAPI · Agentic agents · MLOps</div>
-          <div class="badges">
-            <span class="badge">Python</span><span class="badge">SQL</span><span class="badge">FastAPI</span><span class="badge">Docker</span>
-            <span class="badge">LangChain</span><span class="badge">MLflow</span>
-          </div>
-
-          <p class="muted">Master’s student in Information Science (Machine Learning track) at the University of Arizona with ~2 years experience across ML automation, RAG/LLM pipelines, and data processing. Past roles: HSBC, Goldman Sachs (via Deloitte), Credit Suisse.</p>
-
-          <p style="margin-top:12px">
-            <a href="mailto:shubnakhod29@gmail.com">shubnakhod29@gmail.com</a> ·
-            <a href="tel:+15203880345">+1-520-388-0345</a> ·
-            <a href="https://www.linkedin.com/in/shubham-nakhod-926914195/" target="_blank" rel="noopener">LinkedIn</a>
-          </p>
+        <h1>Shubham Ravindra Nakhod</h1>
+        <!-- Summary set to your resume's summary -->
+        <div id="summary" class="tagline">
+          Master’s student in Information Science (Machine Learning) at the University of Arizona with ~2 years of professional experience in data analysis, quantitative modeling, and ML automation. Skilled in Python, SQL, MLOps, and applied machine learning (deep learning, NLP, anomaly detection, reinforcement learning). Experienced in deploying ML models with FastAPI, Docker, CI/CD, and monitoring; building RAG pipelines with LangChain and vector DBs; and productionizing ML workflows in cloud environments. Solved 300+ DSA problems and built multiple end-to-end ML/GenAI applications. Seeking ML Engineer, AI Engineer, or Applied Scientist roles.
         </div>
 
-        <div class="highlights" style="margin-top:14px">
+        <div class="badges" aria-hidden="true">
+          <span class="badge">Agentic AI</span>
+          <span class="badge">MLOps</span>
+          <span class="badge">FastAPI</span>
+          <span class="badge">LangChain</span>
+          <span class="badge">PyTorch</span>
+        </div>
+
+        <div class="info-row">
+          <div class="pill">Tucson, AZ</div>
+          <a class="pill" href="mailto:shubnakhod29@gmail.com">shubnakhod29@gmail.com</a>
+          <a class="pill" href="tel:+15203880345">+1-520-388-0345</a>
+          <a class="pill" href="https://www.linkedin.com/in/shubham-nakhod-926914195/" target="_blank" rel="noopener">LinkedIn</a>
+          <a class="pill" href="https://github.com/ShubhamNakhod" target="_blank" rel="noopener">GitHub</a>
+        </div>
+
+        <div class="highlights" style="margin-top:16px">
           <div class="hl"><div class="n">4</div><div class="m">prod-grade ML apps</div></div>
-          <div class="hl"><div class="n">120+</div><div class="m">DSA problems</div></div>
-          <div class="hl"><div class="n">300ms</div><div class="m">P95 fraud API</div></div>
-          <div class="hl"><div class="n">2025</div><div class="m">UA ML Showcase</div></div>
+          <div class="hl"><div class="n">300+</div><div class="m">DSA problems (total)</div></div>
+          <div class="hl"><div class="n">P95 &lt; 300ms</div><div class="m">fraud API</div></div>
+          <div class="hl"><div class="n">UA ML 2025</div><div class="m">Showcase</div></div>
         </div>
       </div>
+    </div>
 
-      <div class="hero-right">
-        <div class="photo card" style="height:100%;display:flex;align-items:center;justify-content:center">
-          <img src="Photo.png" alt="Professional headshot of Shubham Ravindra Nakhod" onerror="this.style.opacity='.6'">
-        </div>
+    <div class="hero-right">
+      <div class="portrait card" aria-hidden="true">
+        <div class="photo"><img src="Photo.png" alt="Professional headshot of Shubham Ravindra Nakhod" onerror="this.style.opacity='.6'"></div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- Resume aligned -->
-    <section id="resume">
-      <div class="card">
-        <h2>Resume</h2>
-        <div style="margin-top:12px" class="resume-grid">
-          <div>
-            <div class="entry">
-              <div class="title">HSBC — Traded Risk Analyst</div>
-              <div class="meta">Krakow, Poland · Apr 2023 – Aug 2023</div>
-              <ul>
-                <li>Automated monitoring workflows with Python + SQL (−90% false alerts).</li>
-                <li>Built stress-test reporting pipelines for derivative portfolios.</li>
-              </ul>
-            </div>
-
-            <div class="entry" style="margin-top:12px">
-              <div class="title">Goldman Sachs (via Deloitte) — Equities Support Analyst</div>
-              <div class="meta">Warsaw, Poland · Apr 2022 – Mar 2023</div>
-              <ul>
-                <li>Automated P&L reconciliation scripts in Python/Excel (~30% efficiency gain).</li>
-              </ul>
-            </div>
-          </div>
-
-          <div>
-            <div class="entry">
-              <div class="title">Credit Suisse — Analyst, Data & Trade Support</div>
-              <div class="meta">Wroclaw, Poland · Sep 2021 – Mar 2022</div>
-              <ul>
-                <li>Python reconciliation scripts; improved booking & reporting pipelines.</li>
-              </ul>
-            </div>
-
-            <div class="entry" style="margin-top:12px">
-              <div class="title">Education</div>
-              <div class="meta">University of Arizona — M.S. Information Science (ML/AI track) · Expected Dec 2025 · GPA 3.8/4.0</div>
-              <ul>
-                <li>Coursework: Machine Learning, Deep Learning, Data Mining, MLOps, Distributed Systems</li>
-                <li>University of Mumbai — B.S. Financial Markets (2016–2019)</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Skills -->
-    <section id="skills">
-      <div class="card">
-        <h2>Skills</h2>
-        <div class="skills-grid" style="margin-top:12px">
-          <div class="s-card">
-            <h3>Core ML / DS</h3>
-            <div class="skill"><div class="label"><span>Python</span><span>95%</span></div><div class="bar"><div class="fill" style="--pct:95%"></div></div></div>
-            <div class="skill"><div class="label"><span>Scikit-learn</span><span>90%</span></div><div class="bar"><div class="fill" style="--pct:90%"></div></div></div>
-            <div class="skill"><div class="label"><span>SQL</span><span>85%</span></div><div class="bar"><div class="fill" style="--pct:85%"></div></div></div>
-          </div>
-
-          <div class="s-card">
-            <h3>Deep Learning</h3>
-            <div class="skill"><div class="label"><span>PyTorch</span><span>90%</span></div><div class="bar"><div class="fill" style="--pct:90%"></div></div></div>
-            <div class="skill"><div class="label"><span>TensorFlow</span><span>70%</span></div><div class="bar"><div class="fill" style="--pct:70%"></div></div></div>
-            <div class="skill"><div class="label"><span>Hugging Face</span><span>80%</span></div><div class="bar"><div class="fill" style="--pct:80%"></div></div></div>
-          </div>
-
-          <div class="s-card">
-            <h3>MLOps & Tools</h3>
-            <div class="skill"><div class="label"><span>FastAPI / Docker</span><span>90%</span></div><div class="bar"><div class="fill" style="--pct:90%"></div></div></div>
-            <div class="skill"><div class="label"><span>GitHub Actions</span><span>85%</span></div><div class="bar"><div class="fill" style="--pct:85%"></div></div></div>
-            <div class="skill"><div class="label"><span>MLflow</span><span>80%</span></div><div class="bar"><div class="fill" style="--pct:80%"></div></div></div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Projects -->
-    <section id="projects">
-      <div class="card">
-        <h2>Projects</h2>
-        <div class="filters" style="margin-top:10px">
-          <button class="pill active" data-filter="all">All</button>
-          <button class="pill" data-filter="ml">ML</button>
-          <button class="pill" data-filter="trading">Trading</button>
-          <button class="pill" data-filter="mlops">MLOps</button>
-        </div>
-
-        <div class="grid" id="grid" style="margin-top:12px">
-          <article class="proj" data-tags="ml mlops">
-            <div class="thumb" style="background-image:url('fraud.png');background-size:cover;background-position:center"></div>
-            <div class="pbody">
-              <h3>Agentic Fraud Explanation Service</h3>
-              <p class="muted">FastAPI + XGBoost + LangChain + SHAP · P95 &lt; 300ms</p>
-              <p>Explains flagged transactions in plain English with SHAP drivers; CI/CD & monitoring.</p>
-              <div class="open"><a href="https://github.com/ShubhamNakhod" target="_blank" rel="noopener">Open repo →</a></div>
-            </div>
+  <!-- resume: aligned experience + education -->
+  <section id="resume">
+    <div class="card">
+      <h2 style="margin:0 0 8px 0">Experience & Education</h2>
+      <div class="resume-grid" style="margin-top:12px">
+        <div>
+          <article class="entry">
+            <div class="title">HSBC — Traded Risk Senior Analyst (CCR)</div>
+            <div class="meta">Krakow, Poland · Apr 2023 – Aug 2023</div>
+            <ul>
+              <li>Automated monitoring & reporting with Python + Excel; reduced false alerts by 90%.</li>
+              <li>Quantitative analysis on time-series data; built data pipelines to support ML.</li>
+            </ul>
           </article>
 
-          <article class="proj" data-tags="trading ml">
-            <div class="thumb" style="background-image:url('lob.png');background-size:cover;background-position:center"></div>
-            <div class="pbody">
-              <h3>Limit Order Book Simulator</h3>
-              <p class="muted">LOB engine · Rule-based MM · Dashboard</p>
-              <p>Interactive LOB, inventory skewing, P&L analysis and dashboards.</p>
-              <div class="open"><a href="https://github.com/ShubhamNakhod/Limit-Order-Book-Simulator-Market-Making-Strategy" target="_blank" rel="noopener">Open repo →</a></div>
-            </div>
+          <article class="entry" style="margin-top:12px">
+            <div class="title">Deloitte / Goldman Sachs — Trade Support Analyst (Equity Trade Support)</div>
+            <div class="meta">Warsaw, Poland · Apr 2022 – Mar 2023</div>
+            <ul>
+              <li>Built SQL/Python automations for cross-system reconciliation; improved workflow efficiency.</li>
+              <li>Investigated data anomalies and prepared root-cause reports for stakeholders.</li>
+            </ul>
+          </article>
+        </div>
+
+        <div>
+          <article class="entry">
+            <div class="title">Credit Suisse — Trade Management Analyst 2</div>
+            <div class="meta">Wroclaw, Poland · Sep 2021 – Mar 2022</div>
+            <ul>
+              <li>Managed trade lifecycle events, resolved data discrepancies, and automated reporting pipelines.</li>
+            </ul>
           </article>
 
-          <!-- add remaining project cards similarly -->
+          <article class="entry" style="margin-top:12px">
+            <div class="title">Education</div>
+            <div class="meta">University of Arizona — M.S. Information Science (Machine Learning) · Expected Dec 2025 · GPA 3.8/4.0</div>
+            <ul>
+              <li>Coursework includes advanced ML, NLP, RL, Bayesian modeling, optimization, and data science.</li>
+              <li>Flagship Project: Limit Order Book Simulator — matching engine, market-making strategy, dashboards.</li>
+              <li>University of Mumbai — B.S. Financial Markets · 2016–2019 · GPA 7.6/10</li>
+            </ul>
+          </article>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- Contact -->
-    <section id="contact">
-      <div class="card contact-grid">
-        <div class="c-card">
-          <h3>Contact</h3>
-          <p><b>Email:</b> <a href="mailto:shubnakhod29@gmail.com">shubnakhod29@gmail.com</a></p>
-          <p><b>Phone:</b> <a href="tel:+15203880345">+1-520-388-0345</a></p>
-          <p><b>Location:</b> Tucson, AZ</p>
+  <!-- skills -->
+  <section id="skills">
+    <div class="card">
+      <h2 style="margin:0 0 8px 0">Skills</h2>
+      <div class="skills-grid" style="margin-top:12px">
+        <div>
+          <h3 style="margin:0 0 8px 0">Core ML / Data</h3>
+          <div class="skill"><div class="label"><span>Python (NumPy, pandas)</span><span>95%</span></div><div class="bar"><div class="fill" style="--pct:95%"></div></div></div>
+          <div class="skill"><div class="label"><span>Scikit-learn · Feature engineering</span><span>90%</span></div><div class="bar"><div class="fill" style="--pct:90%"></div></div></div>
+          <div class="skill"><div class="label"><span>SQL</span><span>85%</span></div><div class="bar"><div class="fill" style="--pct:85%"></div></div></div>
         </div>
-        <div class="c-card">
-          <h3>Profiles</h3>
-          <p><b>GitHub:</b> <a href="https://github.com/ShubhamNakhod" target="_blank" rel="noopener">github.com/ShubhamNakhod</a></p>
-          <p><b>LinkedIn:</b> <a href="https://www.linkedin.com/in/shubham-nakhod-926914195/" target="_blank" rel="noopener">linkedin.com/in/shubham-nakhod-926914195</a></p>
-          <p><a class="btn" href="resume.pdf" target="_blank" rel="noopener">Download Resume</a></p>
+
+        <div>
+          <h3 style="margin:0 0 8px 0">Deep Learning & LLMs</h3>
+          <div class="skill"><div class="label"><span>PyTorch</span><span>90%</span></div><div class="bar"><div class="fill" style="--pct:90%"></div></div></div>
+          <div class="skill"><div class="label"><span>TensorFlow</span><span>70%</span></div><div class="bar"><div class="fill" style="--pct:70%"></div></div></div>
+          <div class="skill"><div class="label"><span>LangChain · RAG</span><span>85%</span></div><div class="bar"><div class="fill" style="--pct:85%"></div></div></div>
+        </div>
+
+        <div>
+          <h3 style="margin:0 0 8px 0">MLOps & Cloud</h3>
+          <div class="skill"><div class="label"><span>FastAPI · Docker</span><span>90%</span></div><div class="bar"><div class="fill" style="--pct:90%"></div></div></div>
+          <div class="skill"><div class="label"><span>GitHub Actions · CI/CD</span><span>85%</span></div><div class="bar"><div class="fill" style="--pct:85%"></div></div></div>
+          <div class="skill"><div class="label"><span>AWS SageMaker · GCP Vertex</span><span>70%</span></div><div class="bar"><div class="fill" style="--pct:70%"></div></div></div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <footer>© 2025 Shubham Nakhod</footer>
-  </div>
+  <!-- Projects: pulled from GitHub -->
+  <section id="projects">
+    <div class="card">
+      <h2 style="margin:0 0 8px 0">Projects (pulled from GitHub)</h2>
+
+      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px">
+        <button class="pill-btn active" data-filter="all" type="button">All</button>
+        <button class="pill-btn" data-filter="ml" type="button">ML</button>
+        <button class="pill-btn" data-filter="trading" type="button">Trading</button>
+        <button class="pill-btn" data-filter="mlops" type="button">MLOps</button>
+      </div>
+
+      <div id="projectsGrid" class="proj-grid" style="min-height:120px">
+        <!-- populated by JS -->
+        <div style="grid-column:1/-1;color:var(--muted)" id="projectsStatus">Loading projects from GitHub...</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- contact -->
+  <section id="contact">
+    <div class="card contact-grid">
+      <div class="contact-card">
+        <h3 style="margin-top:0">Contact</h3>
+        <p><b>Email:</b> <a href="mailto:shubnakhod29@gmail.com">shubnakhod29@gmail.com</a></p>
+        <p><b>Phone:</b> <a href="tel:+15203880345">+1-520-388-0345</a></p>
+        <p><b>Location:</b> Tucson, AZ</p>
+      </div>
+
+      <div class="contact-card">
+        <h3 style="margin-top:0">Profiles</h3>
+        <p><b>GitHub:</b> <a href="https://github.com/ShubhamNakhod" target="_blank" rel="noopener">github.com/ShubhamNakhod</a></p>
+        <p><b>LinkedIn:</b> <a href="https://www.linkedin.com/in/shubham-nakhod-926914195/" target="_blank" rel="noopener">linkedin.com/in/shubham-nakhod-926914195</a></p>
+        <p style="margin-top:12px"><a class="btn primary" href="resume.pdf" target="_blank" rel="noopener">Download Resume</a></p>
+      </div>
+    </div>
+  </section>
+
+  <footer>© <span id="year"></span> Shubham Ravindra Nakhod</footer>
+</div>
 
 <script>
-  // Year stamp
-  document.addEventListener('DOMContentLoaded', ()=>{ /* nothing else here for now */ });
+/* ========== UI setup ========== */
+document.getElementById('year').textContent = new Date().getFullYear();
 
-  // Simple project filter (works with the .pill / .proj data-tags)
-  const pills=document.querySelectorAll('.pill');
-  const cards=[...document.querySelectorAll('.proj')];
-  pills.forEach(p=>p.addEventListener('click', ()=>{
-    pills.forEach(x=>x.classList.remove('active')); p.classList.add('active');
-    const f=p.dataset.filter;
-    cards.forEach(c=>{
-      const tags=(c.dataset.tags||'').split(' ');
-      c.style.display = (f==='all' || tags.includes(f)) ? '' : 'none';
+/* theme toggle with persistence */
+const themeBtn = document.getElementById('themeBtn');
+function currentTheme(){ return document.documentElement.getAttribute('data-theme') || 'dark'; }
+function setTheme(t){
+  document.documentElement.setAttribute('data-theme', t);
+  localStorage.setItem('pref-theme', t);
+  themeBtn.textContent = t === 'dark' ? 'Switch to light' : 'Switch to dark';
+}
+const pref = localStorage.getItem('pref-theme');
+if(pref) setTheme(pref); else setTheme('dark');
+themeBtn.addEventListener('click', ()=> setTheme(currentTheme() === 'dark' ? 'light' : 'dark'));
+
+/* animate skill bars when visible */
+const fillEls = document.querySelectorAll('.fill');
+const obs = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      const fills = e.target.querySelectorAll('.fill');
+      fills.forEach(f=>{
+        const pct = f.style.getPropertyValue('--pct') || '0%';
+        f.style.width = pct;
+      });
+      obs.unobserve(e.target);
+    }
+  });
+},{threshold:0.25});
+document.querySelectorAll('.skills-grid').forEach(s=>obs.observe(s));
+
+/* simple project filtering */
+const projectGrid = document.getElementById('projectsGrid');
+const pills = Array.from(document.querySelectorAll('.pill-btn'));
+pills.forEach(p=>p.addEventListener('click', ()=>{
+  pills.forEach(x=>x.classList.remove('active'));
+  p.classList.add('active');
+  const f = p.dataset.filter;
+  const cards = Array.from(document.querySelectorAll('.proj'));
+  cards.forEach(c=>{
+    if(f === 'all') c.style.display = '';
+    else {
+      const tags = (c.dataset.tags || '').split(' ');
+      c.style.display = tags.includes(f) ? '' : 'none';
+    }
+  });
+}));
+
+/* ========== GitHub Projects fetch & render ========== */
+/*
+  This fetches public repos for your user and populates the grid.
+  It shows description, language, topics (if available) and updated date.
+  - If you want private repos listed, you'd need to add server-side token (not done here).
+*/
+async function fetchAndRenderRepos(username='ShubhamNakhod') {
+  const status = document.getElementById('projectsStatus');
+  status.textContent = 'Loading projects from GitHub...';
+  try{
+    const resp = await fetch(`https://api.github.com/users/${username}/repos?per_page=100&type=owner&sort=updated`);
+    if(!resp.ok) throw new Error(`GitHub API error ${resp.status}`);
+    const repos = await resp.json();
+    if(!Array.isArray(repos) || repos.length === 0){
+      status.textContent = 'No public repositories found.';
+      return;
+    }
+    // convert into cards
+    projectGrid.innerHTML = '';
+    // we prioritize repositories you care about by name order: if they exist, put first
+    const priority = [
+      'Agentic-Fraud-Explanation-Service',
+      'Kelly-Criterion-Betting-Simulator',
+      'Limit-Order-Book-Simulator-Market-Making-Strategy',
+      'Monte_Carlo_Simulation_for_Stock_Price_Prediction',
+      'Simulating-Stock-Market-Markov-Chain',
+      'Portfolio-Risk-vs.-Expected-Return',
+      'Predicting-Loan-Defaults-with-Machine-Learning-'
+    ];
+    // reorder: keep priority first (if present)
+    repos.sort((a,b)=>{
+      const ia = priority.indexOf(a.name);
+      const ib = priority.indexOf(b.name);
+      if(ia===-1 && ib===-1) return new Date(b.updated_at) - new Date(a.updated_at);
+      if(ia===-1) return 1;
+      if(ib===-1) return -1;
+      return ia - ib;
     });
-  }));
+
+    // create cards up to 50
+    let count = 0;
+    for(const r of repos){
+      if(count++ > 50) break;
+      const desc = r.description || '';
+      const lang = r.language || '';
+      // build a topics string if available (GitHub API v3 returns topics only if accept header; client fetch won't get topics by default).
+      // We'll try another call to get topics for repo (optional, limited).
+      // set thumbnail selection: if you added specific images (e.g., kelly.png), they will show automatically (we try known names)
+      const thumbCandidates = {
+        'Kelly-Criterion-Betting-Simulator':'kelly.png',
+        'Limit-Order-Book-Simulator-Market-Making-Strategy':'lob.png',
+        'Monte_Carlo_Simulation_for_Stock_Price_Prediction':'gbm.png',
+        'Simulating-Stock-Market-Markov-Chain':'markov.png',
+        'Portfolio-Risk-vs.-Expected-Return':'frontier.png',
+        'Predicting-Loan-Defaults-with-Machine-Learning-':'loan.png',
+        'Agentic-Fraud-Explanation-Service':'fraud.png'
+      };
+      const thumb = thumbCandidates[r.name] || null;
+
+      const card = document.createElement('article');
+      card.className = 'proj card';
+      card.dataset.tags = buildTagsFromRepo(r);
+      // thumb div
+      const thumbDiv = document.createElement('div');
+      thumbDiv.className = 'thumb';
+      if(thumb){
+        thumbDiv.style.backgroundImage = `url("${thumb}")`;
+      } else {
+        // if repo has homepage field, use it (not guaranteed). else fallback to GitHub repo avatar/owner avatar is not a repo image.
+        thumbDiv.style.backgroundImage = `linear-gradient(135deg, rgba(255,255,255,0.02), rgba(0,0,0,0.06))`;
+      }
+
+      const body = document.createElement('div');
+      body.className = 'pbody';
+
+      const h = document.createElement('h3');
+      h.textContent = r.name.replace(/[-_]/g,' ');
+      const md = document.createElement('div');
+      md.className = 'meta';
+      md.textContent = (lang ? lang + ' · ' : '') + `Updated ${new Date(r.updated_at).toLocaleDateString()}`;
+
+      const p = document.createElement('p');
+      p.textContent = desc;
+
+      const open = document.createElement('div');
+      open.className = 'open';
+      const a = document.createElement('a');
+      a.href = r.html_url;
+      a.target = '_blank';
+      a.rel = 'noopener';
+      a.textContent = 'Open repo →';
+
+      open.appendChild(a);
+      body.appendChild(h);
+      body.appendChild(md);
+      if(desc) body.appendChild(p);
+      body.appendChild(open);
+
+      card.appendChild(thumbDiv);
+      card.appendChild(body);
+      projectGrid.appendChild(card);
+    }
+
+    // done
+    if(projectGrid.children.length === 0){
+      projectGrid.innerHTML = '<div style="grid-column:1/-1;color:var(--muted)">No repos to display.</div>';
+    }
+    // remove status
+    const st = document.getElementById('projectsStatus');
+    if(st) st.remove();
+  } catch(err){
+    console.error(err);
+    const st = document.getElementById('projectsStatus');
+    if(st) st.textContent = 'Failed to load projects from GitHub. Showing manual fallback (if any).';
+    // fallback: show manual cards (hard-coded minimal set)
+    showFallbackProjects();
+  }
+}
+
+/* create basic tags from repo data so filtering has some signal */
+function buildTagsFromRepo(r){
+  const name = (r.name||'').toLowerCase();
+  const tags = new Set();
+  if(r.language) tags.add(r.language.toLowerCase());
+  if(name.includes('order')||name.includes('lob')||name.includes('market')) tags.add('trading');
+  if(name.includes('kelly')||name.includes('monte')||name.includes('portfolio')||name.includes('markov')) tags.add('ml');
+  if(name.includes('ml')||name.includes('predict')||name.includes('fraud')||name.includes('loan')||name.includes('predicting')) tags.add('ml');
+  if(name.includes('deploy')||name.includes('docker')||name.includes('mlflow')||name.includes('api')) tags.add('mlops');
+  return Array.from(tags).join(' ');
+}
+
+/* minimal fallback when fetch fails */
+function showFallbackProjects(){
+  const fallback = [
+    {name:'Kelly-Criterion-Betting-Simulator', desc:'Monte Carlo simulator for Kelly Criterion betting', url:'https://github.com/ShubhamNakhod/Kelly-Criterion-Betting-Simulator', tags:'trading ml', thumb:'kelly.png'},
+    {name:'Limit-Order-Book-Simulator-Market-Making-Strategy', desc:'LOB engine and market-making strategy', url:'https://github.com/ShubhamNakhod/Limit-Order-Book-Simulator-Market-Making-Strategy', tags:'trading ml', thumb:'lob.png'}
+  ];
+  projectGrid.innerHTML = '';
+  fallback.forEach(r=>{
+    const card = document.createElement('article'); card.className='proj card'; card.dataset.tags=r.tags;
+    const td = document.createElement('div'); td.className='thumb'; td.style.backgroundImage=`url("${r.thumb}")`;
+    const body = document.createElement('div'); body.className='pbody';
+    const h = document.createElement('h3'); h.textContent = r.name.replace(/[-_]/g,' ');
+    const md = document.createElement('div'); md.className='meta'; md.textContent = 'Manual fallback';
+    const p = document.createElement('p'); p.textContent=r.desc;
+    const open = document.createElement('div'); open.className='open';
+    const a = document.createElement('a'); a.href=r.url; a.target='_blank'; a.rel='noopener'; a.textContent='Open repo →';
+    open.appendChild(a);
+    body.appendChild(h); body.appendChild(md); body.appendChild(p); body.appendChild(open);
+    card.appendChild(td); card.appendChild(body); projectGrid.appendChild(card);
+  });
+}
+
+/* initial fetch */
+fetchAndRenderRepos();
+
+/* filtering behavior (works with dataset tags) */
+document.addEventListener('click', (e)=>{
+  if(!e.target.matches('.pill-btn')) return;
+  const filter = e.target.dataset.filter || 'all';
+  document.querySelectorAll('.pill-btn').forEach(b=>b.classList.remove('active'));
+  e.target.classList.add('active');
+  document.querySelectorAll('.proj').forEach(card=>{
+    if(filter === 'all') card.style.display = '';
+    else {
+      const tags = (card.dataset.tags||'').split(' ');
+      card.style.display = tags.includes(filter) ? '' : 'none';
+    }
+  });
+});
+
+/* accessibility: set focus style for nav anchors on keyboard */
+const navAnchors = document.querySelectorAll('.nav a');
+navAnchors.forEach(a => a.addEventListener('keydown', e => { if(e.key==='Enter') a.click(); }));
+
+/* small improvement: expand all skill fills later, in case user navigates before intersection */
+setTimeout(()=>{ document.querySelectorAll('.fill').forEach(f=>{ const pct = f.style.getPropertyValue('--pct') || '0%'; f.style.width = pct; }) }, 800);
+
 </script>
 </body>
 </html>
