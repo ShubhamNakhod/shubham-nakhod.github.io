@@ -1,250 +1,288 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Shubham Nakhod | ML Engineer</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Shubham Nakhod — ML Engineer</title>
+<meta name="description" content="Shubham Nakhod — Machine Learning Engineer (Agentic AI, MLOps, Applied ML)." />
+<style>
+  /* ---------- Theme tokens ---------- */
+  :root{
+    --bg:#f6f8fc; --pane:#ffffff; --ink:#0f172a; --muted:#5b6577; --line:#e6eaf0;
+    --brand:#1f6feb; --brand2:#0ea5e9; --chip:#eef4ff; --chip-brd:#dbe7ff; --chip-ink:#1e3a8a;
+    --max:1180px; --shadow:0 10px 28px rgba(16,24,40,.06);
+  }
+  html[data-theme="dark"]{
+    --bg:#0b1220; --pane:#0f172a; --ink:#e7ebf4; --muted:#99a4b3; --line:#1a2742;
+    --brand:#86b0ff; --brand2:#22c9a5; --chip:#132341; --chip-brd:#243a60; --chip-ink:#c7d2fe;
+    --shadow:0 14px 28px rgba(0,0,0,.30);
+  }
 
-  <!-- SEO -->
-  <meta name="description" content="Portfolio and résumé of Shubham Nakhod — Machine Learning Engineer (Agentic AI, MLOps, Applied ML).">
-  <link rel="canonical" href="https://shubham-nakhod.github.io/">
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6}
+  a{color:var(--brand);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .wrap{max-width:var(--max);margin:0 auto;padding:20px}
+  .nav{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:8px 0}
+  .brand{font-weight:800}
+  .nav-links{display:flex;gap:12px}
+  .btn{border:1px solid var(--line);background:var(--pane);padding:.45rem .7rem;border-radius:10px;font-weight:800}
+  .btn.primary{background:var(--brand);border-color:var(--brand);color:#fff}
+  section{margin:20px 0}
+  .card{background:var(--pane);border:1px solid var(--line);border-radius:12px;padding:18px;box-shadow:var(--shadow)}
 
-  <!-- Open Graph -->
-  <meta property="og:title" content="Shubham Nakhod | ML Engineer">
-  <meta property="og:description" content="Agentic AI • MLOps • Applied Machine Learning">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://shubham-nakhod.github.io/">
-  <meta property="og:image" content="Photo.png">
+  /* hero split */
+  .hero{display:grid;grid-template-columns:1fr 360px;gap:18px;align-items:center}
+  @media (max-width:900px){.hero{grid-template-columns:1fr}}
+  .hero-left h1{font-size:2.1rem;margin:0 0 6px 0}
+  .tagline{color:var(--muted);margin-bottom:10px;line-height:1.5;min-height:2.2em}
+  .badges{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px}
+  .badge{background:var(--chip);border:1px solid var(--chip-brd);color:var(--chip-ink);padding:.2rem .6rem;border-radius:999px;font-weight:800}
 
-  <!-- Twitter -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Shubham Nakhod | ML Engineer">
-  <meta name="twitter:description" content="Agentic AI • MLOps • Applied Machine Learning">
-  <meta name="twitter:image" content="Photo.png">
+  .hero-right .photo{width:100%;border-radius:10px;overflow:hidden;border:1px solid var(--line)}
+  .hero-right .photo img{width:100%;height:100%;object-fit:cover;object-position:center 12%}
 
-  <!-- Favicon -->
-  <link rel="icon" href="favicon.ico">
+  /* highlights */
+  .highlights{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:12px}
+  @media (max-width:900px){.highlights{grid-template-columns:repeat(2,1fr)}}
+  .hl{background:var(--pane);border:1px solid var(--line);border-radius:10px;padding:12px;text-align:center}
+  .hl .n{font-weight:900;font-size:1.2rem}
 
-  <style>
-    :root{
-      --bg:#f7f8fb; --card:#ffffff; --ink:#111827; --muted:#6b7280;
-      --accent:#22364a; --line:#e5e7eb; --link:#1f6feb; --chip:#eef2ff;
-      --shadow:0 6px 20px rgba(0,0,0,.08);
-    }
-    @media (prefers-color-scheme: dark){
-      :root{
-        --bg:#0b1220; --card:#0f172a; --ink:#e5e7eb; --muted:#94a3b8;
-        --accent:#7aa2ff; --line:#1f2a44; --link:#8ab4ff; --chip:#111b33;
-        --shadow:0 6px 24px rgba(0,0,0,.35);
-      }
-    }
+  /* aligned resume grid */
+  .resume-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  @media (max-width:900px){.resume-grid{grid-template-columns:1fr}}
+  .entry{position:relative;border:1px solid var(--line);border-radius:10px;padding:12px;background:var(--pane)}
+  .entry .title{font-weight:800}
+  .entry .meta{color:var(--muted);font-size:.95rem;margin-bottom:6px}
 
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    body{
-      margin:0; font-family:system-ui,-apple-system,Segoe UI,Inter,Roboto,Helvetica,Arial,sans-serif;
-      background:var(--bg); color:var(--ink); line-height:1.65;
-    }
+  /* skills bars */
+  .skills-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+  @media (max-width:980px){.skills-grid{grid-template-columns:repeat(2,1fr)}}
+  @media (max-width:640px){.skills-grid{grid-template-columns:1fr}}
+  .skill{margin:10px 0}
+  .label{display:flex;justify-content:space-between;font-weight:800}
+  .bar{height:12px;border-radius:999px;background:#eef3fb;border:1px solid var(--line);overflow:hidden}
+  .fill{height:100%;width:0%;background:linear-gradient(90deg,var(--brand),var(--brand2))}
 
-    .skip{position:absolute; left:-9999px; top:auto; width:1px; height:1px; overflow:hidden}
-    .skip:focus{left:16px; top:12px; width:auto; height:auto; background:#fff; color:#000; padding:8px 12px; border-radius:8px}
+  /* projects */
+  .filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+  .pill{background:var(--chip);border:1px solid var(--chip-brd);padding:.32rem .7rem;border-radius:999px;font-weight:800;cursor:pointer}
+  .pill.active{outline:2px solid var(--brand);outline-offset:2px}
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+  @media (max-width:1100px){.grid{grid-template-columns:repeat(2,1fr)}}
+  @media (max-width:740px){.grid{grid-template-columns:1fr}}
+  .proj{border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--pane);display:flex;flex-direction:column}
+  .thumb{aspect-ratio:16/9;background:#f2f6fb;width:100%}
+  .pbody{padding:12px;display:flex;flex-direction:column;gap:8px;flex:1}
+  .open{margin-top:auto}
 
-    /* Nav */
-    .nav{ position:sticky; top:0; z-index:20; backdrop-filter:saturate(140%) blur(6px);
-          background:rgba(255,255,255,.75); border-bottom:1px solid var(--line); }
-    @media (prefers-color-scheme: dark){ .nav{ background:rgba(8,13,25,.65) } }
-    .nav-inner{ max-width:1100px; margin:auto; padding:.6rem 1rem;
-                display:flex; align-items:center; justify-content:space-between; }
-    .brand{font-weight:800}
-    .nav a{ color:var(--ink); text-decoration:none; font-weight:600; margin-left:1rem;
-            padding:.35rem .5rem; border-radius:8px }
-    .nav a.active{ outline:2px solid var(--link); outline-offset:2px }
-    .nav a:hover{ color:var(--link) }
-
-    /* Toggle */
-    .toggle{ border:1px solid var(--line); background:transparent; color:var(--ink);
-             padding:.35rem .6rem; border-radius:10px; cursor:pointer; font-weight:600 }
-
-    /* Header */
-    header{ background:linear-gradient(135deg,#2c3e50,#4b6584); color:#fff; padding:46px 16px 38px }
-    .hero{ max-width:1100px; margin:auto; display:flex; align-items:center; gap:24px; flex-wrap:wrap }
-    .profile-pic{ width:156px; height:156px; border-radius:50%; object-fit:cover;
-                  border:4px solid #fff; box-shadow:0 4px 14px rgba(0,0,0,.25); }
-    .hero-text{ flex:1; min-width:260px }
-    .title{ font-size:2.05rem; margin:0 0 6px 0; font-weight:800 }
-    .subtitle{ margin:0 0 10px 0; font-weight:500 }
-    .contact{ font-size:.95rem }
-    .contact a{ color:#fff; text-underline-offset:3px }
-    .contact a:hover{ text-decoration:underline }
-
-    /* Main + sections */
-    main{ max-width:1100px; margin:30px auto; padding:0 16px }
-    section{ background:var(--card); border:1px solid var(--line);
-             border-radius:14px; padding:22px; margin-bottom:18px; box-shadow:var(--shadow) }
-    section h2{ margin:0 0 12px 0; font-size:1.18rem; color:var(--accent) }
-
-    .list{ padding-left:1.1rem } .list li{ margin:.35rem 0 }
-    .chips{ display:flex; flex-wrap:wrap; gap:.4rem; margin-top:.45rem }
-    .chip{ background:var(--chip); border:1px solid #dbeafe; color:#1e3a8a;
-           padding:.18rem .55rem; border-radius:999px; font-size:.82rem }
-    @media (prefers-color-scheme: dark){ .chip{ border-color:#233a6b; color:#c7d2fe } }
-
-    /* Projects */
-    .grid{ display:grid; gap:14px; grid-template-columns:repeat(auto-fit,minmax(270px,1fr)) }
-    .card{ border:1px solid var(--line); background:var(--card); border-radius:12px;
-           padding:16px; display:grid; gap:.4rem; transition:.2s }
-    .card:hover{ transform:translateY(-3px); box-shadow:0 10px 28px rgba(0,0,0,.12); border-color:#c7d2fe }
-    .card h3{ margin:.1rem 0; font-size:1.03rem }
-    .card p{ margin:.1rem 0; color:var(--muted); font-size:.95rem }
-    .card a{ color:var(--link); text-decoration:none; font-weight:700 }
-    .card a:hover{ text-decoration:underline }
-
-    footer{ text-align:center; color:var(--muted); padding:28px 16px }
-  </style>
+  /* contact */
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  @media (max-width:820px){.contact-grid{grid-template-columns:1fr}}
+  footer{text-align:center;color:var(--muted);margin-top:18px;padding:18px 0}
+</style>
 </head>
 <body>
-  <a class="skip" href="#main">Skip to content</a>
-
-  <!-- Top nav -->
-  <nav class="nav">
-    <div class="nav-inner">
+  <div class="wrap">
+    <header class="nav" role="banner">
       <div class="brand">Shubham Nakhod</div>
-      <div>
-        <a href="#projects">Projects</a>
+      <nav class="nav-links" role="navigation" aria-label="Main">
+        <a href="#about">About</a>
+        <a href="#resume">Resume</a>
         <a href="#skills">Skills</a>
-        <a href="#experience">Experience</a>
-        <a href="#education">Education</a>
+        <a href="#projects">Projects</a>
         <a href="#contact">Contact</a>
-        <button id="themeToggle" class="toggle">Theme</button>
+      </nav>
+      <div>
+        <a class="btn" href="https://github.com/ShubhamNakhod" target="_blank" rel="noopener">GitHub</a>
+        <a class="btn primary" href="resume.pdf" target="_blank" rel="noopener">Resume</a>
       </div>
-    </div>
-  </nav>
+    </header>
 
-  <!-- Hero -->
-  <header>
-    <div class="hero">
-      <img src="Photo.png" alt="Portrait of Shubham Nakhod" class="profile-pic">
-      <div class="hero-text">
-        <h1 class="title">Shubham Nakhod</h1>
-        <p class="subtitle">Machine Learning Engineer — Agentic AI · MLOps · Applied Machine Learning</p>
-        <p class="contact">
-          Tucson, AZ |
-          <a href="tel:+15205550123">+1-520-555-0123</a> |
-          <a href="mailto:shubnakhod29@gmail.com">shubnakhod29@gmail.com</a> |
-          <a href="https://github.com/ShubhamNakhod">GitHub</a> |
-          <a href="https://www.linkedin.com/in/shubham-nakhod-926914195/">LinkedIn</a>
-        </p>
+    <!-- HERO -->
+    <section id="about" class="hero">
+      <div class="hero-left card">
+        <div class="hero-left-inner">
+          <h1>Shubham Ravindra Nakhod</h1>
+          <div class="tagline">Building production ML systems — FastAPI · Agentic agents · MLOps</div>
+          <div class="badges">
+            <span class="badge">Python</span><span class="badge">SQL</span><span class="badge">FastAPI</span><span class="badge">Docker</span>
+            <span class="badge">LangChain</span><span class="badge">MLflow</span>
+          </div>
+
+          <p class="muted">Master’s student in Information Science (Machine Learning track) at the University of Arizona with ~2 years experience across ML automation, RAG/LLM pipelines, and data processing. Past roles: HSBC, Goldman Sachs (via Deloitte), Credit Suisse.</p>
+
+          <p style="margin-top:12px">
+            <a href="mailto:shubnakhod29@gmail.com">shubnakhod29@gmail.com</a> ·
+            <a href="tel:+15203880345">+1-520-388-0345</a> ·
+            <a href="https://www.linkedin.com/in/shubham-nakhod-926914195/" target="_blank" rel="noopener">LinkedIn</a>
+          </p>
+        </div>
+
+        <div class="highlights" style="margin-top:14px">
+          <div class="hl"><div class="n">4</div><div class="m">prod-grade ML apps</div></div>
+          <div class="hl"><div class="n">120+</div><div class="m">DSA problems</div></div>
+          <div class="hl"><div class="n">300ms</div><div class="m">P95 fraud API</div></div>
+          <div class="hl"><div class="n">2025</div><div class="m">UA ML Showcase</div></div>
+        </div>
       </div>
-    </div>
-  </header>
 
-  <main id="main">
-    <!-- Projects -->
-    <section id="projects">
-      <h2>Selected Projects</h2>
-      <div class="grid">
-        <article class="card">
-          <h3><a href="https://github.com/ShubhamNakhod/Kelly-Criterion-Betting-Simulator">Kelly-Criterion-Betting-Simulator</a></h3>
-          <p>Monte Carlo simulator for optimal bet sizing (Kelly), bankroll dynamics, drawdowns, and risk of ruin.</p>
-          <div class="chips"><span class="chip">Python</span><span class="chip">Monte Carlo</span></div>
-        </article>
-        <article class="card">
-          <h3><a href="https://github.com/ShubhamNakhod/Limit-Order-Book-Simulator-Market-Making-Strategy">Limit-Order-Book Simulator + MM Strategy</a></h3>
-          <p>LOB engine, rule-based market maker with inventory skew and PnL; interactive dashboard.</p>
-          <div class="chips"><span class="chip">Python</span><span class="chip">Dash</span></div>
-        </article>
-        <article class="card">
-          <h3><a href="https://github.com/ShubhamNakhod/Monte_Carlo_Simulation_for_Stock_Price_Prediction">Monte Carlo Stock Price Simulation</a></h3>
-          <p>Simulates 1,000 GBM paths for S&amp;P 500 with yfinance; visualizes probabilistic outcomes.</p>
-          <div class="chips"><span class="chip">Jupyter</span><span class="chip">NumPy</span></div>
-        </article>
-        <article class="card">
-          <h3><a href="https://github.com/ShubhamNakhod/Simulating-Stock-Market-Markov-Chain">Stock-Market via Markov Chains</a></h3>
-          <p>State-based simulations with transition matrices; explores regimes and dynamics.</p>
-          <div class="chips"><span class="chip">Python</span><span class="chip">Markov</span></div>
-        </article>
-        <article class="card">
-          <h3><a href="https://github.com/ShubhamNakhod/Portfolio-Risk-vs.-Expected-Return">Efficient Frontier</a></h3>
-          <p>Generates 10k random portfolios to plot risk vs return and identify efficient frontier points.</p>
-          <div class="chips"><span class="chip">Python</span><span class="chip">Finance</span></div>
-        </article>
-        <article class="card">
-          <h3><a href="https://github.com/ShubhamNakhod/Predicting-Loan-Defaults-with-Machine-Learning-">Predicting Loan Defaults</a></h3>
-          <p>End-to-end ML for credit risk classification; model comparison and evaluation.</p>
-          <div class="chips"><span class="chip">Scikit-learn</span><span class="chip">ML</span></div>
-        </article>
+      <div class="hero-right">
+        <div class="photo card" style="height:100%;display:flex;align-items:center;justify-content:center">
+          <img src="Photo.png" alt="Professional headshot of Shubham Ravindra Nakhod" onerror="this.style.opacity='.6'">
+        </div>
+      </div>
+    </section>
+
+    <!-- Resume aligned -->
+    <section id="resume">
+      <div class="card">
+        <h2>Resume</h2>
+        <div style="margin-top:12px" class="resume-grid">
+          <div>
+            <div class="entry">
+              <div class="title">HSBC — Traded Risk Analyst</div>
+              <div class="meta">Krakow, Poland · Apr 2023 – Aug 2023</div>
+              <ul>
+                <li>Automated monitoring workflows with Python + SQL (−90% false alerts).</li>
+                <li>Built stress-test reporting pipelines for derivative portfolios.</li>
+              </ul>
+            </div>
+
+            <div class="entry" style="margin-top:12px">
+              <div class="title">Goldman Sachs (via Deloitte) — Equities Support Analyst</div>
+              <div class="meta">Warsaw, Poland · Apr 2022 – Mar 2023</div>
+              <ul>
+                <li>Automated P&L reconciliation scripts in Python/Excel (~30% efficiency gain).</li>
+              </ul>
+            </div>
+          </div>
+
+          <div>
+            <div class="entry">
+              <div class="title">Credit Suisse — Analyst, Data & Trade Support</div>
+              <div class="meta">Wroclaw, Poland · Sep 2021 – Mar 2022</div>
+              <ul>
+                <li>Python reconciliation scripts; improved booking & reporting pipelines.</li>
+              </ul>
+            </div>
+
+            <div class="entry" style="margin-top:12px">
+              <div class="title">Education</div>
+              <div class="meta">University of Arizona — M.S. Information Science (ML/AI track) · Expected Dec 2025 · GPA 3.8/4.0</div>
+              <ul>
+                <li>Coursework: Machine Learning, Deep Learning, Data Mining, MLOps, Distributed Systems</li>
+                <li>University of Mumbai — B.S. Financial Markets (2016–2019)</li>
+              </ul>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
     <!-- Skills -->
     <section id="skills">
-      <h2>Technical Skills</h2>
-      <p><b>Languages & Tools:</b> Python, SQL, FastAPI, Docker, GitHub Actions, Streamlit</p>
-      <p><b>ML/AI:</b> Scikit-learn, PyTorch, TensorFlow, Hugging Face, LangChain, CrewAI</p>
-      <p><b>MLOps & Cloud:</b> MLflow, AWS SageMaker, GCP Vertex AI, CI/CD, Monitoring</p>
-      <p><b>Core CS:</b> Data Structures & Algorithms (120+ LeetCode), System Design basics</p>
+      <div class="card">
+        <h2>Skills</h2>
+        <div class="skills-grid" style="margin-top:12px">
+          <div class="s-card">
+            <h3>Core ML / DS</h3>
+            <div class="skill"><div class="label"><span>Python</span><span>95%</span></div><div class="bar"><div class="fill" style="--pct:95%"></div></div></div>
+            <div class="skill"><div class="label"><span>Scikit-learn</span><span>90%</span></div><div class="bar"><div class="fill" style="--pct:90%"></div></div></div>
+            <div class="skill"><div class="label"><span>SQL</span><span>85%</span></div><div class="bar"><div class="fill" style="--pct:85%"></div></div></div>
+          </div>
+
+          <div class="s-card">
+            <h3>Deep Learning</h3>
+            <div class="skill"><div class="label"><span>PyTorch</span><span>90%</span></div><div class="bar"><div class="fill" style="--pct:90%"></div></div></div>
+            <div class="skill"><div class="label"><span>TensorFlow</span><span>70%</span></div><div class="bar"><div class="fill" style="--pct:70%"></div></div></div>
+            <div class="skill"><div class="label"><span>Hugging Face</span><span>80%</span></div><div class="bar"><div class="fill" style="--pct:80%"></div></div></div>
+          </div>
+
+          <div class="s-card">
+            <h3>MLOps & Tools</h3>
+            <div class="skill"><div class="label"><span>FastAPI / Docker</span><span>90%</span></div><div class="bar"><div class="fill" style="--pct:90%"></div></div></div>
+            <div class="skill"><div class="label"><span>GitHub Actions</span><span>85%</span></div><div class="bar"><div class="fill" style="--pct:85%"></div></div></div>
+            <div class="skill"><div class="label"><span>MLflow</span><span>80%</span></div><div class="bar"><div class="fill" style="--pct:80%"></div></div></div>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <!-- Experience -->
-    <section id="experience">
-      <h2>Professional Experience</h2>
-      <p><b>HSBC — Traded Risk Analyst</b> | Krakow, Poland | Apr 2023 – Aug 2023<br>
-         Automated monitoring workflows with Python + SQL (−90% false alerts). Built stress-test pipelines.</p>
-      <p><b>Goldman Sachs (via Deloitte) — Equities Support Analyst</b> | Warsaw, Poland | Apr 2022 – Mar 2023<br>
-         Automated P&amp;L reconciliation (~30% efficiency gain). Supported pricing & risk data pipelines.</p>
-      <p><b>Credit Suisse — Analyst, Data & Trade Support</b> | Wroclaw, Poland | Sep 2021 – Mar 2022<br>
-         Python reconciliation scripts (98% match rates). Improved booking data pipelines.</p>
-      <p><b>BNP Paribas — Fund Accounting Intern</b> | Warsaw, Poland | Jun 2021 – Sep 2021<br>
-         Automated NAV workflows with VBA + Python (−20% reporting time). Produced NAVs for &gt;$2B AUM.</p>
-    </section>
+    <!-- Projects -->
+    <section id="projects">
+      <div class="card">
+        <h2>Projects</h2>
+        <div class="filters" style="margin-top:10px">
+          <button class="pill active" data-filter="all">All</button>
+          <button class="pill" data-filter="ml">ML</button>
+          <button class="pill" data-filter="trading">Trading</button>
+          <button class="pill" data-filter="mlops">MLOps</button>
+        </div>
 
-    <!-- Education -->
-    <section id="education">
-      <h2>Education</h2>
-      <p><b>University of Arizona</b> — M.S. Information Science (ML/AI Track) | Expected Dec 2025 | GPA 3.8/4.0<br>
-      Coursework: Machine Learning, Deep Learning, Data Mining, MLOps, Distributed Systems</p>
-      <p><b>University of Mumbai</b> — B.S. Financial Markets (2016–2019) | GPA 7.6/10</p>
-    </section>
+        <div class="grid" id="grid" style="margin-top:12px">
+          <article class="proj" data-tags="ml mlops">
+            <div class="thumb" style="background-image:url('fraud.png');background-size:cover;background-position:center"></div>
+            <div class="pbody">
+              <h3>Agentic Fraud Explanation Service</h3>
+              <p class="muted">FastAPI + XGBoost + LangChain + SHAP · P95 &lt; 300ms</p>
+              <p>Explains flagged transactions in plain English with SHAP drivers; CI/CD & monitoring.</p>
+              <div class="open"><a href="https://github.com/ShubhamNakhod" target="_blank" rel="noopener">Open repo →</a></div>
+            </div>
+          </article>
 
-    <!-- Achievements -->
-    <section id="achievements">
-      <h2>Achievements & Role Fit</h2>
-      <ul class="list">
-        <li>120+ coding problems (LeetCode, HackerRank)</li>
-        <li>4 production-grade ML/AI projects with deployment & monitoring</li>
-        <li>Presented Agentic AI & MLOps work at University of Arizona ML Showcase 2025</li>
-      </ul>
-      <p><b>Target Roles:</b> ML Engineer, AI Engineer, Applied Scientist, Data Scientist (ML-focused)</p>
+          <article class="proj" data-tags="trading ml">
+            <div class="thumb" style="background-image:url('lob.png');background-size:cover;background-position:center"></div>
+            <div class="pbody">
+              <h3>Limit Order Book Simulator</h3>
+              <p class="muted">LOB engine · Rule-based MM · Dashboard</p>
+              <p>Interactive LOB, inventory skewing, P&L analysis and dashboards.</p>
+              <div class="open"><a href="https://github.com/ShubhamNakhod/Limit-Order-Book-Simulator-Market-Making-Strategy" target="_blank" rel="noopener">Open repo →</a></div>
+            </div>
+          </article>
+
+          <!-- add remaining project cards similarly -->
+        </div>
+      </div>
     </section>
 
     <!-- Contact -->
     <section id="contact">
-      <h2>Contact</h2>
-      <p>Phone: <a href="tel:+15205550123">+1-520-555-0123</a><br>
-         Email: <a href="mailto:shubnakhod29@gmail.com">shubnakhod29@gmail.com</a><br>
-         GitHub: <a href="https://github.com/ShubhamNakhod">ShubhamNakhod</a><br>
-         LinkedIn: <a href="https://www.linkedin.com/in/shubham-nakhod-926914195/">/in/shubham-nakhod-926914195/</a></p>
+      <div class="card contact-grid">
+        <div class="c-card">
+          <h3>Contact</h3>
+          <p><b>Email:</b> <a href="mailto:shubnakhod29@gmail.com">shubnakhod29@gmail.com</a></p>
+          <p><b>Phone:</b> <a href="tel:+15203880345">+1-520-388-0345</a></p>
+          <p><b>Location:</b> Tucson, AZ</p>
+        </div>
+        <div class="c-card">
+          <h3>Profiles</h3>
+          <p><b>GitHub:</b> <a href="https://github.com/ShubhamNakhod" target="_blank" rel="noopener">github.com/ShubhamNakhod</a></p>
+          <p><b>LinkedIn:</b> <a href="https://www.linkedin.com/in/shubham-nakhod-926914195/" target="_blank" rel="noopener">linkedin.com/in/shubham-nakhod-926914195</a></p>
+          <p><a class="btn" href="resume.pdf" target="_blank" rel="noopener">Download Resume</a></p>
+        </div>
+      </div>
     </section>
-  </main>
 
-  <footer>
-    © 2025 Shubham Nakhod
-  </footer>
+    <footer>© 2025 Shubham Nakhod</footer>
+  </div>
 
-  <script>
-    // Theme toggle persistence
-    const btn = document.getElementById('themeToggle');
-    const key = 'themePref';
-    const apply = (mode) => {
-      document.body.dataset.theme = mode || '';
-    };
-    apply(localStorage.getItem(key));
-    btn.addEventListener('click', () => {
-      const cur = localStorage.getItem(key);
-      const next = cur === 'dark' ? 'light' : 'dark';
-      localStorage.setItem(key, next);
-      apply(next);
+<script>
+  // Year stamp
+  document.addEventListener('DOMContentLoaded', ()=>{ /* nothing else here for now */ });
+
+  // Simple project filter (works with the .pill / .proj data-tags)
+  const pills=document.querySelectorAll('.pill');
+  const cards=[...document.querySelectorAll('.proj')];
+  pills.forEach(p=>p.addEventListener('click', ()=>{
+    pills.forEach(x=>x.classList.remove('active')); p.classList.add('active');
+    const f=p.dataset.filter;
+    cards.forEach(c=>{
+      const tags=(c.dataset.tags||'').split(' ');
+      c.style.display = (f==='all' || tags.includes(f)) ? '' : 'none';
     });
-  </script>
+  }));
+</script>
 </body>
 </html>
