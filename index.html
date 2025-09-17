@@ -1,125 +1,341 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Shubham Ravindra Nakhod — ML Engineer</title>
-  <style>
-    body {font-family: Arial, sans-serif; margin:0; padding:0; background:#f4f4f9; color:#333;}
-    a {color:#1f6feb; text-decoration:none;}
-    a:hover {text-decoration:underline;}
-    header {background:#2c3e50; color:white; padding:60px 20px; text-align:center;}
-    header h1 {margin:0; font-size:2.5em;}
-    header p {margin-top:10px; font-size:1.2em;}
-    nav {background:#34495e; padding:12px; text-align:center;}
-    nav a {color:white; margin:0 15px; font-weight:bold;}
-    section {max-width:900px; margin:50px auto; padding:20px; background:white; border-radius:10px; box-shadow:0 2px 8px rgba(0,0,0,0.1);}
-    section h2 {color:#2c3e50;}
-    ul {padding-left:20px;}
-    footer {background:#2c3e50; color:white; text-align:center; padding:20px; margin-top:50px;}
-    .skills {display:grid; grid-template-columns:1fr 1fr; gap:10px;}
-    .skill-bar {background:#ddd; border-radius:8px; overflow:hidden; height:16px;}
-    .skill-bar-fill {height:100%; background:#1f6feb; text-align:right; color:white; padding-right:5px; line-height:16px;}
-    .projects ul {list-style-type:none; padding:0;}
-    .projects li {margin-bottom:10px;}
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shubham Ravindra Nakhod — ML Engineer</title>
+<meta name="description" content="Portfolio of Shubham Ravindra Nakhod — Machine Learning Engineer, MLOps, GenAI, Applied ML">
+<link rel="icon" href="favicon.ico">
+<style>
+  :root {
+    --bg: #f6f8fc; --pane: #ffffff; --ink: #0f172a; --muted: #5b6577; --line: #e6eaf0;
+    --brand: #1f6feb; --brand2: #16a085; --shadow: 0 10px 28px rgba(16,24,40,.06);
+    --sideW: 280px; --max: 1180px;
+  }
+  html[data-theme="dark"] {
+    --bg: #0b1220; --pane: #0f172a; --ink: #e7ebf4; --muted: #99a4b3; --line: #1a2742;
+    --brand: #86b0ff; --brand2: #22c9a5; --shadow: 0 14px 28px rgba(0,0,0,.30);
+  }
+
+  * { box-sizing: border-box; margin:0; padding:0; }
+  html { scroll-behavior: smooth; font-family: Inter, system-ui, sans-serif; }
+  body { background: var(--bg); color: var(--ink); line-height: 1.7; }
+
+  a { color: var(--brand); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  h1,h2,h3 { margin:0; }
+  .muted { color: var(--muted); }
+
+  .wrap { display:grid; grid-template-columns: var(--sideW) 1fr; min-height:100vh; }
+  @media(max-width:980px){.wrap{grid-template-columns:1fr;}}
+
+  /* Sidebar */
+  aside {
+    position:sticky; top:0; height:100vh; padding:20px; background: var(--pane); border-right:1px solid var(--line);
+    display:flex; flex-direction: column; align-items:center; gap:12px;
+  }
+  @media(max-width:980px){ aside {position:static; height:auto; border-right:none; border-bottom:1px solid var(--line);} }
+
+  .avatar { width:100px; height:100px; border-radius:50%; overflow:hidden; border:3px solid var(--line); background:#fff; }
+  .avatar img { width:100%; height:100%; object-fit:cover; }
+  .who { font-weight:900; margin-top:8px; text-align:center; }
+  .role { font-size:0.95rem; color: var(--muted); margin-top:-4px; text-align:center; }
+
+  .social { display:flex; gap:8px; margin:12px 0; flex-wrap: wrap; justify-content:center; }
+  .chip { background: var(--brand2); color:#fff; border-radius:999px; padding:4px 10px; font-weight:700; font-size:0.85rem; }
+
+  .nav { display:grid; gap:6px; width:100%; margin-top:10px; }
+  .nav a { padding:10px 12px; border-radius:10px; border:1px solid transparent; font-weight:700; display:block; text-align:center;}
+  .nav a.active, .nav a:hover { border-color:var(--line); background:rgba(127,127,127,0.06); }
+
+  .toggle { border:1px solid var(--line); background:transparent; border-radius:10px; padding:6px 12px; font-weight:700; cursor:pointer; margin-top:6px; }
+  .side-footer { margin-top:auto; font-size:0.85rem; color: var(--muted); text-align:center; }
+
+  main { max-width: var(--max); margin:0 auto; }
+
+  section { padding:30px 20px; }
+  .card { background:var(--pane); border:1px solid var(--line); border-radius:14px; box-shadow: var(--shadow); padding:20px; margin-bottom:30px; }
+
+  /* Hero */
+  .hero { border-bottom:1px solid var(--line); }
+  .hero-wrap { min-height:70vh; display:flex; align-items:center; justify-content:center; position:relative; background: radial-gradient(circle at 10% 10%, rgba(31,111,235,0.12), transparent 60%), radial-gradient(circle at 90% 90%, rgba(22,160,133,0.12), transparent 60%), url('hero.jpg') center/cover no-repeat; }
+  .hero-inner { background:rgba(255,255,255,0.92); padding:24px; border-radius:14px; text-align:center; box-shadow:var(--shadow);}
+  html[data-theme="dark"] .hero-inner { background: rgba(15,23,42,0.85);}
+  .hero h1 { font-size:clamp(28px,4vw,44px); margin-bottom:8px; }
+  .tagline { font-size:1rem; color:var(--muted); margin-bottom:12px; display:block; min-height:2.2em; transition:opacity 0.25s ease;}
+  .cta { display:flex; gap:10px; flex-wrap:wrap; justify-content:center; margin-top:12px; }
+  .btn { padding:8px 14px; border-radius:10px; font-weight:800; text-decoration:none; box-shadow: var(--shadow); border:1px solid var(--line);}
+  .btn.primary { background: var(--brand); border-color: var(--brand); color:#fff; }
+  .btn:hover { filter:brightness(1.05); }
+
+  /* About */
+  .about { display:grid; grid-template-columns: 280px 1fr; gap:18px; }
+  @media(max-width:860px){.about{grid-template-columns:1fr;}}
+  .about img{width:100%; border-radius:12px; border:1px solid var(--line); object-fit:cover;}
+  .grid-pairs{display:grid; grid-template-columns:1fr 1fr; gap:6px; margin-top:12px;}
+  .grid-pairs b{color:var(--ink);}
+
+  /* Timeline */
+  .timeline{display:grid;gap:12px;margin-top:12px;}
+  .node{border:1px solid var(--line); border-radius:12px; padding:12px; background:var(--pane);}
+  details summary{cursor:pointer; font-weight:700;}
+  details[open] summary{color:var(--brand);}
+  details p{margin-top:4px; color:var(--muted);}
+
+  /* Skills */
+  .skills{display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:14px;}
+  .s-card{border:1px solid var(--line); border-radius:12px; background:var(--pane); padding:14px;}
+  .skill{margin:10px 0;}
+  .skill .label{display:flex; justify-content:space-between; font-weight:700;}
+  .bar{height:12px; background:rgba(127,127,127,.12); border-radius:999px; overflow:hidden;}
+  .fill{height:100%; background: linear-gradient(90deg,var(--brand),var(--brand2)); width:0%;}
+
+  /* Projects */
+  .filters{display:flex; gap:8px; flex-wrap:wrap; margin-bottom:12px;}
+  .pill{background:var(--pane); border:1px solid var(--line); border-radius:999px; padding:.25rem .65rem; font-weight:700; cursor:pointer;}
+  .pill.active{outline:2px solid var(--brand);}
+  .grid{display:grid; gap:14px; grid-template-columns:repeat(auto-fit,minmax(280px,1fr));}
+  .proj{border:1px solid var(--line); border-radius:12px; overflow:hidden; display:flex; flex-direction:column;}
+  .thumb{aspect-ratio:16/9; width:100%; object-fit:cover;}
+  .pbody{padding:14px; display:flex; flex-direction:column; gap:6px;}
+  .pbody h3{margin:0;font-size:1.05rem;}
+  .meta{font-size:.9rem;color:var(--muted);}
+  .open{margin-top:auto;}
+  .open a{font-weight:800;}
+
+  /* Contact */
+  .contact-card{display:grid; grid-template-columns:1fr 1fr; gap:16px;}
+  @media(max-width:720px){.contact-card{grid-template-columns:1fr;}}
+  .contact-block{border:1px solid var(--line); border-radius:12px; padding:14px; background:var(--pane);}
+  .contact-block a{font-weight:800;}
+
+  /* Floating resume */
+  .floating-resume{
+    position:fixed; right:18px; bottom:18px; z-index:60;
+    border:1px solid var(--line); background:var(--brand); color:#fff;
+    border-radius:999px; padding:.65rem 1rem; font-weight:900; text-decoration:none; box-shadow:var(--shadow);
+  }
+  .floating-resume:hover{filter:brightness(1.05);}
+</style>
 </head>
 <body>
 
-<header>
-  <h1>Shubham Ravindra Nakhod</h1>
-  <p>F-1 Student, OPT-eligible (Sep 2025) | ML, AI & Data Science Enthusiast</p>
-</header>
-
-<nav>
-  <a href="#about">About</a>
-  <a href="#skills">Skills</a>
-  <a href="#experience">Experience</a>
-  <a href="#projects">Projects</a>
-  <a href="#contact">Contact</a>
-</nav>
-
-<section id="about">
-  <h2>About Me</h2>
-  <p>
-    Master’s student in Information Science (Machine Learning) at the University of Arizona with ~2 years of professional experience in data analysis, quantitative modeling, and ML automation. Skilled in Python, SQL, MLOps, and applied machine learning (deep learning, NLP, anomaly detection, reinforcement learning). Experienced in deploying ML models with FastAPI, Docker, CI/CD, monitoring, and building RAG pipelines with LangChain. Solved 300+ DSA problems and built multiple ML/GenAI applications. Seeking ML Engineer, AI Engineer, or Applied Scientist roles.
-  </p>
-</section>
-
-<section id="skills">
-  <h2>Skills</h2>
-  <div class="skills">
-    <div>
-      <p>Python, NumPy, Pandas, scikit-learn</p>
-      <div class="skill-bar"><div class="skill-bar-fill" style="width:95%;">95%</div></div>
+<div class="wrap">
+  <aside>
+    <div class="avatar"><img src="Photo.png" alt="Shubham Nakhod"></div>
+    <div class="who">Shubham Ravindra Nakhod</div>
+    <div class="role">ML / AI Engineer</div>
+    <div class="social">
+      <a class="chip" href="mailto:shubnakhod29@gmail.com">Email</a>
+      <a class="chip" href="https://github.com/shubnakhod">GitHub</a>
+      <a class="chip" href="https://linkedin.com/in/shubnakhod">LinkedIn</a>
     </div>
-    <div>
-      <p>TensorFlow, PyTorch, Hugging Face</p>
-      <div class="skill-bar"><div class="skill-bar-fill" style="width:90%;">90%</div></div>
+    <div class="nav">
+      <a href="#hero" class="active">Home</a>
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#experience">Experience</a>
+      <a href="#education">Education</a>
+      <a href="#contact">Contact</a>
     </div>
-    <div>
-      <p>SQL, MongoDB, Cosmos DB</p>
-      <div class="skill-bar"><div class="skill-bar-fill" style="width:85%;">85%</div></div>
-    </div>
-    <div>
-      <p>LangChain, FAISS, Pinecone, RAG</p>
-      <div class="skill-bar"><div class="skill-bar-fill" style="width:80%;">80%</div></div>
-    </div>
-    <div>
-      <p>FastAPI, Docker, MLflow, CI/CD</p>
-      <div class="skill-bar"><div class="skill-bar-fill" style="width:85%;">85%</div></div>
-    </div>
-    <div>
-      <p>Azure, AWS SageMaker, Power BI, Tableau</p>
-      <div class="skill-bar"><div class="skill-bar-fill" style="width:80%;">80%</div></div>
-    </div>
-  </div>
-</section>
+    <button class="toggle" id="theme-toggle">Toggle Theme</button>
+    <div class="side-footer">© 2025 Shubham Ravindra Nakhod</div>
+  </aside>
 
-<section id="experience">
-  <h2>Experience</h2>
-  <ul>
-    <li><b>HSBC — Traded Risk Senior Analyst (CCR)</b> | Krakow, Poland | Apr 2023 – Aug 2023
-      <ul>
-        <li>Automated monitoring & reporting workflows using Python and Excel, reducing false alerts by 90%.</li>
-        <li>Conducted quantitative analysis on large time-series datasets.</li>
-      </ul>
-    </li>
-    <li><b>Deloitte/Goldman Sachs — Trade Support Analyst</b> | Warsaw, Poland | Apr 2022 – Mar 2023
-      <ul>
-        <li>Designed SQL and Python automations for cross-system data reconciliation.</li>
-        <li>Streamlined daily reporting pipelines and automated repetitive tasks.</li>
-      </ul>
-    </li>
-    <li><b>Credit Suisse — Trade Management Analyst 2</b> | Wroclaw | Sep 2021 – Mar 2022
-      <ul>
-        <li>Managed trade lifecycle events and ensured data integrity across multiple systems.</li>
-      </ul>
-    </li>
-  </ul>
-</section>
+  <main>
+    <section class="hero" id="hero">
+      <div class="hero-wrap">
+        <div class="hero-inner">
+          <h1>Shubham Ravindra Nakhod</h1>
+          <span class="tagline" id="tagline">ML Engineer | AI Enthusiast | GenAI & MLOps</span>
+          <div class="cta">
+            <a href="#contact" class="btn primary">Hire Me</a>
+            <a href="Resume.pdf" class="btn" download>Download Resume</a>
+          </div>
+        </div>
+      </div>
+    </section>
 
-<section id="projects" class="projects">
-  <h2>Projects</h2>
-  <ul>
-    <li><b>Agentic Fraud Explanation Service</b> — FastAPI + XGBoost + LangChain + SHAP; explains flagged transactions; CI/CD via GitHub Actions.</li>
-    <li><b>AI Resume Matcher (RAG Application)</b> — LangChain + FAISS pipeline to match resumes with job descriptions; deployed as FastAPI service with Docker.</li>
-    <li><b>Predictive Maintenance using Sensor Data</b> — Time-series preprocessing, ML classification/regression pipelines in Python/scikit-learn, deployed with MLflow.</li>
-    <li><b>Machine Learning Pipeline Deployment</b> — End-to-end ML workflow: preprocessing, training, evaluation, deployment with Docker & Flask API.</li>
-    <li><b>Limit-Order-Book Simulator + Market-Making Strategy</b> — Interactive Python/Plotly dashboard with rule-based market-making strategies.</li>
-  </ul>
-</section>
+    <section id="about">
+      <div class="card">
+        <h2>About Me</h2>
+        <p>Master’s student in Information Science (Machine Learning) at University of Arizona with ~2 years of professional experience in ML automation, data analysis, and predictive modeling. Skilled in Python, SQL, MLOps, and applied ML. Built multiple end-to-end ML/GenAI applications.</p>
+        <div class="grid-pairs">
+          <div><b>Location:</b> Tucson, AZ</div>
+          <div><b>Work Authorization:</b> OPT-eligible (Sep 2025)</div>
+          <div><b>Email:</b> shubnakhod29@gmail.com</div>
+          <div><b>Phone:</b> +1-520-388-0345</div>
+        </div>
+      </div>
+    </section>
 
-<section id="contact">
-  <h2>Contact</h2>
-  <p>Email: <a href="mailto:shubnakhod29@gmail.com">shubnakhod29@gmail.com</a></p>
-  <p>GitHub: <a href="https://github.com/ShubhamNakhod" target="_blank">github.com/ShubhamNakhod</a></p>
-  <p>LinkedIn: <a href="https://linkedin.com/in/shubham-nakhod-926914195/" target="_blank">linkedin.com/in/shubham-nakhod-926914195/</a></p>
-</section>
+    <section id="skills">
+      <h2>Skills</h2>
+      <div class="skills">
+        <div class="s-card">
+          <b>Core ML/AI</b>
+          <div class="skill"><div class="label">Python, NumPy, pandas</div><div class="bar"><div class="fill" data-width="95%"></div></div></div>
+          <div class="skill"><div class="label">scikit-learn, TensorFlow, PyTorch</div><div class="bar"><div class="fill" data-width="90%"></div></div></div>
+          <div class="skill"><div class="label">SQL & Feature Engineering</div><div class="bar"><div class="fill" data-width="85%"></div></div></div>
+        </div>
+        <div class="s-card">
+          <b>GenAI & Agents</b>
+          <div class="skill"><div class="label">LangChain, FAISS, Pinecone</div><div class="bar"><div class="fill" data-width="90%"></div></div></div>
+          <div class="skill"><div class="label">RAG Pipelines & LLM Apps</div><div class="bar"><div class="fill" data-width="85%"></div></div></div>
+        </div>
+        <div class="s-card">
+          <b>MLOps & Deployment</b>
+          <div class="skill"><div class="label">FastAPI, Docker, MLflow</div><div class="bar"><div class="fill" data-width="90%"></div></div></div>
+          <div class="skill"><div class="label">CI/CD & Monitoring</div><div class="bar"><div class="fill" data-width="85%"></div></div></div>
+        </div>
+      </div>
+    </section>
 
-<footer>
-  <p>© 2025 Shubham Ravindra Nakhod | Built with ❤️ on GitHub Pages</p>
-</footer>
+    <section id="projects">
+      <h2>Projects</h2>
+      <div class="filters">
+        <span class="pill active" data-filter="all">All</span>
+        <span class="pill" data-filter="ml">ML</span>
+        <span class="pill" data-filter="genai">GenAI</span>
+        <span class="pill" data-filter="deployment">Deployment</span>
+      </div>
+      <div class="grid">
+        <div class="proj" data-category="genai">
+          <img class="thumb" src="project1.png" alt="">
+          <div class="pbody">
+            <h3>Agentic Fraud Explanation Service</h3>
+            <div class="meta">FastAPI + XGBoost + LangChain + SHAP</div>
+            <p>Explains flagged transactions in plain English using SHAP; CI/CD via GitHub Actions; P95 latency <300ms.</p>
+          </div>
+        </div>
+        <div class="proj" data-category="genai">
+          <img class="thumb" src="project2.png" alt="">
+          <div class="pbody">
+            <h3>AI Resume Matcher</h3>
+            <div class="meta">LangChain + FAISS + Docker</div>
+            <p>Matches resumes with job descriptions; extracts missing skills and generates recommendations; deployed as FastAPI service.</p>
+          </div>
+        </div>
+        <div class="proj" data-category="ml">
+          <img class="thumb" src="project3.png" alt="">
+          <div class="pbody">
+            <h3>Predictive Maintenance</h3>
+            <div class="meta">Python, scikit-learn, MLflow</div>
+            <p>Preprocessed time-series data, built ML pipelines, and deployed models with monitoring and retraining.</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
+    <section id="experience">
+      <h2>Experience</h2>
+      <div class="timeline">
+        <details open class="node">
+          <summary>HSBC — Traded Risk Senior Analyst · Krakow (Apr 2023 – Aug 2023)</summary>
+          <p>Automated monitoring workflows using Python & Excel, reducing false alerts by 90%.</p>
+          <p>Conducted quantitative analysis on large time-series datasets.</p>
+        </details>
+        <details class="node">
+          <summary>Deloitte/Goldman Sachs — Trade Support Analyst · Warsaw (Apr 2022 – Mar 2023)</summary>
+          <p>Designed SQL and Python automations for data reconciliation; streamlined daily reporting pipelines.</p>
+        </details>
+        <details class="node">
+          <summary>Credit Suisse — Trade Management Analyst 2 · Wroclaw (Sep 2021 – Mar 2022)</summary>
+          <p>Managed trade lifecycle events; optimized reporting pipelines using Python automation.</p>
+        </details>
+      </div>
+    </section>
+
+    <section id="education">
+      <h2>Education</h2>
+      <div class="timeline">
+        <details open class="node">
+          <summary>University of Arizona — M.S. Information Science (Machine Learning) | Expected Dec 2025 | GPA: 3.8/4.0</summary>
+          <p>Coursework: Advanced ML, NLP, Reinforcement Learning, Bayesian Modeling, Optimization, Data Science.</p>
+          <p>Flagship Project: Limit Order Book Simulator — Matching engine & market-making strategy dashboards.</p>
+        </details>
+        <details class="node">
+          <summary>University of Mumbai — B.S. Financial Markets | 2016–2019 | GPA: 7.6/10</summary>
+        </details>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2>Contact</h2>
+      <div class="contact-card">
+        <div class="contact-block">
+          <b>Email:</b> <a href="mailto:shubnakhod29@gmail.com">shubnakhod29@gmail.com</a>
+        </div>
+        <div class="contact-block">
+          <b>Phone:</b> <a href="tel:+15203880345">+1-520-388-0345</a>
+        </div>
+        <div class="contact-block">
+          <b>LinkedIn:</b> <a href="https://linkedin.com/in/shubnakhod" target="_blank">linkedin.com/in/shubnakhod</a>
+        </div>
+        <div class="contact-block">
+          <b>GitHub:</b> <a href="https://github.com/shubnakhod" target="_blank">github.com/shubnakhod</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<a href="Resume.pdf" class="floating-resume" download>Resume</a>
+
+<script>
+  // Dark/Light theme toggle
+  const toggle = document.getElementById('theme-toggle');
+  toggle.addEventListener('click', () => {
+    document.documentElement.dataset.theme =
+      document.documentElement.dataset.theme === 'light' ? 'dark' : 'light';
+  });
+
+  // Active nav highlighting
+  const sections = document.querySelectorAll('main section');
+  const navLinks = document.querySelectorAll('.nav a');
+
+  window.addEventListener('scroll', () => {
+    let fromTop = window.scrollY + 100;
+    sections.forEach((sec, i) => {
+      if (sec.offsetTop <= fromTop && sec.offsetTop + sec.offsetHeight > fromTop) {
+        navLinks.forEach(l => l.classList.remove('active'));
+        navLinks[i].classList.add('active');
+      }
+    });
+  });
+
+  // Skills animation
+  const fills = document.querySelectorAll('.fill');
+  const skillObserver = new IntersectionObserver((entries)=>{
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        entry.target.style.width = entry.target.dataset.width;
+      }
+    });
+  },{threshold:0.6});
+  fills.forEach(f=>skillObserver.observe(f));
+
+  // Tagline rotation
+  const taglines = ["ML Engineer","AI Enthusiast","GenAI & MLOps","Applied ML & NLP"];
+  let idx=0; const taglineEl = document.getElementById('tagline');
+  setInterval(()=>{ idx=(idx+1)%taglines.length; taglineEl.textContent=taglines[idx]; },3000);
+
+  // Project filtering
+  const pills = document.querySelectorAll('.pill');
+  const projects = document.querySelectorAll('.proj');
+  pills.forEach(pill=>{
+    pill.addEventListener('click',()=>{
+      pills.forEach(p=>p.classList.remove('active'));
+      pill.classList.add('active');
+      const filter = pill.dataset.filter;
+      projects.forEach(proj=>{
+        proj.style.display = (filter==='all'||proj.dataset.category===filter)?'flex':'none';
+      });
+    });
+  });
+</script>
 </body>
 </html>
