@@ -6,7 +6,6 @@
 <title>Shubham Ravindra Nakhod — Quantitative Trader</title>
 <meta name="description" content="Portfolio and resume of Shubham Nakhod — aspiring Quantitative Trader, Machine Learning & AI Engineer." />
 <style>
-  /* Theme Tokens */
   :root{
     --bg:#0b1220; --pane:#0f172a; --ink:#e7ebf4; --muted:#9aa6bb; --line:#182033;
     --brand:#86b0ff; --brand2:#22c9a5; --accent:#2dd4bf;
@@ -145,28 +144,39 @@
   <!-- Projects -->
   <section id="projects" class="card">
     <h2>Projects</h2>
+
+    <!-- Upcoming projects -->
+    <h3>Upcoming Projects</h3>
     <div class="proj-grid">
       <article class="proj">
         <div class="thumb" style="background-image:url('project1.png')"></div>
         <div class="pbody">
-          <h3>Project 1</h3>
-          <p>Agentic Fraud Explanation Service — Explainable AI system for fraud detection and reasoning.</p>
+          <h3>Agentic Fraud Explanation Service</h3>
+          <p>Explainable AI system for fraud detection and reasoning.</p>
         </div>
       </article>
       <article class="proj">
         <div class="thumb" style="background-image:url('project2.png')"></div>
         <div class="pbody">
-          <h3>Project 2</h3>
-          <p>AI Resume Matcher — RAG-based application for intelligent candidate-job matching.</p>
+          <h3>AI Resume Matcher</h3>
+          <p>RAG-based application for intelligent candidate-job matching.</p>
         </div>
       </article>
       <article class="proj">
         <div class="thumb" style="background-image:url('project3.png')"></div>
         <div class="pbody">
-          <h3>Project 3</h3>
-          <p>Predictive Maintenance — ML models for anomaly detection and machine failure prediction.</p>
+          <h3>Predictive Maintenance</h3>
+          <p>ML models for anomaly detection and machine failure prediction.</p>
         </div>
       </article>
+    </div>
+
+    <!-- GitHub projects -->
+    <h3 style="margin-top:20px">All GitHub Projects</h3>
+    <div id="projectsGrid" class="proj-grid" style="min-height:120px">
+      <div style="grid-column:1/-1;color:var(--muted)" id="projectsStatus">
+        Loading projects from GitHub...
+      </div>
     </div>
   </section>
 
@@ -184,6 +194,71 @@
 
 <script>
 document.getElementById('year').textContent = new Date().getFullYear();
+
+async function fetchAndRenderRepos(username='ShubhamNakhod') {
+  const status = document.getElementById('projectsStatus');
+  const projectGrid = document.getElementById('projectsGrid');
+  status.textContent = 'Loading projects from GitHub...';
+
+  try {
+    const resp = await fetch(`https://api.github.com/users/${username}/repos?per_page=100&type=owner&sort=updated`);
+    if (!resp.ok) throw new Error(`GitHub API error ${resp.status}`);
+    const repos = await resp.json();
+
+    if (!Array.isArray(repos) || repos.length === 0) {
+      status.textContent = 'No repositories found.';
+      return;
+    }
+
+    projectGrid.innerHTML = '';
+
+    repos.forEach(r => {
+      const card = document.createElement('article');
+      card.className = 'proj';
+
+      const thumbDiv = document.createElement('div');
+      thumbDiv.className = 'thumb';
+      thumbDiv.style.backgroundImage = `linear-gradient(135deg, rgba(255,255,255,0.02), rgba(0,0,0,0.06))`;
+
+      const body = document.createElement('div');
+      body.className = 'pbody';
+
+      const h = document.createElement('h3');
+      h.textContent = r.name.replace(/[-_]/g,' ');
+
+      const md = document.createElement('div');
+      md.className = 'meta';
+      md.textContent = (r.language ? r.language + ' · ' : '') + `Updated ${new Date(r.updated_at).toLocaleDateString()}`;
+
+      const p = document.createElement('p');
+      p.textContent = r.description || 'No description provided.';
+
+      const open = document.createElement('div');
+      open.className = 'open';
+      const a = document.createElement('a');
+      a.href = r.html_url;
+      a.target = '_blank';
+      a.rel = 'noopener';
+      a.textContent = 'Open repo →';
+
+      open.appendChild(a);
+      body.appendChild(h);
+      body.appendChild(md);
+      body.appendChild(p);
+      body.appendChild(open);
+
+      card.appendChild(thumbDiv);
+      card.appendChild(body);
+      projectGrid.appendChild(card);
+    });
+
+  } catch (err) {
+    console.error(err);
+    status.textContent = 'Failed to load GitHub projects.';
+  }
+}
+
+fetchAndRenderRepos();
 </script>
 </body>
 </html>
